@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"namespacemembers_func.html":[15,1,1],
 "namespacemembers_type.html":[15,1,3],
 "namespacemembers_vars.html":[15,1,2],
 "namespaces.html":[15,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "structalce_1_1cu_1_1boundless__array.html#ae2d66b663d93964053f72e17e81a55c2":[17,0,0,2,0,2],
 "structalce_1_1cu_1_1boundless__array.html#ae2d66b663d93964053f72e17e81a55c2":[15,0,0,3,0,2],
 "structalce_1_1cu_1_1boundless__array.html#ae5110b1129c309572d1f30ce9b64beba":[17,0,0,2,0,0],
-"structalce_1_1cu_1_1boundless__array.html#ae5110b1129c309572d1f30ce9b64beba":[15,0,0,3,0,0],
-"structalce_1_1cu_1_1boundless__basic__string.html":[17,0,0,2,1]
+"structalce_1_1cu_1_1boundless__array.html#ae5110b1129c309572d1f30ce9b64beba":[15,0,0,3,0,0]
 };

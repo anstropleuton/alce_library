@@ -65,8 +65,8 @@ This project is licensed under the terms of MIT License, see [License](License.m
 
 # Doxygen
 \*: Due to some limitations on how files link in Markdown, not all hyperlinks from this file link properly, so refer to:
-- [header files](https://anstropleuton.github.io/alce-library/docs/html/alce__library_8hpp_source.html)
-- [include](https://anstropleuton.github.io/alce-library/docs/html/dir_d44c64559bbebec7f509842c48db8b23.html)
+- [header files](https://anstropleuton.github.io/alce-library/alce__library_8hpp_source.html)
+- [include](https://anstropleuton.github.io/alce-library/dir_d44c64559bbebec7f509842c48db8b23.html)
 
 # Junk folder?
 That folder is where I put my useless features. Don't use them please.

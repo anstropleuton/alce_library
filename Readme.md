@@ -26,8 +26,8 @@ If you are not Anstro Pleuton, which you probably are, here is a quick and rough
  1. Setup:
     - Clone this repository.
 ```
-git clone https://github.com/anstropleuton/alce-library
-cd alce-library
+git clone https://github.com/anstropleuton/alce_library
+cd alce_library
 ```
  2. Build the library:
     - Make build folder:
@@ -45,10 +45,10 @@ cmake --build .
 ```cpp
 #include "alce_library.hpp"
 ```
- 5. Go through [documentation](https://anstropleuton.github.io/alce-library) (or [header files](include/alce_library.hpp)[*](#Doxygen)) to get a grasp on what you can do using my library. You can check out [examples source files](examples/) for more usage information.
+ 5. Go through [documentation](https://anstropleuton.github.io/alce_library) (or [header files](include/alce_library.hpp)[*](#Doxygen)) to get a grasp on what you can do using my library. You can check out [examples source files](examples/) for more usage information.
 
 # Documentations
-Refer to the [documentation](https://anstropleuton.github.io/alce-library) (or [header files](include/alce_library.hpp)[*](#Doxygen)) to get a grasp on what you can do using my library.
+Refer to the [documentation](https://anstropleuton.github.io/alce_library) (or [header files](include/alce_library.hpp)[*](#Doxygen)) to get a grasp on what you can do using my library.
 
 # Changelog
 Refer to the [Changelog](Changelog.md) for info about changes in each version.
@@ -65,8 +65,8 @@ This project is licensed under the terms of MIT License, see [License](License.m
 
 # Doxygen
 \*: Due to some limitations on how files link in Markdown, not all hyperlinks from this file link properly, so refer to:
-- [header files](https://anstropleuton.github.io/alce-library/alce__library_8hpp_source.html)
-- [include](https://anstropleuton.github.io/alce-library/dir_d44c64559bbebec7f509842c48db8b23.html)
+- [header files](https://anstropleuton.github.io/alce_library/alce__library_8hpp_source.html)
+- [include](https://anstropleuton.github.io/alce_library/dir_d44c64559bbebec7f509842c48db8b23.html)
 
 # Junk folder?
 That folder is where I put my useless features. Don't use them please.

@@ -1,0 +1,55 @@
+var alce__argument__parser_8hpp =
+[
+    [ "alce::ap::option_template", "structalce_1_1ap_1_1option__template.html", "structalce_1_1ap_1_1option__template" ],
+    [ "alce::ap::subcommand_template", "structalce_1_1ap_1_1subcommand__template.html", "structalce_1_1ap_1_1subcommand__template" ],
+    [ "alce::ap::mod_argument", "structalce_1_1ap_1_1mod__argument.html", "structalce_1_1ap_1_1mod__argument" ],
+    [ "alce::ap::parsed_argument", "structalce_1_1ap_1_1parsed__argument.html", "structalce_1_1ap_1_1parsed__argument" ],
+    [ "alce::ap::measured_string", "structalce_1_1ap_1_1measured__string.html", "structalce_1_1ap_1_1measured__string" ],
+    [ "alce::ap::styled_text", "structalce_1_1ap_1_1styled__text.html", "structalce_1_1ap_1_1styled__text" ],
+    [ "alce::ap::styled_padding", "structalce_1_1ap_1_1styled__padding.html", "structalce_1_1ap_1_1styled__padding" ],
+    [ "alce::ap::styled_enclosure", "structalce_1_1ap_1_1styled__enclosure.html", "structalce_1_1ap_1_1styled__enclosure" ],
+    [ "alce::ap::posix_help_format", "structalce_1_1ap_1_1posix__help__format.html", "structalce_1_1ap_1_1posix__help__format" ],
+    [ "alce::ap::microsoft_help_format", "structalce_1_1ap_1_1microsoft__help__format.html", "structalce_1_1ap_1_1microsoft__help__format" ],
+    [ "argument_type", "alce__argument__parser_8hpp.html#a6adc39bcaa83a3759695dafbf1db1306", [
+      [ "unknown", "alce__argument__parser_8hpp.html#a6adc39bcaa83a3759695dafbf1db1306aad921d60486366258809553a3db49a4a", null ],
+      [ "empty", "alce__argument__parser_8hpp.html#a6adc39bcaa83a3759695dafbf1db1306aa2e4822a98337283e39f7b60acf85ec9", null ],
+      [ "short_option", "alce__argument__parser_8hpp.html#a6adc39bcaa83a3759695dafbf1db1306ac3dd701bb892f05ae6d6ef5957275c9f", null ],
+      [ "long_option", "alce__argument__parser_8hpp.html#a6adc39bcaa83a3759695dafbf1db1306a274160f27f00ca8fbda3d84931e70a12", null ],
+      [ "microsoft_switch", "alce__argument__parser_8hpp.html#a6adc39bcaa83a3759695dafbf1db1306a797d63f1b8b7e884523a49aba3350d42", null ],
+      [ "single_hyphen", "alce__argument__parser_8hpp.html#a6adc39bcaa83a3759695dafbf1db1306ac55de9c24e0a63900ac49771f8e6aea0", null ],
+      [ "double_hyphen", "alce__argument__parser_8hpp.html#a6adc39bcaa83a3759695dafbf1db1306aaf019a40ded0e664b4ff58a07a82dc1e", null ],
+      [ "regular_argument", "alce__argument__parser_8hpp.html#a6adc39bcaa83a3759695dafbf1db1306aa20e56bea0585638d84185a408b04378", null ]
+    ] ],
+    [ "variadicity", "alce__argument__parser_8hpp.html#a12d14444766811c9e322eccfc2f06438", [
+      [ "not_variadic", "alce__argument__parser_8hpp.html#a12d14444766811c9e322eccfc2f06438abd4e4b9e6b527091089949637b49dccc", null ],
+      [ "zero_or_more", "alce__argument__parser_8hpp.html#a12d14444766811c9e322eccfc2f06438ae89b690003f9258b7d29dd2e5e172505", null ],
+      [ "one_or_more", "alce__argument__parser_8hpp.html#a12d14444766811c9e322eccfc2f06438a6ef720567b1860990b3d5b851d7e5d8d", null ]
+    ] ],
+    [ "validity", "alce__argument__parser_8hpp.html#a168850bfe3f1c0f978e3d783c0b0b609", [
+      [ "unknown", "alce__argument__parser_8hpp.html#a168850bfe3f1c0f978e3d783c0b0b609aad921d60486366258809553a3db49a4a", null ],
+      [ "valid", "alce__argument__parser_8hpp.html#a168850bfe3f1c0f978e3d783c0b0b609a9f7d0ee82b6a6ca7ddeae841f3253059", null ],
+      [ "unrecognized_option", "alce__argument__parser_8hpp.html#a168850bfe3f1c0f978e3d783c0b0b609a41c3830d78a9c9c3999125a5441932de", null ],
+      [ "unrecognized_subcommand", "alce__argument__parser_8hpp.html#a168850bfe3f1c0f978e3d783c0b0b609a71690c26ac3556e6e31ba5c92bc76188", null ],
+      [ "not_enough_values", "alce__argument__parser_8hpp.html#a168850bfe3f1c0f978e3d783c0b0b609a64a68ff871cac5f80f374fe513b30f92", null ]
+    ] ],
+    [ "to_string", "alce__argument__parser_8hpp.html#acefd06ecece6db6c8ceff0b953de9c1b", null ],
+    [ "get_argument_type", "alce__argument__parser_8hpp.html#a9d342d6bd3acd6048fbd26efe0ce4484", null ],
+    [ "to_string", "alce__argument__parser_8hpp.html#a7fb4da4218e558825f5de80c44eca185", null ],
+    [ "is_parameter_variadic", "alce__argument__parser_8hpp.html#a7c830155221eb80aa43995c926f0585a", null ],
+    [ "to_string", "alce__argument__parser_8hpp.html#a443fe3175b2cd70a7a12633efde89c94", null ],
+    [ "parse_arguments", "alce__argument__parser_8hpp.html#a95d05c0ee70fd9455c78b21e62c41b15", null ],
+    [ "parse_arguments", "alce__argument__parser_8hpp.html#a44a24439a132c2b80f9aab2a3bc65b30", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#ad6df9da4276998b39c356c9ad5f80d70", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#ad6c1a1c60881c7c0728d874e869465b2", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#a7cf63c8a684d7bf5837fa6fcfc9bec5c", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#a2fb18eecd829dd87f2201939007eaedd", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#a2fa9f89af284d67e180c87778cc6171c", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#a98b0ad320747bd2a96f68553f42dd554", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#adaa8fac6fd95273de992318a82b234fe", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#a1445c70c602669ffb81c86230423eac7", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#a9abeb97c70dfc7121ee940f7e6e09d44", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#afe4ef8580b2046a9adc054d3cc105f59", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#a7b6c6c83fc68967b7f7fae489a9660c0", null ],
+    [ "get_help_message", "alce__argument__parser_8hpp.html#abdf369835c91f9beb3329be9f15f8e41", null ],
+    [ "print_help_message", "alce__argument__parser_8hpp.html#af3810cf647db9fe1ec2f2231a7450649", null ]
+];

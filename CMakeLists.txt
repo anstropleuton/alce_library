@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.30)
 project(AlceLibrary
     VERSION 1.0.0.0
     DESCRIPTION "Alce Library is a collection of utils for Anstro Pleuton's programs."
-    HOMEPAGE_URL "https://anstropleuton.github.io/alce-library/"
+    HOMEPAGE_URL "https://anstropleuton.github.io/alce_library/"
     LANGUAGES CXX
 )
 

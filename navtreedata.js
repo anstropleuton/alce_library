@@ -25,16 +25,16 @@
 var NAVTREE =
 [
   [ "Alce Library", "index.html", [
-    [ "Sections", "index.html#autotoc_md55", null ],
-    [ "Planned Sections", "index.html#autotoc_md56", null ],
-    [ "Prerequisite", "index.html#autotoc_md57", null ],
-    [ "Usage", "index.html#autotoc_md58", null ],
-    [ "Documentations", "index.html#autotoc_md59", null ],
-    [ "Changelog", "index.html#autotoc_md60", null ],
-    [ "Contributing", "index.html#autotoc_md61", null ],
-    [ "Credits", "index.html#autotoc_md62", null ],
-    [ "License", "index.html#autotoc_md63", null ],
-    [ "Junk folder?", "index.html#autotoc_md64", null ],
+    [ "Sections", "index.html#autotoc_md57", null ],
+    [ "Planned Sections", "index.html#autotoc_md58", null ],
+    [ "Prerequisite", "index.html#autotoc_md59", null ],
+    [ "Usage", "index.html#autotoc_md60", null ],
+    [ "Documentations", "index.html#autotoc_md61", null ],
+    [ "Changelog", "index.html#autotoc_md62", null ],
+    [ "Contributing", "index.html#autotoc_md63", null ],
+    [ "Credits", "index.html#autotoc_md64", null ],
+    [ "License", "index.html#autotoc_md65", null ],
+    [ "Junk folder?", "index.html#autotoc_md66", null ],
     [ "Changelog", "md_Changelog.html", [
       [ "v1.0.0.0 - Initial Release", "md_Changelog.html#autotoc_md1", null ]
     ] ],
@@ -84,17 +84,19 @@ var NAVTREE =
         ] ],
         [ "Miscellaneous", "md_Guidelines.html#autotoc_md40", [
           [ "Enumerators", "md_Guidelines.html#autotoc_md41", null ],
-          [ "Error Handling", "md_Guidelines.html#autotoc_md42", null ],
-          [ "Concepts", "md_Guidelines.html#autotoc_md43", null ],
-          [ "Standard Library", "md_Guidelines.html#autotoc_md44", null ],
-          [ "Pointers and References", "md_Guidelines.html#autotoc_md45", null ],
-          [ "Macros", "md_Guidelines.html#autotoc_md46", null ],
-          [ "Initialization", "md_Guidelines.html#autotoc_md47", null ],
-          [ "Range-Based Loops", "md_Guidelines.html#autotoc_md48", null ],
-          [ "Avoid Magic Numbers", "md_Guidelines.html#autotoc_md49", null ],
-          [ "Use <tt>nullptr</tt>", "md_Guidelines.html#autotoc_md50", null ],
-          [ "Prefix <tt>::</tt>", "md_Guidelines.html#autotoc_md51", null ],
-          [ "Abbreviations", "md_Guidelines.html#autotoc_md52", null ]
+          [ "Enum Classes", "md_Guidelines.html#autotoc_md42", null ],
+          [ "Enum to String", "md_Guidelines.html#autotoc_md43", null ],
+          [ "Error Handling", "md_Guidelines.html#autotoc_md44", null ],
+          [ "Concepts", "md_Guidelines.html#autotoc_md45", null ],
+          [ "Standard Library", "md_Guidelines.html#autotoc_md46", null ],
+          [ "Pointers and References", "md_Guidelines.html#autotoc_md47", null ],
+          [ "Macros", "md_Guidelines.html#autotoc_md48", null ],
+          [ "Initialization", "md_Guidelines.html#autotoc_md49", null ],
+          [ "Range-Based Loops", "md_Guidelines.html#autotoc_md50", null ],
+          [ "Avoid Magic Numbers", "md_Guidelines.html#autotoc_md51", null ],
+          [ "Use <tt>nullptr</tt>", "md_Guidelines.html#autotoc_md52", null ],
+          [ "Prefix <tt>::</tt>", "md_Guidelines.html#autotoc_md53", null ],
+          [ "Abbreviations", "md_Guidelines.html#autotoc_md54", null ]
         ] ]
       ] ]
     ] ],
@@ -132,9 +134,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "alce__ansi__escape__codes_8hpp.html",
-"index.html#autotoc_md59",
-"namespacealce_1_1sm__operators.html",
-"structalce_1_1cu_1_1boundless__array.html#a159cad8d2c6ecd211eaa0da81689dfab"
+"index.html#autotoc_md61",
+"namespacealce_1_1sm.html#aef1362917a5e4959f87544d2a115f72e",
+"structalce_1_1cu_1_1boundless__array.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -339,43 +339,69 @@ Operator Overloading</h3>
 Miscellaneous</h2>
 <h3><a class="anchor" id="autotoc_md41"></a>
 Enumerators</h3>
-<p>Include a <code>max</code> member in enumerators intended for use as indexes.</p>
+<p>Include a <code>max</code> member in enumerators intended for use as indexes, and an <code>unknown</code> member intended to serve as uninitialized/default.</p>
 <h3><a class="anchor" id="autotoc_md42"></a>
+Enum Classes</h3>
+<p>Always use <code>enum class</code> instead of <code>enum</code> for better type safety, with the only exception being when the <code>enum</code> is inside of a struct.</p>
+<h3><a class="anchor" id="autotoc_md43"></a>
+Enum to String</h3>
+<p>Always create an overload of <code>to_string</code> for every <code>enum class</code> to enable convenient text formatting of the enum values, enhancing readability and usability in code. </p><div class="fragment"><div class="line"><span class="keyword">enum class</span> enumerator {</div>
+<div class="line">    unknown,</div>
+<div class="line">    member_1,</div>
+<div class="line">    member_2,</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">    max</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> to_string(enumerator enumerator)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">using namespace </span>std::string_literals;</div>
+<div class="line">    <span class="keywordflow">switch</span> (enumerator)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">case</span> enumerator::unknown: <span class="keywordflow">return</span> <span class="stringliteral">&quot;unknown&quot;</span>s;</div>
+<div class="line">        <span class="keywordflow">case</span> enumerator::member_1: <span class="keywordflow">return</span> <span class="stringliteral">&quot;member_1&quot;</span>s;</div>
+<div class="line">        <span class="keywordflow">case</span> enumerator::member_2: <span class="keywordflow">return</span> <span class="stringliteral">&quot;member_2&quot;</span>s;</div>
+<div class="line">        <span class="comment">// ...</span></div>
+<div class="line">        <span class="keywordflow">case</span> enumerator::max: <span class="keywordflow">return</span> <span class="stringliteral">&quot;max&quot;</span>s;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>s;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md44"></a>
 Error Handling</h3>
 <p>Use exceptions for error handling, but return error codes in performance-critical functions. </p><div class="fragment"><div class="line"><span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;A very descriptive message with some debug info&quot;</span>);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md43"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md45"></a>
 Concepts</h3>
 <p>Prefer using defined concepts over <code>typename</code> for template parameters.</p>
-<h3><a class="anchor" id="autotoc_md44"></a>
+<h3><a class="anchor" id="autotoc_md46"></a>
 Standard Library</h3>
 <p>Prefer C++ standard library features. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line">std::string my_string = <span class="stringliteral">&quot;Hello&quot;</span>;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md45"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md47"></a>
 Pointers and References</h3>
 <p>Use smart pointers over raw pointers, and references when ownership isn't changing. </p><div class="fragment"><div class="line">std::unique_ptr&lt;my_struct&gt; ptr = std::make_unique&lt;my_struct&gt;();</div>
 <div class="line"><span class="keywordtype">void</span> my_function(<span class="keyword">const</span> my_struct&amp; obj);</div>
 </div><!-- fragment --><p> Use raw pointers if you intend the API to accept address of local variables (still not worth it).</p>
-<h3><a class="anchor" id="autotoc_md46"></a>
+<h3><a class="anchor" id="autotoc_md48"></a>
 Macros</h3>
 <p>Avoid macros; use <code>inline constexpr</code> or templated functions instead. </p><div class="fragment"><div class="line"><span class="preprocessor">#define MAX(a, b) ((a) &gt; (b) ? (a) : (b)) </span><span class="comment">// Avoid</span></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md47"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md49"></a>
 Initialization</h3>
 <p>Use <code>=</code> or <code>{}</code> for initializing values and <code>()</code> for constructing objects. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> value = 10;</div>
 <div class="line">std::vector vec = {1, 2, 3};</div>
 <div class="line">Type object(param1, param2);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md48"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md50"></a>
 Range-Based Loops</h3>
 <p>Prefer range-based loops and use <code>auto &amp;</code> for all. </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;value : values) { <span class="comment">/* code */</span> }</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md49"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md51"></a>
 Avoid Magic Numbers</h3>
 <p>Use named constants instead of magic numbers. </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> max_size = 100;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md50"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md52"></a>
 Use &lt;tt&gt;nullptr&lt;/tt&gt;</h3>
 <p>Use <code>nullptr</code> instead of <code>NULL</code>. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> *ptr = <span class="keyword">nullptr</span>;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md51"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md53"></a>
 Prefix &lt;tt&gt;::&lt;/tt&gt;</h3>
 <p>Use <code>::</code> for calling C standard functions. </p><div class="fragment"><div class="line"><span class="keywordtype">char</span> lowered = ::tolower(c);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md52"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md54"></a>
 Abbreviations</h3>
 <p>Don't use abbreviated thing in API, but you can abbreviate long names like <code>std::ranges</code> to shorter names (e.g., <code>stdr</code>) within source files. </p>
 </div></div><!-- contents -->

@@ -66,7 +66,7 @@ namespace sm {
  *
  *  A container that is CU Compatible with elements type being @c std::string or
  *  @c std::string_view .
- *  
+ *
  *  @tparam  Container  The container type.
  */
 template<typename Container>
@@ -523,7 +523,7 @@ template<sm_compatible Strings>
  */
 [[nodiscard]] inline constexpr auto repeat(
     std::string_view string,
-    int      n
+    int              n
 )
 {
     std::vector<char> string_vec(string.begin(), string.end());
@@ -541,7 +541,7 @@ template<sm_compatible Strings>
  */
 [[nodiscard]] inline constexpr auto repeat(
     std::string_view string,
-    unsigned      n
+    unsigned         n
 )
 {
     std::vector<char> string_vec(string.begin(), string.end());
@@ -559,7 +559,7 @@ template<sm_compatible Strings>
  */
 [[nodiscard]] inline constexpr auto repeat(
     std::string_view string,
-    long      n
+    long             n
 )
 {
     std::vector<char> string_vec(string.begin(), string.end());
@@ -577,7 +577,7 @@ template<sm_compatible Strings>
  */
 [[nodiscard]] inline constexpr auto repeat(
     std::string_view string,
-    long long      n
+    long long        n
 )
 {
     std::vector<char> string_vec(string.begin(), string.end());
@@ -594,8 +594,8 @@ template<sm_compatible Strings>
  *  @see  cu::repeat.
  */
 [[nodiscard]] inline constexpr auto repeat(
-    std::string_view string,
-    unsigned long long      n
+    std::string_view   string,
+    unsigned long long n
 )
 {
     std::vector<char> string_vec(string.begin(), string.end());
@@ -631,7 +631,7 @@ template<sm_compatible Strings>
  */
 [[nodiscard]] inline constexpr auto repeat(
     std::string_view string,
-    float      n
+    float            n
 )
 {
     std::vector<char> string_vec(string.begin(), string.end());
@@ -649,7 +649,7 @@ template<sm_compatible Strings>
  */
 [[nodiscard]] inline constexpr auto repeat(
     std::string_view string,
-    double      n
+    double           n
 )
 {
     std::vector<char> string_vec(string.begin(), string.end());
@@ -814,7 +814,7 @@ namespace sm_operators {
  */
 [[nodiscard]] inline constexpr auto operator* (
     std::string_view string,
-    int      n
+    int              n
 )
 {
     return sm::repeat(string, n);
@@ -831,7 +831,7 @@ namespace sm_operators {
  */
 [[nodiscard]] inline constexpr auto operator* (
     std::string_view string,
-    unsigned      n
+    unsigned         n
 )
 {
     return sm::repeat(string, n);
@@ -848,7 +848,7 @@ namespace sm_operators {
  */
 [[nodiscard]] inline constexpr auto operator* (
     std::string_view string,
-    long      n
+    long             n
 )
 {
     return sm::repeat(string, n);
@@ -865,7 +865,7 @@ namespace sm_operators {
  */
 [[nodiscard]] inline constexpr auto operator* (
     std::string_view string,
-    long long      n
+    long long        n
 )
 {
     return sm::repeat(string, n);
@@ -881,8 +881,8 @@ namespace sm_operators {
  *  @see  sm::repeat.
  */
 [[nodiscard]] inline constexpr auto operator* (
-    std::string_view string,
-    unsigned long long      n
+    std::string_view   string,
+    unsigned long long n
 )
 {
     return sm::repeat(string, n);
@@ -916,7 +916,7 @@ namespace sm_operators {
  */
 [[nodiscard]] inline constexpr auto operator* (
     std::string_view string,
-    float      n
+    float            n
 )
 {
     return sm::repeat(string, n);
@@ -933,7 +933,7 @@ namespace sm_operators {
  */
 [[nodiscard]] inline constexpr auto operator* (
     std::string_view string,
-    double      n
+    double           n
 )
 {
     return sm::repeat(string, n);

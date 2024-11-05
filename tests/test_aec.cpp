@@ -52,7 +52,7 @@ using namespace aec_operators;
 [[nodiscard]] auto test_aec() -> std::size_t
 {
     logln("AEC test results cannot be displayed using files, see the terminal"
-          "output to review the test results.");
+        "output to review the test results.");
 
     std::println("AEC test results are displayed on the terminal for review.");
 
@@ -135,7 +135,8 @@ using namespace aec_operators;
     std::cout << " " << aec::bright_green_bg("bright_green_bg") << std::endl;
     std::cout << " " << aec::bright_yellow_bg("bright_yellow_bg") << std::endl;
     std::cout << " " << aec::bright_blue_bg("bright_blue_bg") << std::endl;
-    std::cout << " " << aec::bright_magenta_bg("bright_magenta_bg") << std::endl;
+    std::cout << " " << aec::bright_magenta_bg("bright_magenta_bg") <<
+                                                                      std::endl;
     std::cout << " " << aec::bright_cyan_bg("bright_cyan_bg") << std::endl;
     std::cout << " " << aec::bright_white_bg("bright_white_bg") << std::endl;
     std::println();

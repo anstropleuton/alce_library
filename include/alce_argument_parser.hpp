@@ -219,42 +219,34 @@ struct subcommand_template {
  *  @brief  Type for argument differentiation.
  */
 enum class argument_type {
-
     /**
      *  @brief  Argument type cannot be determined.
      */
     unknown,
-
     /**
      *  @brief  Argument is empty.
      */
     empty,
-
     /**
      *  @brief  Argument is in form of "-a", "-abc=value", etc.
      */
     short_option,
-
     /**
      *  @brief  Argument is in form of "--argument", "--argument=value", etc.
      */
     long_option,
-
     /**
      *  @brief  Argument is in form of "/argument", "/argument:value", etc.
      */
     microsoft_switch,
-
     /**
      *  @brief  Argument is "-".  This is treated just as regular argument.
      */
     single_hyphen,
-
     /**
      *  @brief  Argument is "--".  End of parsing.
      */
     double_hyphen,
-
     /**
      *  @brief  Argument is in form of "argument", etc.
      */
@@ -270,6 +262,7 @@ enum class argument_type {
 [[nodiscard]] inline constexpr auto to_string(argument_type arg_type)
 {
     using namespace std::string_literals;
+
     switch (arg_type)
     {
         case argument_type::unknown: return "unknown"s;
@@ -318,17 +311,14 @@ enum class argument_type {
  *  @brief  What type of variadic is the parameter?
  */
 enum class variadicity {
-
     /**
      *  @brief  Parameter is not variadic.
      */
     not_variadic,
-
     /**
      *  @brief  Parameter is "...".
      */
     zero_or_more,
-
     /**
      *  @brief  Parameter is in form "parameter...".
      */
@@ -344,6 +334,7 @@ enum class variadicity {
 [[nodiscard]] inline constexpr auto to_string(variadicity variadic)
 {
     using namespace std::string_literals;
+
     switch (variadic)
     {
         case variadicity::not_variadic: return "not_variadic"s;
@@ -414,27 +405,22 @@ struct mod_argument {
  *  @brief  Parsed argument validity.
  */
 enum class validity {
-
     /**
      *  @brief  Something definitely has gone wrong.
      */
     unknown,
-
     /**
      *  @brief  Everything that can go right, gone right.
      */
     valid,
-
     /**
      *  @brief  Option is unrecognized.
      */
     unrecognized_option,
-
     /**
      *  @brief  Subcommand is unrecognized.
      */
     unrecognized_subcommand,
-
     /**
      *  @brief  Option or subcommand's parameters requirement is not met.
      */
@@ -450,6 +436,7 @@ enum class validity {
 [[nodiscard]] inline constexpr auto to_string(validity valid)
 {
     using namespace std::string_literals;
+
     switch (valid)
     {
         case validity::unknown: return "unknown"s;

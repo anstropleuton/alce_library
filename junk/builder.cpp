@@ -37,4 +37,3 @@
  *  - ASCII Art generated using https://www.patorjk.com/software/taag with font
  *    "Standard" (for "Alce") and "Small" (for "LIBRARY").
  */
-

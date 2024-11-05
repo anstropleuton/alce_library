@@ -324,7 +324,36 @@ struct my_struct {
 ## Miscellaneous
 
 ### Enumerators
-Include a `max` member in enumerators intended for use as indexes.
+Include a `max` member in enumerators intended for use as indexes, and an `unknown` member intended to serve as uninitialized/default.
+
+### Enum Classes
+Always use `enum class` instead of `enum` for better type safety, with the only exception being when the `enum` is inside of a struct.
+
+### Enum to String
+Always create an overload of `to_string` for every `enum class` to enable convenient text formatting of the enum values, enhancing readability and usability in code.
+```cpp
+enum class enumerator {
+    unknown,
+    member_1,
+    member_2,
+    // ...
+    max
+};
+
+[[nodiscard]] inline constexpr auto to_string(enumerator enumerator)
+{
+    using namespace std::string_literals;
+    switch (enumerator)
+    {
+        case enumerator::unknown: return "unknown"s;
+        case enumerator::member_1: return "member_1"s;
+        case enumerator::member_2: return "member_2"s;
+        // ...
+        case enumerator::max: return "max"s;
+    }
+    return ""s;
+}
+```
 
 ### Error Handling
 Use exceptions for error handling, but return error codes in performance-critical functions.

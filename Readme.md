@@ -25,30 +25,30 @@ If you are not Anstro Pleuton, which you probably are, here is a quick and rough
 
  1. Setup:
     - Clone this repository.
-```
-git clone https://github.com/anstropleuton/alce_library
-cd alce_library
-```
+    ```
+    git clone https://github.com/anstropleuton/alce_library
+    cd alce_library
+    ```
  2. Build the library:
     - Make build folder:
-```bash
-mkdir build
-cd build
-```
+    ```bash
+    mkdir build
+    cd build
+    ```
     - Build the project:
-```bash
-cmake ..
-cmake --build .
-```
- 3. Set up path (I am not experienced in CMake so... good luck)
+    ```bash
+    cmake ..
+    cmake --build .
+    ```
+ 3. Set up path. You can use CMake and `add_library` to this directory to automatically set up path for compilation, or add include directory as `include` and lib directory to the build folder.
  4. Include the library to include all functionality:
-```cpp
-#include "alce_library.hpp"
-```
- 5. Go through [documentation](https://anstropleuton.github.io/alce_library) (or [header files](include/alce_library.hpp)[*](#Doxygen)) to get a grasp on what you can do using my library. You can check out [examples source files](examples/) for more usage information.
+    ```cpp
+    #include "alce_library.hpp"
+    ```
+ 5. Go through [documentation](https://anstropleuton.github.io/alce_library) (or [header files](include/alce_library.hpp) to get a grasp on what you can do using my library. You can check out [examples source files](examples/) for more usage information.
 
 # Documentations
-Refer to the [documentation](https://anstropleuton.github.io/alce_library) (or [header files](include/alce_library.hpp)[*](#Doxygen)) to get a grasp on what you can do using my library.
+Refer to the [documentation](https://anstropleuton.github.io/alce_library) (or [header files](include/alce_library.hpp) to get a grasp on what you can do using my library.
 
 # Changelog
 Refer to the [Changelog](Changelog.md) for info about changes in each version.
@@ -62,11 +62,6 @@ Thanks to Nuno Pinheiro (can't find link) for the background [Elarun](background
 
 # License
 This project is licensed under the terms of MIT License, see [License](License.md).
-
-# Doxygen
-\*: Due to some limitations on how files link in Markdown, not all hyperlinks from this file link properly, so refer to:
-- [header files](https://anstropleuton.github.io/alce_library/alce__library_8hpp_source.html)
-- [include](https://anstropleuton.github.io/alce_library/dir_d44c64559bbebec7f509842c48db8b23.html)
 
 # Junk folder?
 That folder is where I put my useless features. Don't use them please.

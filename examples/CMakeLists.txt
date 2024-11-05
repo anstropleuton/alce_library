@@ -3,7 +3,8 @@ set(ALCE_LIBRARY_EXAMPLES
     "cu/boundless_containers"
     "cu/enumerated_array"
     "cu/arithmetics"
-    "sm/arithmetics")
+    "sm/arithmetics"
+)
 
 function(add_example source executable)
     add_executable(${executable} ${source})

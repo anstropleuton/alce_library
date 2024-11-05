@@ -34,8 +34,7 @@ var NAVTREE =
     [ "Contributing", "index.html#autotoc_md61", null ],
     [ "Credits", "index.html#autotoc_md62", null ],
     [ "License", "index.html#autotoc_md63", null ],
-    [ "Doxygen", "index.html#autotoc_md64", null ],
-    [ "Junk folder?", "index.html#autotoc_md65", null ],
+    [ "Junk folder?", "index.html#autotoc_md64", null ],
     [ "Changelog", "md_Changelog.html", [
       [ "v1.0.0.0 - Initial Release", "md_Changelog.html#autotoc_md1", null ]
     ] ],
@@ -133,8 +132,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "alce__ansi__escape__codes_8hpp.html",
-"md_Guidelines.html#autotoc_md17",
-"namespacemembers_func.html",
+"md_Guidelines.html#autotoc_md18",
+"namespacemembers_type.html",
 "structalce_1_1cu_1_1boundless__basic__string.html"
 ];
 

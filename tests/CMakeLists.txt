@@ -19,7 +19,8 @@ set(ALCE_LIBRARY_TESTS
     "${CMAKE_CURRENT_SOURCE_DIR}/test_ap/test_ap_11.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/test_ap/test_ap_12.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/test_fu.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/tester.cpp")
+    "${CMAKE_CURRENT_SOURCE_DIR}/tester.cpp"
+)
 
 add_executable(tester ${ALCE_LIBRARY_TESTS})
 target_include_directories(tester PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/test_ap")

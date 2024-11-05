@@ -145,29 +145,21 @@ Usage</h1>
 <p>If you are not Anstro Pleuton, which you probably are, here is a quick and rough guide to use my library:</p>
 <ol type="1">
 <li>Setup:<ul>
-<li>Clone this repository. <div class="fragment"><div class="line">git clone https://github.com/anstropleuton/alce_library</div>
-<div class="line">cd alce_library</div>
-</div><!-- fragment --></li>
+<li>Clone this repository. ``` git clone <a href="https://github.com/anstropleuton/alce_library">https://github.com/anstropleuton/alce_library</a> cd alce_library ```</li>
 </ul>
 </li>
 <li>Build the library:<ul>
-<li>Make build folder: <div class="fragment"><div class="line">mkdir build</div>
-<div class="line">cd build</div>
-</div><!-- fragment --></li>
-<li>Build the project: <div class="fragment"><div class="line">cmake ..</div>
-<div class="line">cmake --build .</div>
-</div><!-- fragment --></li>
+<li>Make build folder: ```bash mkdir build cd build ```</li>
+<li>Build the project: ```bash cmake .. cmake &ndash;build . ``<code></code></li>
 </ul>
 </li>
-<li>Set up path (I am not experienced in CMake so... good luck)</li>
-<li>Include the library to include all functionality: <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="alce__library_8hpp.html">alce_library.hpp</a>&quot;</span></div>
-<div class="ttc" id="aalce__library_8hpp_html"><div class="ttname"><a href="alce__library_8hpp.html">alce_library.hpp</a></div><div class="ttdoc">The root header file to include everything.</div></div>
-</div><!-- fragment --></li>
-<li>Go through <a href="https://anstropleuton.github.io/alce_library">documentation</a> (or <a href="include/alce_library.hpp">header files</a>*) to get a grasp on what you can do using my library. You can check out <a href="examples/">examples source files</a> for more usage information.</li>
+<li><code>Set up path. You can use CMake and</code>add_library<code>to this directory to automatically set up path for compilation, or add include directory as</code>include` and lib directory to the build folder.</li>
+<li>Include the library to include all functionality: ```cpp #include "alce_library.hpp" ```</li>
+<li>Go through <a href="https://anstropleuton.github.io/alce_library">documentation</a> (or <a href="include/alce_library.hpp">header files</a> to get a grasp on what you can do using my library. You can check out <a href="examples/">examples source files</a> for more usage information.</li>
 </ol>
 <h1><a class="anchor" id="autotoc_md59"></a>
 Documentations</h1>
-<p>Refer to the <a href="https://anstropleuton.github.io/alce_library">documentation</a> (or <a href="include/alce_library.hpp">header files</a>*) to get a grasp on what you can do using my library.</p>
+<p>Refer to the <a href="https://anstropleuton.github.io/alce_library">documentation</a> (or <a href="include/alce_library.hpp">header files</a> to get a grasp on what you can do using my library.</p>
 <h1><a class="anchor" id="autotoc_md60"></a>
 Changelog</h1>
 <p>Refer to the <a class="el" href="md_Changelog.html">Changelog</a> for info about changes in each version.</p>
@@ -181,12 +173,6 @@ Credits</h1>
 License</h1>
 <p>This project is licensed under the terms of MIT License, see <a class="el" href="md_License.html">License</a>.</p>
 <h1><a class="anchor" id="autotoc_md64"></a>
-Doxygen</h1>
-<p>*: Due to some limitations on how files link in Markdown, not all hyperlinks from this file link properly, so refer to:</p><ul>
-<li><a href="https://anstropleuton.github.io/alce_library/alce__library_8hpp_source.html">header files</a></li>
-<li><a href="https://anstropleuton.github.io/alce_library/dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md65"></a>
 Junk folder?</h1>
 <p>That folder is where I put my useless features. Don't use them please. </p>
 </div></div><!-- PageDoc -->

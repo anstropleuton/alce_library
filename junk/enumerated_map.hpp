@@ -38,9 +38,9 @@
  *    "Standard" (for "Alce") and "Small" (for "LIBRARY").
  */
 
-#include "alce_container_utilities.hpp"
-
 #include <map>
+
+#include "alce_container_utilities.hpp"
 
 /**
  *  @brief  All Alce Library's contents in this namespace.  Just do

@@ -117,7 +117,7 @@ struct sd_chunk {
 
 /**
  *  @brief  Convert an object to a chunk.
- *  
+ *
  *  @tparam  T  A trivially copyable type.
  *  @param   t  A trivially copyable value.
  *  @return  A newly allocated chunk.  Memory allocation failure may occur.
@@ -130,7 +130,7 @@ requires(std::is_trivially_copyable_v<T>)
 
 /**
  *  @brief  Convert a chunk to an object.
- *  
+ *
  *  @tparam  T      A trivially copyable chunk.
  *  @param   chunk  A chunk with memory layout of type @c T .
  *  @return  An object of T with memory layout of the chunk.

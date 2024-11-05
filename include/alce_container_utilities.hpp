@@ -304,6 +304,19 @@ struct boundless_vector : std::vector<T, Alloc> {
     ) : base(first, last, allocator) {}
 
     /**
+     *  @brief  Copy from base vector.
+     *  @param  vector  The base vector.
+     */
+    inline constexpr boundless_vector(const base &vector) : base(vector) {}
+
+    /**
+     *  @brief  Move from base vector.
+     *  @param  vector  The base vector.
+     */
+    inline constexpr boundless_vector(base &&vector)
+        : base(std::move(vector)) {}
+
+    /**
      *  @brief  Default destructor.
      *  @see  @c std::vector 's destructor for more details.
      */
@@ -343,6 +356,28 @@ struct boundless_vector : std::vector<T, Alloc> {
     ) -> boundless_vector &
     {
         return base::operator= (list);
+    }
+
+    /**
+     *  @brief  Vector base assignment operator.
+     *
+     *  @param  vector  The base vector.
+     *  @return  Reference to self.
+     */
+    inline constexpr auto operator= (const base &vector) -> boundless_vector &
+    {
+        return base::operator= (vector);
+    }
+
+    /**
+     *  @brief  Vector base move assignment operator.
+     *
+     *  @param  vector  The base vector.
+     *  @return  Reference to self.
+     */
+    inline constexpr auto operator= (base &&vector) -> boundless_vector &
+    {
+        return base::operator= (std::move(vector));
     }
 
     /**
@@ -448,7 +483,7 @@ template<std::input_iterator InputIterator,
     typename ValueType = std::iterator_traits<InputIterator>::value_type,
     typename AllocatorType = std::allocator<ValueType>>
 boundless_vector(InputIterator, InputIterator, AllocatorType = AllocatorType())
--> boundless_vector<ValueType, AllocatorType>;
+                       -> boundless_vector<ValueType, AllocatorType>;
 
 /**
  *  @brief  A boundless array.
@@ -659,8 +694,7 @@ boundless_span(std::array<T, N> &) -> boundless_span<T, N>;
  *  @tparam  N  The number of array elements.
  */
 template<typename T, size_t N>
-boundless_span(const std::array<T, N> &)
--> boundless_span<const T, N>;
+boundless_span(const std::array<T, N> &) -> boundless_span<const T, N>;
 
 /**
  *  @brief  Template parameter deduction guide for @c boundless_span .
@@ -671,8 +705,8 @@ boundless_span(const std::array<T, N> &)
  *  @tparam  End  The type of end of the iterator.
  */
 template<std::contiguous_iterator I, typename End>
-boundless_span(I, End)
--> boundless_span<std::remove_reference_t<std::iter_reference_t<I>>>;
+boundless_span(I, End) -> boundless_span<
+    std::remove_reference_t<std::iter_reference_t<I>>>;
 
 /**
  *  @brief  Template parameter deduction guide for @c boundless_span .
@@ -884,6 +918,20 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
     ) : base(t, allocator) {}
 
     /**
+     *  @brief  Copy from base string.
+     *  @param  string  The base string.
+     */
+    inline constexpr boundless_basic_string(const base &string)
+        : base(string) {}
+
+    /**
+     *  @brief  Move from base string.
+     *  @param  string  The base string.
+     */
+    inline constexpr boundless_basic_string(base &&string)
+        : base(std::move(string)) {}
+
+    /**
      *  @brief  Default destructor.
      */
     inline constexpr ~boundless_basic_string() = default;
@@ -962,6 +1010,32 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
     {
         base::operator= (t);
         return *this;
+    }
+
+    /**
+     *  @brief  String base assignment operator.
+     *
+     *  @param  string  The base string.
+     *  @return  Reference to self.
+     */
+    inline constexpr auto operator= (
+        const base &string
+    ) -> boundless_basic_string &
+    {
+        return base::operator= (string);
+    }
+
+    /**
+     *  @brief  String base move assignment operator.
+     *
+     *  @param  string  The base string.
+     *  @return  Reference to self.
+     */
+    inline constexpr auto operator= (
+        base &&string
+    ) -> boundless_basic_string &
+    {
+        return base::operator= (std::move(string));
     }
 
     /**
@@ -1146,11 +1220,31 @@ struct boundless_basic_string_view : std::basic_string_view<CharT, Traits> {
     ) : base(range) {}
 
     /**
+     *  @brief  Copy from base string.
+     *  @param  string  The base string.
+     */
+    inline constexpr boundless_basic_string_view(const base &string)
+        : base(string) {}
+
+    /**
      *  @brief  String view assign operator.
      *  @return  Reference to self.
      */
     inline constexpr auto operator= (const boundless_basic_string_view &)
     noexcept -> boundless_basic_string_view & = default;
+
+    /**
+     *  @brief  String base assignment operator.
+     *
+     *  @param  string  The base string.
+     *  @return  Reference to self.
+     */
+    inline constexpr auto operator= (
+        const base &string
+    ) -> boundless_basic_string_view &
+    {
+        return base::operator= (string);
+    }
 
     /**
      *  @brief  Get a character at index, or a default constructed instance of
@@ -1888,7 +1982,7 @@ requires(!std::is_same_v<Container, std::string>
       && !std::is_same_v<Container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
     const Container &container,
-    int      n
+    int              n
 )
 {
     return cu::repeat(container, n);
@@ -1912,7 +2006,7 @@ requires(!std::is_same_v<Container, std::string>
       && !std::is_same_v<Container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
     const Container &container,
-    unsigned      n
+    unsigned         n
 )
 {
     return cu::repeat(container, n);
@@ -1936,7 +2030,7 @@ requires(!std::is_same_v<Container, std::string>
       && !std::is_same_v<Container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
     const Container &container,
-    long      n
+    long             n
 )
 {
     return cu::repeat(container, n);
@@ -1960,7 +2054,7 @@ requires(!std::is_same_v<Container, std::string>
       && !std::is_same_v<Container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
     const Container &container,
-    unsigned long      n
+    unsigned long    n
 )
 {
     return cu::repeat(container, n);
@@ -1984,7 +2078,31 @@ requires(!std::is_same_v<Container, std::string>
       && !std::is_same_v<Container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
     const Container &container,
-    long long      n
+    long long        n
+)
+{
+    return cu::repeat(container, n);
+}
+
+/**
+ *  @brief  Repeat container @c n times.
+ *
+ *  @tparam  Container  A compatible container type.
+ *  @param   container  A container.
+ *  @param   n          The number of times to repeat.
+ *  @return  Repeated container as @c result_container .
+ *
+ *  @note  Use String Manipulators' operators for @c std::string or
+ *         @c std::basic_string_view .
+ *
+ *  @see  cu::repeat.
+ */
+template<cu::cu_compatible Container>
+requires(!std::is_same_v<Container, std::string>
+      && !std::is_same_v<Container, std::string_view>)
+[[nodiscard]] inline constexpr auto operator* (
+    const Container   &container,
+    unsigned long long n
 )
 {
     return cu::repeat(container, n);
@@ -2008,7 +2126,7 @@ requires(!std::is_same_v<Container, std::string>
       && !std::is_same_v<Container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
     const Container &container,
-    unsigned long long      n
+    float            n
 )
 {
     return cu::repeat(container, n);
@@ -2032,31 +2150,7 @@ requires(!std::is_same_v<Container, std::string>
       && !std::is_same_v<Container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
     const Container &container,
-    float      n
-)
-{
-    return cu::repeat(container, n);
-}
-
-/**
- *  @brief  Repeat container @c n times.
- *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
- *  @param   n          The number of times to repeat.
- *  @return  Repeated container as @c result_container .
- *
- *  @note  Use String Manipulators' operators for @c std::string or
- *         @c std::basic_string_view .
- *
- *  @see  cu::repeat.
- */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
-[[nodiscard]] inline constexpr auto operator* (
-    const Container &container,
-    double      n
+    double           n
 )
 {
     return cu::repeat(container, n);

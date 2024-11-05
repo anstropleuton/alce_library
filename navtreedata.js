@@ -116,7 +116,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
@@ -132,9 +132,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "alce__ansi__escape__codes_8hpp.html",
-"md_Guidelines.html#autotoc_md18",
-"namespacemembers_type.html",
-"structalce_1_1cu_1_1boundless__basic__string.html"
+"index.html#autotoc_md59",
+"namespacealce_1_1sm__operators.html",
+"structalce_1_1cu_1_1boundless__array.html#a159cad8d2c6ecd211eaa0da81689dfab"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

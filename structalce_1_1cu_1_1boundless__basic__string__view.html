@@ -162,9 +162,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c5a9ecc6cd7cefc7b630538491b85b7"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html#a7c5a9ecc6cd7cefc7b630538491b85b7">boundless_basic_string_view</a> (Range range)</td></tr>
 <tr class="memdesc:a7c5a9ecc6cd7cefc7b630538491b85b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a string view from a C++20 range.  <br /></td></tr>
 <tr class="separator:a7c5a9ecc6cd7cefc7b630538491b85b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9c4211f9e04611ebbc044d0ba93591"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html#ada9c4211f9e04611ebbc044d0ba93591">boundless_basic_string_view</a> (const <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html#a719584075298783c41c7004d8d793aaa">base</a> &amp;string)</td></tr>
+<tr class="memdesc:ada9c4211f9e04611ebbc044d0ba93591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy from base string.  <br /></td></tr>
+<tr class="separator:ada9c4211f9e04611ebbc044d0ba93591"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5aa120f32fbf714cb6d463d546fbe7d"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html#ac5aa120f32fbf714cb6d463d546fbe7d">operator=</a> (const <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html">boundless_basic_string_view</a> &amp;) noexcept -&gt; <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html">boundless_basic_string_view</a> &amp;=default</td></tr>
 <tr class="memdesc:ac5aa120f32fbf714cb6d463d546fbe7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">String view assign operator.  <br /></td></tr>
 <tr class="separator:ac5aa120f32fbf714cb6d463d546fbe7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94a61f62e99847c7325ef2d79e455077"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html#a94a61f62e99847c7325ef2d79e455077">operator=</a> (const <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html#a719584075298783c41c7004d8d793aaa">base</a> &amp;string) -&gt; <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html">boundless_basic_string_view</a> &amp;</td></tr>
+<tr class="memdesc:a94a61f62e99847c7325ef2d79e455077"><td class="mdescLeft">&#160;</td><td class="mdescRight">String base assignment operator.  <br /></td></tr>
+<tr class="separator:a94a61f62e99847c7325ef2d79e455077"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59039810aaf3e9969027e2a6b79a503d"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html#a59039810aaf3e9969027e2a6b79a503d">operator[]</a> (std::size_t index) const -&gt; CharT</td></tr>
 <tr class="memdesc:a59039810aaf3e9969027e2a6b79a503d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a character at index, or a default constructed instance of the character type when index is invalid.  <br /></td></tr>
 <tr class="separator:a59039810aaf3e9969027e2a6b79a503d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,7 +217,7 @@ template&lt;typename CharT , typename Traits  = std::char_traits&lt;CharT&gt;&gt
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="adb50ca26ad40b2dea39b0a8f159a894a" name="adb50ca26ad40b2dea39b0a8f159a894a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb50ca26ad40b2dea39b0a8f159a894a">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[1/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adb50ca26ad40b2dea39b0a8f159a894a">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[1/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,7 +246,7 @@ template&lt;typename CharT , typename Traits  = std::char_traits&lt;CharT&gt;&gt
 </div>
 </div>
 <a id="a12b35ea545bd9bb0f5193868bc29e456" name="a12b35ea545bd9bb0f5193868bc29e456"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12b35ea545bd9bb0f5193868bc29e456">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[2/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b35ea545bd9bb0f5193868bc29e456">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[2/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -276,7 +282,7 @@ template&lt;typename CharT , typename Traits  = std::char_traits&lt;CharT&gt;&gt
 </div>
 </div>
 <a id="a058a0dd96d1ad200c1eba4e11a67fd79" name="a058a0dd96d1ad200c1eba4e11a67fd79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a058a0dd96d1ad200c1eba4e11a67fd79">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[3/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a058a0dd96d1ad200c1eba4e11a67fd79">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[3/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -312,7 +318,7 @@ template&lt;typename CharT , typename Traits  = std::char_traits&lt;CharT&gt;&gt
 </div>
 </div>
 <a id="a44196e8ecc71b43873b1f302184ca750" name="a44196e8ecc71b43873b1f302184ca750"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44196e8ecc71b43873b1f302184ca750">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[4/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a44196e8ecc71b43873b1f302184ca750">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[4/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -359,7 +365,7 @@ template&lt;typename CharT , typename Traits  = std::char_traits&lt;CharT&gt;&gt
 </div>
 </div>
 <a id="a5ddefbe347f3c2e3930446d3e2a98bd9" name="a5ddefbe347f3c2e3930446d3e2a98bd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ddefbe347f3c2e3930446d3e2a98bd9">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[5/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ddefbe347f3c2e3930446d3e2a98bd9">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[5/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -414,7 +420,7 @@ template&lt;std::input_iterator InputIterator&gt; </div>
 </div>
 </div>
 <a id="a7c5a9ecc6cd7cefc7b630538491b85b7" name="a7c5a9ecc6cd7cefc7b630538491b85b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c5a9ecc6cd7cefc7b630538491b85b7">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[6/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c5a9ecc6cd7cefc7b630538491b85b7">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[6/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,9 +463,45 @@ template&lt;std::ranges::range Range&gt; </div>
 
 </div>
 </div>
+<a id="ada9c4211f9e04611ebbc044d0ba93591" name="ada9c4211f9e04611ebbc044d0ba93591"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9c4211f9e04611ebbc044d0ba93591">&#9670;&#160;</a></span>boundless_basic_string_view() <span class="overload">[7/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CharT , typename Traits  = std::char_traits&lt;CharT&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html">alce::cu::boundless_basic_string_view</a>&lt; CharT, Traits &gt;::boundless_basic_string_view </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html#a719584075298783c41c7004d8d793aaa">base</a> &amp;&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copy from base string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The base string. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac5aa120f32fbf714cb6d463d546fbe7d" name="ac5aa120f32fbf714cb6d463d546fbe7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5aa120f32fbf714cb6d463d546fbe7d">&#9670;&#160;</a></span>operator=()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5aa120f32fbf714cb6d463d546fbe7d">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -485,6 +527,44 @@ template&lt;typename CharT , typename Traits  = std::char_traits&lt;CharT&gt;&gt
 </div><div class="memdoc">
 
 <p>String view assign operator. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to self. </dd></dl>
+
+</div>
+</div>
+<a id="a94a61f62e99847c7325ef2d79e455077" name="a94a61f62e99847c7325ef2d79e455077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94a61f62e99847c7325ef2d79e455077">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CharT , typename Traits  = std::char_traits&lt;CharT&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html">alce::cu::boundless_basic_string_view</a>&lt; CharT, Traits &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html#a719584075298783c41c7004d8d793aaa">base</a> &amp;&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td> -&gt; <a class="el" href="structalce_1_1cu_1_1boundless__basic__string__view.html">boundless_basic_string_view</a> &amp;
+    </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>String base assignment operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The base string. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to self. </dd></dl>
 
 </div>

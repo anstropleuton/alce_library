@@ -127,11 +127,11 @@ $(document).ready(function(){initNavTree('todo.html',''); initResizable(); });
 <dd><a class="anchor" id="_todo000001"></a>After C++26 remove this cast to std::string.  </dd>
 <dt>Namespace <a class="el" href="namespacealce_1_1ap.html">alce::ap</a>  </dt>
 <dd><a class="anchor" id="_todo000005"></a>Proper internationalization support? Currently std::string is used, which is a string of char, char cannot hold any more than 1 byte. Hence internal counting characters will count the multi-byte character and international characters for short option is out of the window.  </dd>
-<dt>Namespace <a class="el" href="namespacealce_1_1fu.html">alce::fu</a>  </dt>
+<dt>Namespace <a class="el" href="namespacealce_1_1file.html">alce::file</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000007"></a>When C++ introduces a good reflection support, implement automatic endianness conversion to make the binary file actually be portable.</p>
 <p class="enddd"><a class="anchor" id="_todo000008"></a>The biggest todo: implement stuff.  </p>
 </dd>
-<dt>Member <a class="el" href="structalce_1_1fu_1_1sd__chunk.html#a89b0f521a2ba79d2be82f1b697dde877">alce::fu::sd_chunk::data</a>  </dt>
+<dt>Member <a class="el" href="structalce_1_1file_1_1sd__chunk.html#ac15d6e299482041c1d3243c66c86efd1">alce::file::sd_chunk::data</a>  </dt>
 <dd><a class="anchor" id="_todo000009"></a>If nobody finds a use for <code>void *</code> data type for pointer for chunks or finds it tedious to manage memory (like we do), replace it with <code>std::shared_ptr&lt;void&gt;</code> .  </dd>
 <dt>Member <a class="el" href="namespacealce_1_1sm.html#af6e2d4e073c8c8650c5cd61ff22cb81b">alce::sm::to_string</a>  (const Container &amp;container, Converter converter, std::string_view separator=", ", std::string_view prefix="", std::string_view suffix="")</dt>
 <dd><a class="anchor" id="_todo000010"></a>Remove this cast when C++26 comes out.  </dd>

@@ -25,8 +25,8 @@ var annotated_dup =
         [ "enum_max", "structalce_1_1cu_1_1enum__max.html", null ],
         [ "enumerated_array", "structalce_1_1cu_1_1enumerated__array.html", "structalce_1_1cu_1_1enumerated__array" ]
       ] ],
-      [ "fu", "namespacealce_1_1fu.html", [
-        [ "sd_chunk", "structalce_1_1fu_1_1sd__chunk.html", "structalce_1_1fu_1_1sd__chunk" ]
+      [ "file", "namespacealce_1_1file.html", [
+        [ "sd_chunk", "structalce_1_1file_1_1sd__chunk.html", "structalce_1_1file_1_1sd__chunk" ]
       ] ]
     ] ],
     [ "std", "namespacestd.html", [

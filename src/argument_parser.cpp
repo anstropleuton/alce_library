@@ -1,5 +1,4 @@
 /**
- *  @file    argument_parser.cpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   Implementations for non-inline functions from
  *           @c al_argument_parser.hpp .

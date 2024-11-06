@@ -1,5 +1,4 @@
 /**
- *  @file    al_container_utilities.hpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   General functionality for container types with operators.
  *

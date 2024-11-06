@@ -1,5 +1,4 @@
 /**
- *  @file    al_file_utilities.hpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   General functionality to work with files.
  *
@@ -52,7 +51,7 @@
 namespace alce {
 
 /**
- *  @brief  File Utilities.  Not what you are thinking.
+ *  @brief  File utilities.
  *
  *  Contains utilities regarding file handling, and functionality to handle
  *  binary files of SD format.
@@ -69,7 +68,7 @@ namespace alce {
  *
  *  @todo  The biggest todo: implement stuff.
  */
-namespace fu {
+namespace file {
 
 /**
  *  @brief  Read all the file's content at once and return @c std::string
@@ -94,7 +93,7 @@ namespace fu {
 
 /**
  *  @brief  A chunk in the SD file format.
- *  @see  Detailed Description of namespace @c fu.
+ *  @see  Detailed Description of namespace @c file.
  */
 struct sd_chunk {
 
@@ -150,6 +149,6 @@ requires(std::is_trivially_copyable_v<T>)
  */
 inline constexpr auto delete_sd_chunk(sd_chunk chunk) -> void;
 
-} // namespace fu
+} // namespace file
 
 } // namespace alce

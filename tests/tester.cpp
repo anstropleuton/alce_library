@@ -1,5 +1,4 @@
 /**
- *  @file    tester.cpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   Test all of Alce Library.
  *
@@ -80,7 +79,7 @@
  *  @brief  Test File Utilities.
  *  @return  Number of errors.
  */
-[[nodiscard]] auto test_fu() -> std::size_t;
+[[nodiscard]] auto test_file() -> std::size_t;
 
 /**
  *  @brief  The biggie.
@@ -135,17 +134,17 @@ auto main() -> int try
         test_ap
     };
 
-    test fu_test = {
+    test file_test = {
         "Test File Utilities",
-        "test_fu",
-        test_fu
+        "test_file",
+        test_file
     };
 
     suite.tests.emplace_back(&cu_test);
     suite.tests.emplace_back(&sm_test);
     suite.tests.emplace_back(&aec_test);
     suite.tests.emplace_back(&ap_test);
-    suite.tests.emplace_back(&fu_test);
+    suite.tests.emplace_back(&file_test);
 
     auto failed_tests = suite.run();
     log_file.open("tester.log");

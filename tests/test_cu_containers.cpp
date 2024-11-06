@@ -1,5 +1,4 @@
 /**
- *  @file    test_cu_containers.cpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   Test custom containers in Container Utilities.
  *

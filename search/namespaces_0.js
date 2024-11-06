@@ -6,7 +6,7 @@ var searchData=
   ['ap_3',['ap',['../namespacealce_1_1ap.html',1,'alce']]],
   ['cu_4',['cu',['../namespacealce_1_1cu.html',1,'alce']]],
   ['cu_5foperators_5',['cu_operators',['../namespacealce_1_1cu__operators.html',1,'alce']]],
-  ['fu_6',['fu',['../namespacealce_1_1fu.html',1,'alce']]],
+  ['file_6',['file',['../namespacealce_1_1file.html',1,'alce']]],
   ['sm_7',['sm',['../namespacealce_1_1sm.html',1,'alce']]],
   ['sm_5foperators_8',['sm_operators',['../namespacealce_1_1sm__operators.html',1,'alce']]]
 ];

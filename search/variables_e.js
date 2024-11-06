@@ -6,7 +6,7 @@ var searchData=
   ['short_5fname_5fseparator_3',['short_name_separator',['../structalce_1_1ap_1_1posix__help__format.html#ab09df62d1b391e5b70d620e889072a7f',1,'alce::ap::posix_help_format']]],
   ['short_5fname_5fstyle_4',['short_name_style',['../structalce_1_1ap_1_1posix__help__format.html#a096ef0c755e26d9f5bc225048ca7fd40',1,'alce::ap::posix_help_format']]],
   ['short_5fnames_5',['short_names',['../structalce_1_1ap_1_1option__template.html#af4c26bce1f4f8ef025afd7db4a06910b',1,'alce::ap::option_template']]],
-  ['size_6',['size',['../structalce_1_1ap_1_1measured__string.html#a84582ec27564f6c2aa61a55edb506a11',1,'alce::ap::measured_string::size()'],['../structalce_1_1fu_1_1sd__chunk.html#a13def42f8eb41b0ae19465e08815baf6',1,'alce::fu::sd_chunk::size()']]],
+  ['size_6',['size',['../structalce_1_1ap_1_1measured__string.html#a84582ec27564f6c2aa61a55edb506a11',1,'alce::ap::measured_string::size()'],['../structalce_1_1file_1_1sd__chunk.html#ab63aae620551551f08b0bfc44831b08b',1,'alce::file::sd_chunk::size()']]],
   ['strike_7',['strike',['../namespacealce_1_1aec.html#a7c60079ae7e688623a433f8325b87cea',1,'alce::aec']]],
   ['string_8',['string',['../structalce_1_1ap_1_1measured__string.html#a5a32b9d2c96442d221d719c63ec13d5d',1,'alce::ap::measured_string']]],
   ['style_9',['style',['../structalce_1_1ap_1_1styled__text.html#a8cb90b1e4b23c911e74fe316b6b6b7b7',1,'alce::ap::styled_text']]],

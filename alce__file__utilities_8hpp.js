@@ -1,8 +1,8 @@
 var alce__file__utilities_8hpp =
 [
-    [ "alce::fu::sd_chunk", "structalce_1_1fu_1_1sd__chunk.html", "structalce_1_1fu_1_1sd__chunk" ],
-    [ "read_all", "alce__file__utilities_8hpp.html#a2fe6ec0d289918d4371fd3483099ecd3", null ],
-    [ "to_new_sd_chunk", "alce__file__utilities_8hpp.html#a5988a97d71e524254099488ef7b9c4bd", null ],
-    [ "from_sd_chunk", "alce__file__utilities_8hpp.html#a55277c0e4f781efc8e207541196b4e31", null ],
-    [ "delete_sd_chunk", "alce__file__utilities_8hpp.html#a58693ee8b6faa72d5ffffffb1a538ad6", null ]
+    [ "alce::file::sd_chunk", "structalce_1_1file_1_1sd__chunk.html", "structalce_1_1file_1_1sd__chunk" ],
+    [ "read_all", "alce__file__utilities_8hpp.html#afa2ee61b86b8924a7a035817aba00940", null ],
+    [ "to_new_sd_chunk", "alce__file__utilities_8hpp.html#a212414d85c0fb497088bb2ab6a499859", null ],
+    [ "from_sd_chunk", "alce__file__utilities_8hpp.html#a968c1a46e61429203b02e158d018af72", null ],
+    [ "delete_sd_chunk", "alce__file__utilities_8hpp.html#a45cd49b17ee9846f382e46243c1f9386", null ]
 ];

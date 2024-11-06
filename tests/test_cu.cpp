@@ -1,5 +1,4 @@
 /**
- *  @file    test_cu.cpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   Test everything in Container Utilities.
  *

@@ -1,5 +1,4 @@
 /**
- *  @file    test_ap.cpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   Test 1 of Argument Parser in Alce Library.
  *

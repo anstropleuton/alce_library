@@ -18,7 +18,7 @@ set(ALCE_LIBRARY_TESTS
     "${CMAKE_CURRENT_SOURCE_DIR}/test_ap/test_ap_10.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/test_ap/test_ap_11.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/test_ap/test_ap_12.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/test_fu.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/test_file.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/tester.cpp"
 )
 
@@ -28,5 +28,5 @@ target_link_libraries(tester PRIVATE alce_library)
 
 add_custom_command(
     TARGET tester POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/test_fu_read_all_file.txt" "${CMAKE_CURRENT_BINARY_DIR}/test_fu_read_all_file.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/test_file_read_all_file.txt" "${CMAKE_CURRENT_BINARY_DIR}/test_file_read_all_file.txt"
 )

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['read_5fall_0',['read_all',['../namespacealce_1_1fu.html#a2fe6ec0d289918d4371fd3483099ecd3',1,'alce::fu']]],
+  ['read_5fall_0',['read_all',['../namespacealce_1_1file.html#afa2ee61b86b8924a7a035817aba00940',1,'alce::file']]],
   ['readme_2emd_1',['Readme.md',['../Readme_8md.html',1,'']]],
   ['red_2',['red',['../namespacealce_1_1aec.html#a099d74bb5cf653e71c77cbe03455f4a9',1,'alce::aec']]],
   ['red_5fbg_3',['red_bg',['../namespacealce_1_1aec.html#a7dd4c953f4f6e6e5e69e3d5c3ed585bc',1,'alce::aec']]],

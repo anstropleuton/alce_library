@@ -22,7 +22,7 @@ var hierarchy =
     [ "alce::ap::option_template", "structalce_1_1ap_1_1option__template.html", null ],
     [ "alce::ap::parsed_argument", "structalce_1_1ap_1_1parsed__argument.html", null ],
     [ "alce::ap::posix_help_format", "structalce_1_1ap_1_1posix__help__format.html", null ],
-    [ "alce::fu::sd_chunk", "structalce_1_1fu_1_1sd__chunk.html", null ],
+    [ "alce::file::sd_chunk", "structalce_1_1file_1_1sd__chunk.html", null ],
     [ "std::span", null, [
       [ "alce::cu::boundless_span< T, Extent >", "structalce_1_1cu_1_1boundless__span.html", null ]
     ] ],

@@ -23,7 +23,7 @@ var searchData=
   ['cu_5fcompatible_5fenum_20',['cu_compatible_enum',['../conceptalce_1_1cu_1_1cu__compatible__enum.html',1,'alce::cu']]],
   ['cu_5fcompatible_5fnested_21',['cu_compatible_nested',['../conceptalce_1_1cu_1_1cu__compatible__nested.html',1,'alce::cu']]],
   ['cu_5foperators_22',['cu_operators',['../namespacealce_1_1cu__operators.html',1,'alce']]],
-  ['fu_23',['fu',['../namespacealce_1_1fu.html',1,'alce']]],
+  ['file_23',['file',['../namespacealce_1_1file.html',1,'alce']]],
   ['sm_24',['sm',['../namespacealce_1_1sm.html',1,'alce']]],
   ['sm_5fcompatible_25',['sm_compatible',['../conceptalce_1_1sm_1_1sm__compatible.html',1,'alce::sm']]],
   ['sm_5foperators_26',['sm_operators',['../namespacealce_1_1sm__operators.html',1,'alce']]]

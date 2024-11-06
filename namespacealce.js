@@ -29,7 +29,7 @@ var namespacealce =
       [ "operator/", "namespacealce_1_1cu__operators.html#a38a9fbee74755d1521a35b9e298e28ab", null ],
       [ "operator/", "namespacealce_1_1cu__operators.html#aa9f96de6a3e183a96ab9434117a4bd56", null ]
     ] ],
-    [ "fu", "namespacealce_1_1fu.html", "namespacealce_1_1fu" ],
+    [ "file", "namespacealce_1_1file.html", "namespacealce_1_1file" ],
     [ "sm", "namespacealce_1_1sm.html", "namespacealce_1_1sm" ],
     [ "sm_operators", "namespacealce_1_1sm__operators.html", [
       [ "operator-", "namespacealce_1_1sm__operators.html#a6775f384535758febb564aea7f6dad1e", null ],

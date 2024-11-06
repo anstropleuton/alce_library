@@ -117,57 +117,57 @@ $(document).ready(function(){initNavTree('alce__file__utilities_8hpp_source.html
 </div><!--header-->
 <div class="contents">
 <a href="alce__file__utilities_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;cstring&gt;</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &lt;ios&gt;</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacealce.html">alce</a> {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="namespacealce_1_1fu.html">   72</a></span><span class="keyword">namespace </span>fu {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="namespacealce_1_1fu.html#a2fe6ec0d289918d4371fd3483099ecd3">   83</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1fu.html#a2fe6ec0d289918d4371fd3483099ecd3">read_all</a>(std::string_view filename)</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>{</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    std::ifstream infile((std::string(filename)));</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">if</span> (!infile)</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">throw</span> std::runtime_error(std::format(<span class="stringliteral">&quot;Failed to open file {}&quot;</span>,</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            filename));</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">return</span> std::string(std::istreambuf_iterator(infile), {});</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="structalce_1_1fu_1_1sd__chunk.html">   99</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structalce_1_1fu_1_1sd__chunk.html">sd_chunk</a> {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="structalce_1_1fu_1_1sd__chunk.html#a13def42f8eb41b0ae19465e08815baf6">  104</a></span>    std::size_t <a class="code hl_variable" href="structalce_1_1fu_1_1sd__chunk.html#a13def42f8eb41b0ae19465e08815baf6">size</a>;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="structalce_1_1fu_1_1sd__chunk.html#a89b0f521a2ba79d2be82f1b697dde877">  115</a></span>    <span class="keywordtype">void</span> *<a class="code hl_variable" href="structalce_1_1fu_1_1sd__chunk.html#a89b0f521a2ba79d2be82f1b697dde877">data</a>;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>};</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="keyword">requires</span>(std::is_trivially_copyable_v&lt;T&gt;)</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="namespacealce_1_1fu.html#a5988a97d71e524254099488ef7b9c4bd">  129</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1fu.html#a5988a97d71e524254099488ef7b9c4bd">to_new_sd_chunk</a>(<span class="keyword">const</span> T &amp;t) -&gt; <a class="code hl_struct" href="structalce_1_1fu_1_1sd__chunk.html">sd_chunk</a>;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="keyword">requires</span>(std::is_trivially_copyable_v&lt;T&gt;)</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="namespacealce_1_1fu.html#a55277c0e4f781efc8e207541196b4e31">  140</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1fu.html#a55277c0e4f781efc8e207541196b4e31">from_sd_chunk</a>(<a class="code hl_struct" href="structalce_1_1fu_1_1sd__chunk.html">sd_chunk</a> chunk) -&gt; T;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="namespacealce_1_1fu.html#a58693ee8b6faa72d5ffffffb1a538ad6">  151</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1fu.html#a58693ee8b6faa72d5ffffffb1a538ad6">delete_sd_chunk</a>(<a class="code hl_struct" href="structalce_1_1fu_1_1sd__chunk.html">sd_chunk</a> chunk) -&gt; void;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>} <span class="comment">// namespace fu</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>} <span class="comment">// namespace alce</span></div>
-<div class="ttc" id="anamespacealce_1_1fu_html_a2fe6ec0d289918d4371fd3483099ecd3"><div class="ttname"><a href="namespacealce_1_1fu.html#a2fe6ec0d289918d4371fd3483099ecd3">alce::fu::read_all</a></div><div class="ttdeci">auto read_all(std::string_view filename)</div><div class="ttdoc">Read all the file's content at once and return std::string representing the file's content.</div><div class="ttdef"><b>Definition:</b> alce_file_utilities.hpp:83</div></div>
-<div class="ttc" id="anamespacealce_1_1fu_html_a55277c0e4f781efc8e207541196b4e31"><div class="ttname"><a href="namespacealce_1_1fu.html#a55277c0e4f781efc8e207541196b4e31">alce::fu::from_sd_chunk</a></div><div class="ttdeci">constexpr auto from_sd_chunk(sd_chunk chunk) -&gt; T</div><div class="ttdoc">Convert a chunk to an object.</div></div>
-<div class="ttc" id="anamespacealce_1_1fu_html_a58693ee8b6faa72d5ffffffb1a538ad6"><div class="ttname"><a href="namespacealce_1_1fu.html#a58693ee8b6faa72d5ffffffb1a538ad6">alce::fu::delete_sd_chunk</a></div><div class="ttdeci">constexpr auto delete_sd_chunk(sd_chunk chunk) -&gt; void</div><div class="ttdoc">Delete the memory of a chunk.</div></div>
-<div class="ttc" id="anamespacealce_1_1fu_html_a5988a97d71e524254099488ef7b9c4bd"><div class="ttname"><a href="namespacealce_1_1fu.html#a5988a97d71e524254099488ef7b9c4bd">alce::fu::to_new_sd_chunk</a></div><div class="ttdeci">constexpr auto to_new_sd_chunk(const T &amp;t) -&gt; sd_chunk</div><div class="ttdoc">Convert an object to a chunk.</div></div>
-<div class="ttc" id="anamespacealce_html"><div class="ttname"><a href="namespacealce.html">alce</a></div><div class="ttdoc">All Alce Library's contents in this namespace. Just do using namespace alce to make your life easier.</div><div class="ttdef"><b>Definition:</b> alce_ansi_escape_codes.hpp:50</div></div>
-<div class="ttc" id="astructalce_1_1fu_1_1sd__chunk_html"><div class="ttname"><a href="structalce_1_1fu_1_1sd__chunk.html">alce::fu::sd_chunk</a></div><div class="ttdoc">A chunk in the SD file format.</div><div class="ttdef"><b>Definition:</b> alce_file_utilities.hpp:99</div></div>
-<div class="ttc" id="astructalce_1_1fu_1_1sd__chunk_html_a13def42f8eb41b0ae19465e08815baf6"><div class="ttname"><a href="structalce_1_1fu_1_1sd__chunk.html#a13def42f8eb41b0ae19465e08815baf6">alce::fu::sd_chunk::size</a></div><div class="ttdeci">std::size_t size</div><div class="ttdoc">The number of bytes of data .</div><div class="ttdef"><b>Definition:</b> alce_file_utilities.hpp:104</div></div>
-<div class="ttc" id="astructalce_1_1fu_1_1sd__chunk_html_a89b0f521a2ba79d2be82f1b697dde877"><div class="ttname"><a href="structalce_1_1fu_1_1sd__chunk.html#a89b0f521a2ba79d2be82f1b697dde877">alce::fu::sd_chunk::data</a></div><div class="ttdeci">void * data</div><div class="ttdoc">The raw data of size bytes.</div><div class="ttdef"><b>Definition:</b> alce_file_utilities.hpp:115</div></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &lt;ios&gt;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacealce.html">alce</a> {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="namespacealce_1_1file.html">   71</a></span><span class="keyword">namespace </span>file {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="namespacealce_1_1file.html#afa2ee61b86b8924a7a035817aba00940">   82</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1file.html#afa2ee61b86b8924a7a035817aba00940">read_all</a>(std::string_view filename)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>{</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    std::ifstream infile((std::string(filename)));</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">if</span> (!infile)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">throw</span> std::runtime_error(std::format(<span class="stringliteral">&quot;Failed to open file {}&quot;</span>,</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            filename));</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">return</span> std::string(std::istreambuf_iterator(infile), {});</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structalce_1_1file_1_1sd__chunk.html">   98</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a> {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="structalce_1_1file_1_1sd__chunk.html#ab63aae620551551f08b0bfc44831b08b">  103</a></span>    std::size_t <a class="code hl_variable" href="structalce_1_1file_1_1sd__chunk.html#ab63aae620551551f08b0bfc44831b08b">size</a>;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="structalce_1_1file_1_1sd__chunk.html#ac15d6e299482041c1d3243c66c86efd1">  114</a></span>    <span class="keywordtype">void</span> *<a class="code hl_variable" href="structalce_1_1file_1_1sd__chunk.html#ac15d6e299482041c1d3243c66c86efd1">data</a>;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>};</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="keyword">requires</span>(std::is_trivially_copyable_v&lt;T&gt;)</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="namespacealce_1_1file.html#a212414d85c0fb497088bb2ab6a499859">  128</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1file.html#a212414d85c0fb497088bb2ab6a499859">to_new_sd_chunk</a>(<span class="keyword">const</span> T &amp;t) -&gt; <a class="code hl_struct" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a>;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keyword">requires</span>(std::is_trivially_copyable_v&lt;T&gt;)</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="namespacealce_1_1file.html#a968c1a46e61429203b02e158d018af72">  139</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1file.html#a968c1a46e61429203b02e158d018af72">from_sd_chunk</a>(<a class="code hl_struct" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a> chunk) -&gt; T;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="namespacealce_1_1file.html#a45cd49b17ee9846f382e46243c1f9386">  150</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1file.html#a45cd49b17ee9846f382e46243c1f9386">delete_sd_chunk</a>(<a class="code hl_struct" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a> chunk) -&gt; void;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>} <span class="comment">// namespace file</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>} <span class="comment">// namespace alce</span></div>
+<div class="ttc" id="anamespacealce_1_1file_html_a212414d85c0fb497088bb2ab6a499859"><div class="ttname"><a href="namespacealce_1_1file.html#a212414d85c0fb497088bb2ab6a499859">alce::file::to_new_sd_chunk</a></div><div class="ttdeci">constexpr auto to_new_sd_chunk(const T &amp;t) -&gt; sd_chunk</div><div class="ttdoc">Convert an object to a chunk.</div></div>
+<div class="ttc" id="anamespacealce_1_1file_html_a45cd49b17ee9846f382e46243c1f9386"><div class="ttname"><a href="namespacealce_1_1file.html#a45cd49b17ee9846f382e46243c1f9386">alce::file::delete_sd_chunk</a></div><div class="ttdeci">constexpr auto delete_sd_chunk(sd_chunk chunk) -&gt; void</div><div class="ttdoc">Delete the memory of a chunk.</div></div>
+<div class="ttc" id="anamespacealce_1_1file_html_a968c1a46e61429203b02e158d018af72"><div class="ttname"><a href="namespacealce_1_1file.html#a968c1a46e61429203b02e158d018af72">alce::file::from_sd_chunk</a></div><div class="ttdeci">constexpr auto from_sd_chunk(sd_chunk chunk) -&gt; T</div><div class="ttdoc">Convert a chunk to an object.</div></div>
+<div class="ttc" id="anamespacealce_1_1file_html_afa2ee61b86b8924a7a035817aba00940"><div class="ttname"><a href="namespacealce_1_1file.html#afa2ee61b86b8924a7a035817aba00940">alce::file::read_all</a></div><div class="ttdeci">auto read_all(std::string_view filename)</div><div class="ttdoc">Read all the file's content at once and return std::string representing the file's content.</div><div class="ttdef"><b>Definition:</b> alce_file_utilities.hpp:82</div></div>
+<div class="ttc" id="anamespacealce_html"><div class="ttname"><a href="namespacealce.html">alce</a></div><div class="ttdoc">Functionality to print ANSI Escape Code formatted text in terminal.</div><div class="ttdef"><b>Definition:</b> alce_ansi_escape_codes.hpp:49</div></div>
+<div class="ttc" id="astructalce_1_1file_1_1sd__chunk_html"><div class="ttname"><a href="structalce_1_1file_1_1sd__chunk.html">alce::file::sd_chunk</a></div><div class="ttdoc">A chunk in the SD file format.</div><div class="ttdef"><b>Definition:</b> alce_file_utilities.hpp:98</div></div>
+<div class="ttc" id="astructalce_1_1file_1_1sd__chunk_html_ab63aae620551551f08b0bfc44831b08b"><div class="ttname"><a href="structalce_1_1file_1_1sd__chunk.html#ab63aae620551551f08b0bfc44831b08b">alce::file::sd_chunk::size</a></div><div class="ttdeci">std::size_t size</div><div class="ttdoc">The number of bytes of data .</div><div class="ttdef"><b>Definition:</b> alce_file_utilities.hpp:103</div></div>
+<div class="ttc" id="astructalce_1_1file_1_1sd__chunk_html_ac15d6e299482041c1d3243c66c86efd1"><div class="ttname"><a href="structalce_1_1file_1_1sd__chunk.html#ac15d6e299482041c1d3243c66c86efd1">alce::file::sd_chunk::data</a></div><div class="ttdeci">void * data</div><div class="ttdoc">The raw data of size bytes.</div><div class="ttdef"><b>Definition:</b> alce_file_utilities.hpp:114</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.11.0-->

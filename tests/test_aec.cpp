@@ -1,5 +1,4 @@
 /**
- *  @file    test_aec.cpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   Test all of ANSI Escape Codes in Alce Library.
  *

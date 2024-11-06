@@ -1,5 +1,4 @@
 /**
- *  @file    enumerated_map.hpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   A junk-ish experiment of @c enumerated_map .
  *

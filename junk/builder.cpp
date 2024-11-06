@@ -1,5 +1,4 @@
 /**
- *  @file    builder.hpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   Build Alce Library.
  *

@@ -1,5 +1,4 @@
 /**
- *  @file    boundless_containers.cpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   How to use SM's @c sm::to_string as I use in other examples.
  *

@@ -165,7 +165,6 @@ Have a documentation comment on the first line of the file describing the file.
 `header.hpp`:
 ```cpp
 /**
- *  @file    header.hpp
  *  @author  Your Name (your.mail@email.provider)
  *  @brief   This is a header file.
  *

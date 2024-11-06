@@ -1,5 +1,4 @@
 /**
- *  @file    arithmetics.cpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   How to use CU's container arithmetic functions.
  *

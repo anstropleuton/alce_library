@@ -1,5 +1,4 @@
 /**
- *  @file    test_aec.cpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   Test all of File Utilities in Alce Library.
  *
@@ -44,18 +43,18 @@
  *  @brief  Test File Utilities.
  *  @return  Number of errors.
  */
-[[nodiscard]] auto test_fu() -> std::size_t
+[[nodiscard]] auto test_file() -> std::size_t
 {
     T_BEGIN;
 
-    std::string_view filename = "test_fu_read_all_file.txt";
+    std::string_view filename = "test_file_read_all_file.txt";
     std::string      expected = "Copyright (C) 2024 Anstro Pleuton\n"
                                 "\n"
                                 "This is a dummy file for testing File "
                                 "Utilities's read_all function which reads all "
                                 "the file contents at once.\n";
 
-    auto content = fu::read_all(filename);
+    auto content = file::read_all(filename);
 
     logln("filename: {}", filename);
     logln("content: {}",  content);

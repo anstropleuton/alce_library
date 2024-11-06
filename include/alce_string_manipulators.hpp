@@ -1,5 +1,4 @@
 /**
- *  @file    al_string_manipulators.hpp
  *  @author  Anstro Pleuton (https://github.com/anstropleuton)
  *  @brief   Functionality to manipulate and format strings.
  *

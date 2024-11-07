@@ -1,6 +1,7 @@
 var alce__ansi__escape__codes_8hpp =
 [
     [ "alce::aec::aec_t", "structalce_1_1aec_1_1aec__t.html", "structalce_1_1aec_1_1aec__t" ],
+    [ "std::formatter< alce::aec::aec_t, CharT >", "structstd_1_1formatter_3_01alce_1_1aec_1_1aec__t_00_01CharT_01_4.html", "structstd_1_1formatter_3_01alce_1_1aec_1_1aec__t_00_01CharT_01_4" ],
     [ "sgr", "alce__ansi__escape__codes_8hpp.html#a69885cea4432a143a8f547f717f48921", null ],
     [ "combine", "alce__ansi__escape__codes_8hpp.html#abe53b60cb117ae258ba30f3bf1648974", null ],
     [ "operator<<", "alce__ansi__escape__codes_8hpp.html#a4bd7534e5cf5b9e905e859beaad38a55", null ],

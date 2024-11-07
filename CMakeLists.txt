@@ -27,10 +27,6 @@ set(ALCE_LIBRARY_INCLUDES_DIRECTORIES
 add_library(alce_library ${ALCE_LIBRARY_SOURCES})
 target_include_directories(alce_library PUBLIC ${ALCE_LIBRARY_INCLUDES_DIRECTORIES})
 target_compile_features(alce_library PUBLIC cxx_std_23)
-target_compile_options(alce_library PRIVATE
-    $<${ALCE_LIBRARY_IS_GCC_LIKE_CXX}:-Wall;-Wextra;-Wshadow;-Wformat=2>
-    $<${ALCE_LIBRARY_IS_MSVC_CXX}:-W3> # I don't know what I am doing with MSVC
-)
 
 if(BUILD_TESTS)
     add_subdirectory(tests)

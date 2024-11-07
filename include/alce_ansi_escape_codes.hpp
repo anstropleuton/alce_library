@@ -331,3 +331,48 @@ namespace aec_operators {
 } // namespace aec_operators
 
 } // namespace alce
+
+namespace std {
+
+/**
+ *  @brief  Formatter for @c aec::aec_t .
+ *
+ *  @param  CharT  The character type.
+ */
+template<typename CharT>
+struct formatter<alce::aec::aec_t, CharT> {
+
+    /**
+     *  @brief  Parse the format specifiers (none).
+     *
+     *  @tparam  ParseContext  A parse context type.
+     *  @param   ctx           A parse context.
+     *  @return  Iterator to begin of parse context.
+     */
+    template<typename ParseContext>
+    [[nodiscard]] inline constexpr auto parse(ParseContext &ctx)
+    -> ParseContext::iterator
+    {
+        // No format specifiers
+        return ctx.begin();
+    }
+
+    /**
+     *  @brief  Format the string using parsed specifiers (none).
+     *
+     *  @tparam  FormatContext  A format context type.
+     *  @param   aec            The AEC to format.
+     *  @param   ctx            A format context.
+     *  @return  Iterator to end of format context.
+     */
+    template<typename FormatContext>
+    [[nodiscard]] inline constexpr auto format(
+        const alce::aec::aec_t &aec,
+        FormatContext          &ctx
+    ) const
+    {
+        return std::ranges::copy((std::string)aec, ctx.out()).out;
+    }
+};
+
+} // namespace std

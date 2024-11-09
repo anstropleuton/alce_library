@@ -70,50 +70,50 @@ namespace cu {
  *
  *  Container type must have @c begin() and @c end() in either member or
  *  free-standing function which return contiguous iterators, and a
- *  @c value_type typename member.
+ *  @c value_type member.
  *
- *  @tparam  Container  The container type.
+ *  @tparam  container  The container type.
  */
-template<typename Container>
+template<typename container>
 concept cu_compatible = requires {
-    { Container().begin() } -> std::contiguous_iterator;
-    { Container().end() } -> std::contiguous_iterator;
-    { std::declval<typename Container::value_type>() };
+    { container().begin() } -> std::contiguous_iterator;
+    { container().end() } -> std::contiguous_iterator;
+    { std::declval<typename container::value_type>() };
 };
 
 /**
  *  @brief  Container's value_type member.
- *  @tparam  Container  A compatible container type.
+ *  @tparam  container  A compatible container type.
  */
-template<cu_compatible Container>
-using value_type = Container::value_type;
+template<cu_compatible container>
+using value_type = container::value_type;
 
 /**
  *  @brief  Many Container Utilities return this container.
- *  @tparam  Container  A compatible container type.
+ *  @tparam  container  A compatible container type.
  */
-template<cu_compatible Container>
-using result_container = std::vector<value_type<Container>>;
+template<cu_compatible container>
+using result_container = std::vector<value_type<container>>;
 
 /**
  *  @brief  Many Container Utilities return this container if the result is
  *          nested.
- *  @tparam  Container  A compatible container type.
+ *  @tparam  container  A compatible container type.
  */
-template<cu_compatible Container>
-using result_container_nested = std::vector<std::vector<value_type<Container>>>;
+template<cu_compatible container>
+using result_container_nested = std::vector<std::vector<value_type<container>>>;
 
 /**
  *  @brief  Nested container compatible for Container Utilities.
  *
  *  The container and it's value type must satisfy @c cu_compatible .
  *
- *  @tparam  Container  The container type.
+ *  @tparam  container  The container type.
  */
-template<typename Container>
+template<typename container>
 concept cu_compatible_nested =
-    cu_compatible<Container>
- && cu_compatible<value_type<Container>>;
+    cu_compatible<container>
+ && cu_compatible<value_type<container>>;
 
 /**
  *  @brief  A compatible container for @c boundless_access.
@@ -121,21 +121,21 @@ concept cu_compatible_nested =
  *  The container must satisfy @c cu_compatible and it's value type should also
  *  assignable with default constructed value type.
  *
- *  @tparam  Container  The container type.
+ *  @tparam  container  The container type.
  */
-template<typename Container>
-concept boundless_accessible = cu_compatible<Container>
-    && requires(value_type<Container> value) {
+template<typename container>
+concept boundless_accessible = cu_compatible<container>
+    && requires(value_type<container> value) {
     { value = {} };
-    { *(Container().begin()) } -> std::same_as<value_type<Container> &>;
+    { *(container().begin()) } -> std::same_as<value_type<container> &>;
 };
 
 /**
  *  @brief  Return element at index, or a default-constructed instance of the
  *          value type if the index is invalid.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   index      An index specifying element.
  *  @return  Element at index or default constructed instance of type.
  */
@@ -153,8 +153,8 @@ template<cu_compatible Container>
  *  @brief  Return element at index, or a default-constructed instance of the
  *          value type if the index is invalid.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   index      An index specifying element.
  *  @return  Element at index or default constructed instance of type.
  */
@@ -178,17 +178,17 @@ template<boundless_accessible Container>
  *  Index-access of this vector always returns a default constructed element
  *  when an invalid index is provided.  Requires a default-constructible type.
  *
- *  @tparam  T      The type of element.
- *  @tparam  Alloc  Allocator type, defaults to @c std::allocator<T> .
+ *  @tparam  element_type  The type of element.
+ *  @tparam  alloc  Allocator type, defaults to @c std::allocator<T> .
  */
-template<typename T, typename Alloc = std::allocator<T>>
-requires(std::is_default_constructible_v<T>)
-struct boundless_vector : std::vector<T, Alloc> {
+template<typename element_type, typename alloc = std::allocator<element_type>>
+requires(std::is_default_constructible_v<element_type>)
+struct boundless_vector : std::vector<element_type, alloc> {
 
     /**
      *  @brief  Base class, template arguments are long.
      */
-    using base = std::vector<T, Alloc>;
+    using base = std::vector<element_type, alloc>;
 
     using base::vector;
 
@@ -204,7 +204,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *  @see  @c std::vector 's constructor for more details.
      */
     explicit inline constexpr boundless_vector(
-        const Alloc &allocator
+        const alloc &allocator
     ) noexcept : base(allocator) {}
 
     /**
@@ -216,7 +216,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      */
     explicit inline constexpr boundless_vector(
         std::size_t  size,
-        const Alloc &allocator = Alloc()
+        const alloc &allocator = alloc()
     ) : base(size, allocator) {}
 
     /**
@@ -229,8 +229,8 @@ struct boundless_vector : std::vector<T, Alloc> {
      */
     inline constexpr boundless_vector(
         std::size_t  size,
-        const T     &value,
-        const Alloc &allocator = Alloc()
+        const element_type     &value,
+        const alloc &allocator = alloc()
     ) : base(size, value, allocator) {}
 
     /**
@@ -259,7 +259,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      */
     inline constexpr boundless_vector(
         const boundless_vector &vector,
-        const Alloc            &allocator
+        const alloc            &allocator
     ) : base((base)vector, allocator) {}
 
     /**
@@ -271,7 +271,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      */
     inline constexpr boundless_vector(
         boundless_vector &&vector,
-        const Alloc       &allocator
+        const alloc       &allocator
     ) noexcept : base(std::move((base &) vector, allocator)) {}
 
     /**
@@ -282,8 +282,8 @@ struct boundless_vector : std::vector<T, Alloc> {
      *  @see  @c std::vector 's constructor for more details.
      */
     inline constexpr boundless_vector(
-        std::initializer_list<T> list,
-        const Alloc             &allocator = Alloc()
+        std::initializer_list<element_type> list,
+        const alloc             &allocator = alloc()
     ) : base(list, allocator) {}
 
     /**
@@ -299,7 +299,7 @@ struct boundless_vector : std::vector<T, Alloc> {
     inline constexpr boundless_vector(
         InputIterator first,
         InputIterator last,
-        const Alloc  &allocator = Alloc()
+        const alloc  &allocator = alloc()
     ) : base(first, last, allocator) {}
 
     /**
@@ -351,7 +351,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *  @see  @c std::vector 's @c operator= for more details.
      */
     inline constexpr auto operator= (
-        std::initializer_list<T> list
+        std::initializer_list<element_type> list
     ) -> boundless_vector &
     {
         return base::operator= (list);
@@ -386,7 +386,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *  @param  index  An index specifying element.
      *  @return  Element at index or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto operator[] (std::size_t index) -> T &
+    [[nodiscard]] inline constexpr auto operator[] (std::size_t index) -> element_type &
     {
         return boundless_access(*this, index);
     }
@@ -399,7 +399,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *  @return  Element at index or default constructed instance.
      */
     [[nodiscard]] inline constexpr auto operator[] (std::size_t index)
-    const -> T
+    const -> element_type
     {
         return boundless_access(*this, index);
     }
@@ -411,7 +411,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *  @param  index  An index specifying element.
      *  @return  Element at index or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto at(std::size_t index) -> T &
+    [[nodiscard]] inline constexpr auto at(std::size_t index) -> element_type &
     {
         return boundless_access(*this, index);
     }
@@ -423,7 +423,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *  @param  index  An index specifying element.
      *  @return  Element at index or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto at(std::size_t index) const -> T
+    [[nodiscard]] inline constexpr auto at(std::size_t index) const -> element_type
     {
         return boundless_access(*this, index);
     }
@@ -433,7 +433,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *          the value type when the vector is empty.
      *  @return  First element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto front() -> T &
+    [[nodiscard]] inline constexpr auto front() -> element_type &
     {
         return boundless_access(*this, 0);
     }
@@ -443,7 +443,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *          the value type when the vector is empty.
      *  @return  First element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto front() const -> T
+    [[nodiscard]] inline constexpr auto front() const -> element_type
     {
         return boundless_access(*this, 0);
     }
@@ -453,7 +453,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *          the value type when the vector is empty.
      *  @return  Last element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto back() -> T &
+    [[nodiscard]] inline constexpr auto back() -> element_type &
     {
         return boundless_access(*this, this->size() - 1);
     }
@@ -463,7 +463,7 @@ struct boundless_vector : std::vector<T, Alloc> {
      *          the value type when the vector is empty.
      *  @return  Last element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto back() const -> T
+    [[nodiscard]] inline constexpr auto back() const -> element_type
     {
         return boundless_access(*this, this->size() - 1);
     }
@@ -474,15 +474,15 @@ struct boundless_vector : std::vector<T, Alloc> {
  *
  *  Deduce types from initializer.
  *
- *  @tparam  InputIterator  The type of input iterator.
- *  @tparam  ValueType      The type of elements of vector.
- *  @tparam  AllocatorType  The type of an allocator object.
+ *  @tparam  input_iterator  The type of input iterator.
+ *  @tparam  value_type      The type of elements of vector.
+ *  @tparam  alloc           The type of an allocator object.
  */
-template<std::input_iterator InputIterator,
-    typename ValueType = std::iterator_traits<InputIterator>::value_type,
-    typename AllocatorType = std::allocator<ValueType>>
-boundless_vector(InputIterator, InputIterator, AllocatorType = AllocatorType())
-                       -> boundless_vector<ValueType, AllocatorType>;
+template<std::input_iterator input_iterator,
+    typename value_type = std::iterator_traits<input_iterator>::value_type,
+    typename alloc = std::allocator<value_type>>
+boundless_vector(input_iterator, input_iterator, alloc = alloc())
+                       -> boundless_vector<value_type, alloc>;
 
 /**
  *  @brief  A boundless array.
@@ -490,12 +490,12 @@ boundless_vector(InputIterator, InputIterator, AllocatorType = AllocatorType())
  *  Index-access of this array always returns a default constructed element
  *  when an invalid index is provided.  Requires a default-constructible type.
  *
- *  @tparam  T  The type of element.
- *  @tparam  N  The size of array.
+ *  @tparam  element_type  The type of element.
+ *  @tparam  count  The size of array.
  */
-template<typename T, std::size_t N>
-requires(std::is_default_constructible_v<T>)
-struct boundless_array : std::array<T, N> {
+template<typename element_type, std::size_t count>
+requires(std::is_default_constructible_v<element_type>)
+struct boundless_array : std::array<element_type, count> {
 
     // Woah, std::array has no constructors!
 
@@ -506,7 +506,7 @@ struct boundless_array : std::array<T, N> {
      *  @param  index  An index specifying element.
      *  @return  Element at index or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto operator[] (std::size_t index) -> T &
+    [[nodiscard]] inline constexpr auto operator[] (std::size_t index) -> element_type &
     {
         return boundless_access(*this, index);
     }
@@ -519,7 +519,7 @@ struct boundless_array : std::array<T, N> {
      *  @return  Element at index or default constructed instance.
      */
     [[nodiscard]] inline constexpr auto operator[] (std::size_t index)
-    const -> T
+    const -> element_type
     {
         return boundless_access(*this, index);
     }
@@ -531,7 +531,7 @@ struct boundless_array : std::array<T, N> {
      *  @param  index  An index specifying element.
      *  @return  Element at index or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto at(std::size_t index) -> T &
+    [[nodiscard]] inline constexpr auto at(std::size_t index) -> element_type &
     {
         return boundless_access(*this, index);
     }
@@ -543,7 +543,7 @@ struct boundless_array : std::array<T, N> {
      *  @param  index  An index specifying element.
      *  @return  Element at index or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto at(std::size_t index) const -> T
+    [[nodiscard]] inline constexpr auto at(std::size_t index) const -> element_type
     {
         return boundless_access(*this, index);
     }
@@ -553,7 +553,7 @@ struct boundless_array : std::array<T, N> {
      *          the value type when the array is empty.
      *  @return  First element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto front() -> T &
+    [[nodiscard]] inline constexpr auto front() -> element_type &
     {
         return boundless_access(*this, 0);
     }
@@ -563,7 +563,7 @@ struct boundless_array : std::array<T, N> {
      *          the value type when the array is empty.
      *  @return  First element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto front() const -> T
+    [[nodiscard]] inline constexpr auto front() const -> element_type
     {
         return boundless_access(*this, 0);
     }
@@ -573,7 +573,7 @@ struct boundless_array : std::array<T, N> {
      *          the value type when the array is empty.
      *  @return  Last element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto back() -> T &
+    [[nodiscard]] inline constexpr auto back() -> element_type &
     {
         return boundless_access(*this, this->size() - 1);
     }
@@ -583,7 +583,7 @@ struct boundless_array : std::array<T, N> {
      *          the value type when the array is empty.
      *  @return  Last element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto back() const -> T
+    [[nodiscard]] inline constexpr auto back() const -> element_type
     {
         return boundless_access(*this, this->size() - 1);
     }
@@ -594,12 +594,12 @@ struct boundless_array : std::array<T, N> {
  *
  *  Deduce types from initializer.
  *
- *  @tparam  T  The type of elements.
- *  @tparam  U  The type of multiple elements in initializer.
+ *  @tparam  element_type   The type of elements.
+ *  @tparam  elements_type  The type of multiple elements in initializer.
  */
-template<typename T, typename... U>
-requires(std::is_same_v<T, U> && ...)
-boundless_array(T, U...) -> boundless_array<T, 1 + sizeof... (U)>;
+template<typename element_type, typename... elements_type>
+requires(std::is_same_v<element_type, elements_type> && ...)
+boundless_array(element_type, elements_type...) -> boundless_array<element_type, 1 + sizeof... (elements_type)>;
 
 /**
  *  @brief  A boundless span.
@@ -607,14 +607,14 @@ boundless_array(T, U...) -> boundless_array<T, 1 + sizeof... (U)>;
  *  Index-access of this span always returns a default constructed element
  *  when an invalid index is provided.  Requires a default-constructible type.
  *
- *  @tparam  T       The type of element.
- *  @tparam  Extent  The number of elements in the sequence, or
- *                   @c std::dynamic_extent if dynamic (default).
+ *  @tparam  element_type    The type of element.
+ *  @tparam  extents  The number of elements in the sequence, or
+ *                    @c std::dynamic_extent if dynamic (default).
  */
-template<typename T, std::size_t Extent = std::dynamic_extent>
-requires(std::is_default_constructible_v<T>)
-struct boundless_span : std::span<T, Extent> {
-    using std::span<T, Extent>::span;
+template<typename element_type, std::size_t extents = std::dynamic_extent>
+requires(std::is_default_constructible_v<element_type>)
+struct boundless_span : std::span<element_type, extents> {
+    using std::span<element_type, extents>::span;
 
     /**
      *  @brief  Get an element at index, or a default constructed instance of
@@ -624,7 +624,7 @@ struct boundless_span : std::span<T, Extent> {
      *  @return  Element at index or default constructed instance.
      */
     [[nodiscard]] inline constexpr auto operator[] (std::size_t index)
-    const -> T
+    const -> element_type
     {
         return boundless_access(*this, index);
     }
@@ -636,7 +636,7 @@ struct boundless_span : std::span<T, Extent> {
      *  @param  index  An index specifying element.
      *  @return  Element at index or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto at(std::size_t index) const -> T
+    [[nodiscard]] inline constexpr auto at(std::size_t index) const -> element_type
     {
         return boundless_access(*this, index);
     }
@@ -646,7 +646,7 @@ struct boundless_span : std::span<T, Extent> {
      *          the value type when the span is empty.
      *  @return  First element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto front() const -> T
+    [[nodiscard]] inline constexpr auto front() const -> element_type
     {
         return boundless_access(*this, 0);
     }
@@ -656,7 +656,7 @@ struct boundless_span : std::span<T, Extent> {
      *          the value type when the span is empty.
      *  @return  Last element or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto back() const -> T
+    [[nodiscard]] inline constexpr auto back() const -> element_type
     {
         return boundless_access(*this, this->size() - 1);
     }
@@ -667,45 +667,45 @@ struct boundless_span : std::span<T, Extent> {
  *
  *  Deduce type from raw array.
  *
- *  @tparam  T  The type of array elements.
- *  @tparam  N  The number of array elements.
+ *  @tparam  element_type  The type of array elements.
+ *  @tparam  count  The number of array elements.
  */
-template<typename T, size_t N>
-boundless_span(T(&)[N]) -> boundless_span<T, N>;
+template<typename element_type, std::size_t count>
+boundless_span(element_type(&)[count]) -> boundless_span<element_type, count>;
 
 /**
  *  @brief  Template parameter deduction guide for @c boundless_span .
  *
  *  Deduce type from @c std::array .
  *
- *  @tparam  T  The type of array elements.
- *  @tparam  N  The number of array elements.
+ *  @tparam  element_type  The type of array elements.
+ *  @tparam  count  The number of array elements.
  */
-template<typename T, size_t N>
-boundless_span(std::array<T, N> &) -> boundless_span<T, N>;
+template<typename element_type, std::size_t count>
+boundless_span(std::array<element_type, count> &) -> boundless_span<element_type, count>;
 
 /**
  *  @brief  Template parameter deduction guide for @c boundless_span .
  *
  *  Deduce type from constant @c std::array.
  *
- *  @tparam  T  The type of array elements.
- *  @tparam  N  The number of array elements.
+ *  @tparam  element_type  The type of array elements.
+ *  @tparam  count  The number of array elements.
  */
-template<typename T, size_t N>
-boundless_span(const std::array<T, N> &) -> boundless_span<const T, N>;
+template<typename element_type, size_t count>
+boundless_span(const std::array<element_type, count> &) -> boundless_span<const element_type, count>;
 
 /**
  *  @brief  Template parameter deduction guide for @c boundless_span .
  *
  *  Deduce type from iterators.
  *
- *  @tparam  I    The type of iterator.
- *  @tparam  End  The type of end of the iterator.
+ *  @tparam  iter  The type of iterator.
+ *  @tparam  end   The type of end of the iterator.
  */
-template<std::contiguous_iterator I, typename End>
-boundless_span(I, End) -> boundless_span<
-    std::remove_reference_t<std::iter_reference_t<I>>>;
+template<std::contiguous_iterator iter, typename end>
+boundless_span(iter, end) -> boundless_span<
+    std::remove_reference_t<std::iter_reference_t<iter>>>;
 
 /**
  *  @brief  Template parameter deduction guide for @c boundless_span .
@@ -724,19 +724,19 @@ boundless_span(Range &&) -> boundless_span<
  *  Index-access of this string always returns a default constructed element
  *  when an invalid index is provided.  Requires a default-constructible type.
  *
- *  @tparam  CharT   The character type.
- *  @tparam  Traits  The character traits type.
- *  @tparam  Alloc   The allocator type, defaults to @c std::allocator<CharT> .
+ *  @tparam  char_type  The character type.
+ *  @tparam  traits  The character traits type.
+ *  @tparam  alloc   The allocator type, defaults to @c std::allocator<char_type> .
  */
-template<typename CharT, typename Traits = std::char_traits<CharT>,
-    typename Alloc = std::allocator<CharT>>
-requires(std::is_default_constructible_v<CharT>)
-struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
+template<typename char_type, typename traits = std::char_traits<char_type>,
+    typename alloc = std::allocator<char_type>>
+requires(std::is_default_constructible_v<char_type>)
+struct boundless_basic_string : std::basic_string<char_type, traits, alloc> {
 
     /**
      *  @brief  Base class, template arguments are long.
      */
-    using base = std::basic_string<CharT, Traits, Alloc>;
+    using base = std::basic_string<char_type, traits, alloc>;
 
     using base::basic_string;
 
@@ -744,7 +744,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @brief  Default constructor creates an empty string.
      */
     inline constexpr boundless_basic_string()
-    noexcept (std::is_default_constructible_v<Alloc>) = default;
+    noexcept (std::is_default_constructible_v<alloc>) = default;
 
     /**
      *  @brief  Create an empty string using allocator.
@@ -753,7 +753,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @see  @c std::basic_string 's constructor for more details.
      */
     inline constexpr boundless_basic_string(
-        const Alloc &allocator
+        const alloc &allocator
     ) noexcept : base(allocator) {}
 
     /**
@@ -776,7 +776,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
     inline constexpr boundless_basic_string(
         const boundless_basic_string &string,
         std::size_t                   pos,
-        const Alloc                  &allocator = Alloc()
+        const alloc                  &allocator = alloc()
     ) : base(string, pos, allocator) {}
 
     /**
@@ -791,7 +791,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
         const boundless_basic_string &string,
         std::size_t                   pos,
         std::size_t                   n,
-        const Alloc                  &allocator = Alloc()
+        const alloc                  &allocator = alloc()
     ) : base(string, pos, n, allocator) {}
 
     /**
@@ -802,9 +802,9 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @param  allocator  An allocator.
      */
     inline constexpr boundless_basic_string(
-        const CharT *string,
+        const char_type *string,
         std::size_t  n,
-        const Alloc &allocator = Alloc()
+        const alloc &allocator = alloc()
     ) : base(string, n, allocator) {}
 
     /**
@@ -814,8 +814,8 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @param  allocator  An allocator.
      */
     inline constexpr boundless_basic_string(
-        const CharT *string,
-        const Alloc &allocator = Alloc()
+        const char_type *string,
+        const alloc &allocator = alloc()
     ) : base(string, allocator) {}
 
     /**
@@ -827,8 +827,8 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      */
     inline constexpr boundless_basic_string(
         std::size_t  n,
-        CharT        c,
-        const Alloc &allocator
+        char_type        c,
+        const alloc &allocator
     ) : base(n, c, allocator) {}
 
     /**
@@ -845,8 +845,8 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @param  allocator  An allocator.
      */
     inline constexpr boundless_basic_string(
-        std::initializer_list<CharT> list,
-        const Alloc                 &allocator = Alloc()
+        std::initializer_list<char_type> list,
+        const alloc                 &allocator = alloc()
     ) : base(list, allocator) {}
 
     /**
@@ -857,7 +857,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      */
     inline constexpr boundless_basic_string(
         const boundless_basic_string &string,
-        const Alloc                  &allocator
+        const alloc                  &allocator
     ) : base(string, allocator) {}
 
     /**
@@ -868,7 +868,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      */
     inline constexpr boundless_basic_string(
         boundless_basic_string &&string,
-        const Alloc             &allocator
+        const alloc             &allocator
     ) : base(std::move(string), allocator) {}
 
     /**
@@ -883,37 +883,37 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
     inline constexpr boundless_basic_string(
         InputIterator first,
         InputIterator last,
-        const Alloc  &allocator = Alloc()
+        const alloc  &allocator = alloc()
     ) : base(first, last, allocator) {}
 
     /**
      *  @brief  Creates a string from a substring of a @c std::basic_string_view .
      *
-     *  @tparam  T          A type convertible to @c std::basic_string_view .
+     *  @tparam  element_type          A type convertible to @c std::basic_string_view .
      *  @param   t          A string to copy from.
      *  @param   pos        The index of the first character to copy from.
      *  @param   n          The number of characters to copy.
      *  @param   allocator  An allocator.
      */
-    template<std::convertible_to<std::basic_string_view<CharT>> T>
+    template<std::convertible_to<std::basic_string_view<char_type>> T>
     inline constexpr boundless_basic_string(
         const T     &t,
         std::size_t  pos,
         std::size_t  n,
-        const Alloc &allocator = Alloc()
+        const alloc &allocator = alloc()
     ) : base(t, pos, n, allocator) {}
 
     /**
      *  @brief  Creates a string from a @c std::basic_string_view .
      *
-     *  @tparam  T          A type convertible to @c std::basic_string_view .
+     *  @tparam  element_type          A type convertible to @c std::basic_string_view .
      *  @param   t          A string to copy from.
      *  @param   allocator  An allocator.
      */
-    template<std::convertible_to<std::basic_string_view<CharT>> T>
+    template<std::convertible_to<std::basic_string_view<char_type>> T>
     inline constexpr boundless_basic_string(
         const T     &t,
-        const Alloc &allocator = Alloc()
+        const alloc &allocator = alloc()
     ) : base(t, allocator) {}
 
     /**
@@ -952,7 +952,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @return  Reference to self.
      */
     inline constexpr auto operator= (
-        const CharT *string
+        const char_type *string
     ) -> boundless_basic_string &
     {
         base::operator= (string);
@@ -965,7 +965,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @param  c  A character.
      *  @return  Reference to self.
      */
-    inline constexpr auto operator= (CharT c) -> boundless_basic_string &
+    inline constexpr auto operator= (char_type c) -> boundless_basic_string &
     {
         base::operator= (c);
         return *this;
@@ -988,7 +988,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @return  Reference to self.
      */
     inline constexpr auto operator= (
-        std::initializer_list<CharT> list
+        std::initializer_list<char_type> list
     ) -> boundless_basic_string &
     {
         base::operator= (list);
@@ -998,11 +998,11 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
     /**
      *  @brief  Set value of string from a @c std::basic_string_view .
      *
-     *  @tparam  T          A type convertible to @c std::basic_string_view .
+     *  @tparam  element_type          A type convertible to @c std::basic_string_view .
      *  @param   t          A string to copy from.
      *  @return  Reference to self.
      */
-    template<std::convertible_to<std::basic_string_view<CharT>> T>
+    template<std::convertible_to<std::basic_string_view<char_type>> T>
     inline constexpr auto operator= (
         const T &t
     ) -> boundless_basic_string &
@@ -1041,7 +1041,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @brief  Convert to a @c std::basic_string_view .
      *  @return  @c std::basic_string_view of this string.
      */
-    [[nodiscard]] inline constexpr operator std::basic_string_view<CharT>()
+    [[nodiscard]] inline constexpr operator std::basic_string_view<char_type>()
     const noexcept
     {
         return std::basic_string_view((base) * this);
@@ -1056,7 +1056,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      */
     [[nodiscard]] inline constexpr auto operator[] (
         std::size_t index
-    ) -> CharT &
+    ) -> char_type &
     {
         return boundless_access(*this, index);
     }
@@ -1070,7 +1070,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      */
     [[nodiscard]] inline constexpr auto operator[] (
         std::size_t index
-    ) const -> CharT
+    ) const -> char_type
     {
         return boundless_access(*this, index);
     }
@@ -1083,7 +1083,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @return  Character at index or default constructed instance.
      */
     [[nodiscard]] inline constexpr auto at(std::size_t index)
-    -> CharT &
+    -> char_type &
     {
         return boundless_access(*this, index);
     }
@@ -1096,7 +1096,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *  @return  Character at index or default constructed instance.
      */
     [[nodiscard]] inline constexpr auto at(std::size_t index)
-    const -> CharT
+    const -> char_type
     {
         return boundless_access(*this, index);
     }
@@ -1106,7 +1106,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *          the character type when the string is empty.
      *  @return  First character or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto front() -> CharT &
+    [[nodiscard]] inline constexpr auto front() -> char_type &
     {
         return boundless_access(*this, 0);
     }
@@ -1116,7 +1116,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *          the character type when the string is empty.
      *  @return  First character or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto front() const -> CharT
+    [[nodiscard]] inline constexpr auto front() const -> char_type
     {
         return boundless_access(*this, 0);
     }
@@ -1126,7 +1126,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *          the character type when the string is empty.
      *  @return  Last character or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto back() -> CharT &
+    [[nodiscard]] inline constexpr auto back() -> char_type &
     {
         return boundless_access(*this, this->size() - 1);
     }
@@ -1136,7 +1136,7 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
      *          the character type when the string is empty.
      *  @return  Last character or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto back() const -> CharT
+    [[nodiscard]] inline constexpr auto back() const -> char_type
     {
         return boundless_access(*this, this->size() - 1);
     }
@@ -1148,17 +1148,17 @@ struct boundless_basic_string : std::basic_string<CharT, Traits, Alloc> {
  *  Index-access of this string view always returns a default constructed element
  *  when an invalid index is provided.  Requires a default-constructible type.
  *
- *  @tparam  CharT   The character type.
- *  @tparam  Traits  The character traits type.
+ *  @tparam  char_type   The character type.
+ *  @tparam  traits  The character traits type.
  */
-template<typename CharT, typename Traits = std::char_traits<CharT>>
-requires(std::is_default_constructible_v<CharT>)
-struct boundless_basic_string_view : std::basic_string_view<CharT, Traits> {
+template<typename char_type, typename traits = std::char_traits<char_type>>
+requires(std::is_default_constructible_v<char_type>)
+struct boundless_basic_string_view : std::basic_string_view<char_type, traits> {
 
     /**
      *  @brief  Base class, template arguments are long.
      */
-    using base = std::basic_string_view<CharT, Traits>;
+    using base = std::basic_string_view<char_type, traits>;
 
     using base::basic_string_view;
 
@@ -1180,7 +1180,7 @@ struct boundless_basic_string_view : std::basic_string_view<CharT, Traits> {
      *  @param  string  A null-terminated character array.
      */
     inline constexpr boundless_basic_string_view(
-        const CharT *string
+        const char_type *string
     ) : base(string) {}
 
     /**
@@ -1190,7 +1190,7 @@ struct boundless_basic_string_view : std::basic_string_view<CharT, Traits> {
      *  @param  n       The number of characters to create a view.
      */
     inline constexpr boundless_basic_string_view(
-        const CharT *string,
+        const char_type *string,
         std::size_t  n
     ) : base(string, n) {}
 
@@ -1254,7 +1254,7 @@ struct boundless_basic_string_view : std::basic_string_view<CharT, Traits> {
      */
     [[nodiscard]] inline constexpr auto operator[] (
         std::size_t index
-    ) const -> CharT
+    ) const -> char_type
     {
         return boundless_access(*this, index);
     }
@@ -1267,7 +1267,7 @@ struct boundless_basic_string_view : std::basic_string_view<CharT, Traits> {
      *  @return  Character at index or default constructed instance.
      */
     [[nodiscard]] inline constexpr auto at(std::size_t index)
-    const -> CharT
+    const -> char_type
     {
         return boundless_access(*this, index);
     }
@@ -1277,7 +1277,7 @@ struct boundless_basic_string_view : std::basic_string_view<CharT, Traits> {
      *          the character type when the string view is empty.
      *  @return  First character or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto front() const -> CharT
+    [[nodiscard]] inline constexpr auto front() const -> char_type
     {
         return boundless_access(*this, 0);
     }
@@ -1287,7 +1287,7 @@ struct boundless_basic_string_view : std::basic_string_view<CharT, Traits> {
      *          the character type when the string view is empty.
      *  @return  Last character or default constructed instance.
      */
-    [[nodiscard]] inline constexpr auto back() const -> CharT
+    [[nodiscard]] inline constexpr auto back() const -> char_type
     {
         return boundless_access(*this, this->size() - 1);
     }
@@ -1339,42 +1339,42 @@ using boundless_u32string_view = boundless_basic_string_view<char32_t>;
  *  The type must be an enumerator with a @c max as a member.  The @c max member
  *  must be the largest member in the enumerator (Implementation pending).
  *
- *  @tparam  E  Enumerator type.
+ *  @tparam  enum_type  Enumerator type.
  *
  *  @todo  After reflection support is introduced, iterate over all the members
  *         and determine that the @c max member is the largest member.
  */
-template<typename E>
-concept cu_compatible_enum = std::is_enum_v<E> && requires { { E::max }; };
+template<typename enum_type>
+concept cu_compatible_enum = std::is_enum_v<enum_type> && requires { { enum_type::max }; };
 
 /**
  *  @brief  Integral constant for the enumerator's @c max member.
- *  @tparam  E  Container Utilities compatible enumerator type.
+ *  @tparam  enum_type  Container Utilities compatible enumerator type.
  */
-template<cu_compatible_enum E>
-struct enum_max : std::integral_constant<std::underlying_type_t<E>,
-        std::to_underlying (E::max)> {};
+template<cu_compatible_enum enum_type>
+struct enum_max : std::integral_constant<std::underlying_type_t<enum_type>,
+        std::to_underlying (enum_type::max)> {};
 
 /**
  *  @brief  Helper to get the value of the enumerator's @c max member.
- *  @tparam  E  Container Utilities compatible enumerator type.
+ *  @tparam  enum_type  Container Utilities compatible enumerator type.
  */
-template<cu_compatible_enum E>
-inline constexpr auto enum_max_v = enum_max<E>::value;
+template<cu_compatible_enum enum_type>
+inline constexpr auto enum_max_v = enum_max<enum_type>::value;
 
 /**
  *  @brief  Array with enumerator as index.
  *
- *  @tparam  T  The type of element.
- *  @tparam  E  A Container Utilities compatible enumerator type.
+ *  @tparam  element_type  The type of element.
+ *  @tparam  enum_type  A Container Utilities compatible enumerator type.
  */
-template<typename T, cu_compatible_enum E>
-struct enumerated_array : std::array<T, enum_max_v<E>> {
+template<typename element_type, cu_compatible_enum enum_type>
+struct enumerated_array : std::array<element_type, enum_max_v<enum_type>> {
 
     /**
      *  @brief  Base class, template arguments are long.
      */
-    using base = std::array<T, enum_max_v<E>>;
+    using base = std::array<element_type, enum_max_v<enum_type>>;
 
     /**
      *  @brief  Get the element at enumerator.
@@ -1382,7 +1382,7 @@ struct enumerated_array : std::array<T, enum_max_v<E>> {
      *  @param  enumerator  Enumerator specifying index.
      *  @return  Element at index.
      */
-    [[nodiscard]] inline constexpr auto operator[] (E e) -> T &
+    [[nodiscard]] inline constexpr auto operator[] (enum_type e) -> element_type &
     {
         return base::operator[] (std::to_underlying(e));
     }
@@ -1393,7 +1393,7 @@ struct enumerated_array : std::array<T, enum_max_v<E>> {
      *  @param  enumerator  Enumerator specifying index.
      *  @return  Element at index.
      */
-    [[nodiscard]] inline constexpr auto operator[] (E e) const -> T
+    [[nodiscard]] inline constexpr auto operator[] (enum_type e) const -> element_type
     {
         return base::operator[] (std::to_underlying(e));
     }
@@ -1404,7 +1404,7 @@ struct enumerated_array : std::array<T, enum_max_v<E>> {
      *  @param  enumerator  Enumerator specifying index.
      *  @return  Element at index.
      */
-    [[nodiscard]] inline constexpr auto at(E e) -> T &
+    [[nodiscard]] inline constexpr auto at(enum_type e) -> element_type &
     {
         return base::at(std::to_underlying(e));
     }
@@ -1415,131 +1415,129 @@ struct enumerated_array : std::array<T, enum_max_v<E>> {
      *  @param  enumerator  Enumerator specifying index.
      *  @return  Element at index.
      */
-    [[nodiscard]] inline constexpr auto at(E e) const -> T
+    [[nodiscard]] inline constexpr auto at(enum_type e) const -> element_type
     {
         return base::at(std::to_underlying(e));
     }
 };
 
-
-
 /**
  *  @brief  Get the subset of the container's elements.
  *
- *  @tparam  Container        A compatible container type.
- *  @param   container        A container.
- *  @param   first_inclusive  The first index (inclusive).
- *  @param   last_exclusive   The last index (exclusive).
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
+ *  @param   first      The first index (inclusive).
+ *  @param   last       The last index (exclusive).
  *  @return  Subset of the container as @c result_container .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto subordinate(
-    const Container &container,
-    std::size_t      first_inclusive,
-    std::size_t      last_exclusive
+    const container &ctr,
+    std::size_t      first,
+    std::size_t      last
 )
 {
-    return result_container<Container>(
-        container.begin() + first_inclusive,
-        container.begin() + last_exclusive);
+    return result_container<container>(
+        ctr.begin() + first,
+        ctr.begin() + last);
 }
 
 /**
  *  @brief  Copy containers into one container.
  *
- *  @tparam  Container    A compatible container type.
- *  @param   container_a  The first container.
- *  @param   container_b  The second container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr_a      The first container.
+ *  @param   ctr_b      The second container.
  *  @return  Combined container as @c result_container .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto combine(
-    const Container &container_a,
-    const Container &container_b
+    const container &ctr_a,
+    const container &ctr_b
 )
 {
-    return result_container_nested<Container> {
-        result_container<Container>(container_a.begin(), container_a.end()),
-        result_container<Container>(container_b.begin(), container_b.end())
+    return result_container_nested<container> {
+        result_container<container>(ctr_a.begin(), ctr_a.end()),
+        result_container<container>(ctr_b.begin(), ctr_b.end())
     } | std::views::join
-      | std::ranges::to<result_container<Container>>();
+      | std::ranges::to<result_container<container>>();
 }
 
 /**
  *  @brief  Copy container and value into one container.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   value      A value of container's value type.
  *  @return  Value-appended container as @c result_container .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto combine(
-    const Container             &container,
-    const value_type<Container> &value
+    const container             &ctr,
+    const value_type<container> &value
 )
 {
-    return combine(container, result_container<Container> { value });
+    return combine(ctr, result_container<container> { value });
 }
 
 /**
  *  @brief  Filter out the occurrences of sequence from the container.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   pattern    A sequence to remove.
  *  @return  Filtered container as @c result_container .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto filter_out_seq(
-    const Container &container,
-    const Container &pattern
+    const container &ctr,
+    const container &pattern
 )
 {
-    return std::views::split(container, pattern)
+    return std::views::split(ctr, pattern)
          | std::views::join
-         | std::ranges::to<result_container<Container>>();
+         | std::ranges::to<result_container<container>>();
 }
 
 /**
  *  @brief  Filter out the occurrences of any of values from the container.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   values     The elements to remove.
  *  @return  Filtered container as @c result_container .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto filter_out_occ(
-    const Container &container,
-    const Container &values
+    const container &ctr,
+    const container &values
 )
 {
-    auto filterer = [&](const cu::value_type<Container> &element)
+    auto filterer = [&](const cu::value_type<container> &element)
     {
         return std::ranges::find(values, element) == values.end();
     };
 
-    return std::views::filter(container, filterer)
-         | std::ranges::to<result_container<Container>>();
+    return std::views::filter(ctr, filterer)
+         | std::ranges::to<result_container<container>>();
 }
 
 /**
  *  @brief  Filter out the occurrences of any of sequences from the container.
  *
- *  @tparam  Container        A compatible container type.
- *  @tparam  NestedContainer  A compatible container type nested container type.
- *  @param   container        A container.
- *  @param   patterns         The sequences to remove.
+ *  @tparam  container         A compatible container type.
+ *  @tparam  nested_container  A compatible nested container type.
+ *  @param   ctr               A container.
+ *  @param   patterns          The sequences to remove.
  *  @return  Filtered container as @c result_container .
  */
-template<cu_compatible Container, cu_compatible_nested NestedContainer>
+template<cu_compatible container, cu_compatible_nested nested_container>
 [[nodiscard]] inline constexpr auto filter_out_occ_seq(
-    const Container       &container,
-    const NestedContainer &patterns
+    const container       &ctr,
+    const nested_container &patterns
 )
 {
-    result_container<Container> result = container;
+    result_container<container> result = ctr;
     for (auto &pattern : patterns)
     {
         result = filter_out_seq(result, pattern);
@@ -1550,138 +1548,138 @@ template<cu_compatible Container, cu_compatible_nested NestedContainer>
 /**
  *  @brief  Filter out the occurrences of value from the container.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   value      A value to remove.
  *  @return  Filtered container as @c result_container .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto filter_out(
-    const Container             &container,
-    const value_type<Container> &value
+    const container             &ctr,
+    const value_type<container> &value
 )
 {
-    return filter_out_seq(container, result_container<Container> { value });
+    return filter_out_seq(ctr, result_container<container> { value });
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto repeat(
-    const Container &container,
+    const container &ctr,
     std::size_t      n
 )
 {
-    return std::views::repeat(container, n)
+    return std::views::repeat(ctr, n)
          | std::views::join
-         | std::ranges::to<result_container<Container>>();
+         | std::ranges::to<result_container<container>>();
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
  *  @see  @c std::size_t overload of @c repeat .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto repeat(
-    const Container &container,
+    const container &ctr,
     int              n
 )
 {
     // Performance-critical, don't use exceptions
     if (n < 0) n = 0;
-    return repeat(container, (std::size_t)n);
+    return repeat(ctr, (std::size_t)n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
  *  @see  @c std::size_t overload of @c repeat .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto repeat(
-    const Container &container,
+    const container &ctr,
     unsigned         n
 )
 {
-    return repeat(container, (std::size_t)n);
+    return repeat(ctr, (std::size_t)n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
  *  @see  @c std::size_t overload of @c repeat .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto repeat(
-    const Container &container,
+    const container &ctr,
     long             n
 )
 {
     // Performance-critical, don't use exceptions
     if (n < 0) n = 0;
-    return repeat(container, (std::size_t)n);
+    return repeat(ctr, (std::size_t)n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
  *  @see  @c std::size_t overload of @c repeat .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto repeat(
-    const Container &container,
+    const container &ctr,
     long long        n
 )
 {
     // Performance-critical, don't use exceptions
     if (n < 0) n = 0;
-    return repeat(container, (std::size_t)n);
+    return repeat(ctr, (std::size_t)n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
  *  @see  @c std::size_t overload of @c repeat .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto repeat(
-    const Container   &container,
+    const container   &ctr,
     unsigned long long n
 )
 {
-    return repeat(container, (std::size_t)n);
+    return repeat(ctr, (std::size_t)n);
 }
 
 /**
@@ -1692,16 +1690,16 @@ template<cu_compatible Container>
  *  added with subordinate container with `round(0.f * container.size())`
  *  elements from the beginning.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
  *  @note  This is scuffed.
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto repeat(
-    const Container &container,
+    const container &ctr,
     long double      n
 )
 {
@@ -1711,95 +1709,95 @@ template<cu_compatible Container>
     long double i_part         = 0.0l;
     long double f_part         = std::modf(n, &i_part);
     std::size_t regular_repeat = i_part;
-    std::size_t sub_size       = std::floor(f_part * container.size());
-    Container   sub = subordinate(container, 0, sub_size);
+    std::size_t sub_size       = std::floor(f_part * ctr.size());
+    container   sub = subordinate(ctr, 0, sub_size);
 
-    return combine(repeat(container, regular_repeat), sub);
+    return combine(repeat(ctr, regular_repeat), sub);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
  *  @note  This is scuffed.
  *  @see  `long double` overload of @c repeat .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto repeat(
-    const Container &container,
+    const container &ctr,
     float            n
 )
 {
-    return repeat(container, (long double)n);
+    return repeat(ctr, (long double)n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
  *  @note  This is scuffed.
  *  @see  `long double` overload of @c repeat .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto repeat(
-    const Container &container,
+    const container &ctr,
     double           n
 )
 {
-    return repeat(container, (long double)n);
+    return repeat(ctr, (long double)n);
 }
 
 /**
  *  @brief  Split the container with pattern.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   pattern    A pattern to split with.
  *  @return  Split container as @c result_container_nested .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto split_seq(
-    const Container &container,
-    const Container &pattern
+    const container &ctr,
+    const container &pattern
 )
 {
-    return std::views::split(container, pattern)
-         | std::ranges::to<result_container_nested<Container>>();
+    return std::views::split(ctr, pattern)
+         | std::ranges::to<result_container_nested<container>>();
 }
 
 /**
  *  @brief  Split the container with occurrences of value.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   values     The values to split with.
  *  @return  Split container as @c result_container_nested .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto split_occ(
-    const Container &container,
-    const Container &values
+    const container &ctr,
+    const container &values
 )
 {
     // Couldn't find standard library to do this heavy job, so...
-    result_container_nested<Container> result;
-    auto it = container.begin();
+    result_container_nested<container> result;
+    auto it = ctr.begin();
 
-    while (it != container.end())
+    while (it != ctr.end())
     {
-        auto next_it = std::find_first_of(it, container.end(), values.begin(),
+        auto next_it = std::find_first_of(it, ctr.end(), values.begin(),
             values.end());
-        result.emplace_back(result_container<Container>(it, next_it));
+        result.emplace_back(result_container<container>(it, next_it));
         it = next_it;
-        if (it != container.end()) ++it;
+        if (it != ctr.end()) ++it;
     }
 
     return result;
@@ -1808,30 +1806,30 @@ template<cu_compatible Container>
 /**
  *  @brief  Split the container with occurrences of any of pattern.
  *
- *  @tparam  Container        A compatible container type.
- *  @tparam  NestedContainer  A compatible container type nested container type.
- *  @param   container        A container.
+ *  @tparam  container        A compatible container type.
+ *  @tparam  nested_container  A compatible container type nested container type.
+ *  @param   ctr              A container.
  *  @param   patterns         The patterns to split with.
  *  @return  Split container as @c result_container_nested .
  */
-template<cu_compatible Container, cu_compatible_nested NestedContainer>
+template<cu_compatible container, cu_compatible_nested nested_container>
 [[nodiscard]] inline constexpr auto split_occ_seq(
-    const Container       &container,
-    const NestedContainer &patterns
+    const container       &ctr,
+    const nested_container &patterns
 )
 {
     // Again couldn't find standard library to do this heavy job, so...
-    result_container_nested<Container> result;
-    auto it = container.begin();
+    result_container_nested<container> result;
+    auto it = ctr.begin();
 
-    while (it != container.end())
+    while (it != ctr.end())
     {
-        auto        next_it      = container.end();
+        auto        next_it      = ctr.end();
         std::size_t pattern_size = (std::size_t)-1;
         for (auto &pattern : patterns)
         {
             // Use std::search instead of std::find_first_of to find sequence
-            auto tmp = std::search(it, container.end(), pattern.begin(),
+            auto tmp = std::search(it, ctr.end(), pattern.begin(),
                 pattern.end());
 
             if (next_it > tmp)
@@ -1841,9 +1839,9 @@ template<cu_compatible Container, cu_compatible_nested NestedContainer>
             }
         }
 
-        result.emplace_back(result_container<Container>(it, next_it));
+        result.emplace_back(result_container<container>(it, next_it));
         it = next_it;
-        if (it != container.end()) it += pattern_size;
+        if (it != ctr.end()) it += pattern_size;
     }
 
     return result;
@@ -1852,18 +1850,18 @@ template<cu_compatible Container, cu_compatible_nested NestedContainer>
 /**
  *  @brief  Split the container with value.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   value      A value to split with.
  *  @return  Split container as @c result_container_nested .
  */
-template<cu_compatible Container>
+template<cu_compatible container>
 [[nodiscard]] inline constexpr auto split(
-    const Container             &container,
-    const value_type<Container> &value
+    const container             &ctr,
+    const value_type<container> &value
 )
 {
-    return split_seq(container, result_container<Container> { value });
+    return split_seq(ctr, result_container<container> { value });
 }
 
 } // namespace cu
@@ -1876,50 +1874,50 @@ namespace cu_operators {
 /**
  *  @brief  Copy containers into one container.
  *
- *  @tparam  Container    A compatible container type.
- *  @param   container_a  The first container.
- *  @param   container_b  The second container.
+ *  @tparam  container    A compatible container type.
+ *  @param   ctr      _a  The first container.
+ *  @param   ctr      _b  The second container.
  *  @return  Combined container as @c result_container .
  *
  *  @see  cu::combine.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator+ (
-    const Container &container_a,
-    const Container &container_b
+    const container &ctr_a,
+    const container &ctr_b
 )
 {
-    return cu::combine(container_a, container_b);
+    return cu::combine(ctr_a, ctr_b);
 }
 
 /**
  *  @brief  Copy container and value into one container.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   value      A value of container's value type.
  *  @return  Value-appended container as @c result_container .
  *
  *  @see  cu::combine.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator+ (
-    const Container                 &container_a,
-    const cu::value_type<Container> &value
+    const container                 &ctr_a,
+    const cu::value_type<container> &value
 )
 {
-    return cu::combine(container_a, value);
+    return cu::combine(ctr_a, value);
 }
 
 /**
  *  @brief  Filter out the occurrences of sequence from the container.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   pattern    A sequence to remove.
  *  @return  Filtered container as @c result_container .
  *
@@ -1928,22 +1926,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::filter_out_seq.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator- (
-    const Container &container,
-    const Container &pattern
+    const container &ctr,
+    const container &pattern
 )
 {
-    return cu::filter_out_seq(container, pattern);
+    return cu::filter_out_seq(ctr, pattern);
 }
 
 /**
  *  @brief  Filter out the occurrences of value from the container.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   value      A value to remove.
  *  @return  Filtered container as @c result_container .
  *
@@ -1952,22 +1950,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::filter_out.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator- (
-    const Container                 &container,
-    const cu::value_type<Container> &value
+    const container                 &ctr,
+    const cu::value_type<container> &value
 )
 {
-    return cu::filter_out(container, value);
+    return cu::filter_out(ctr, value);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
@@ -1976,22 +1974,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::repeat.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
-    const Container &container,
+    const container &ctr,
     int              n
 )
 {
-    return cu::repeat(container, n);
+    return cu::repeat(ctr, n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
@@ -2000,22 +1998,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::repeat.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
-    const Container &container,
+    const container &ctr,
     unsigned         n
 )
 {
-    return cu::repeat(container, n);
+    return cu::repeat(ctr, n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
@@ -2024,22 +2022,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::repeat.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
-    const Container &container,
+    const container &ctr,
     long             n
 )
 {
-    return cu::repeat(container, n);
+    return cu::repeat(ctr, n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
@@ -2048,22 +2046,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::repeat.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
-    const Container &container,
+    const container &ctr,
     unsigned long    n
 )
 {
-    return cu::repeat(container, n);
+    return cu::repeat(ctr, n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
@@ -2072,22 +2070,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::repeat.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
-    const Container &container,
+    const container &ctr,
     long long        n
 )
 {
-    return cu::repeat(container, n);
+    return cu::repeat(ctr, n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
@@ -2096,22 +2094,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::repeat.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
-    const Container   &container,
+    const container   &ctr,
     unsigned long long n
 )
 {
-    return cu::repeat(container, n);
+    return cu::repeat(ctr, n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
@@ -2120,22 +2118,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::repeat.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
-    const Container &container,
+    const container &ctr,
     float            n
 )
 {
-    return cu::repeat(container, n);
+    return cu::repeat(ctr, n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
@@ -2144,22 +2142,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::repeat.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
-    const Container &container,
+    const container &ctr,
     double           n
 )
 {
-    return cu::repeat(container, n);
+    return cu::repeat(ctr, n);
 }
 
 /**
  *  @brief  Repeat container @c n times.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   n          The number of times to repeat.
  *  @return  Repeated container as @c result_container .
  *
@@ -2168,22 +2166,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::repeat.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator* (
-    const Container &container,
+    const container &ctr,
     long double      n
 )
 {
-    return cu::repeat(container, n);
+    return cu::repeat(ctr, n);
 }
 
 /**
  *  @brief  Split the container with pattern.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   pattern    A pattern to split with.
  *  @return  Split container as @c result_container_nested .
  *
@@ -2192,22 +2190,22 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::split_seq.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator/ (
-    const Container &container,
-    const Container &pattern
+    const container &ctr,
+    const container &pattern
 )
 {
-    return cu::split_seq(container, pattern);
+    return cu::split_seq(ctr, pattern);
 }
 
 /**
  *  @brief  Split the container with value.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   value      A value to split with.
  *  @return  Split container as @c result_container_nested .
  *
@@ -2216,15 +2214,15 @@ requires(!std::is_same_v<Container, std::string>
  *
  *  @see  cu::split.
  */
-template<cu::cu_compatible Container>
-requires(!std::is_same_v<Container, std::string>
-      && !std::is_same_v<Container, std::string_view>)
+template<cu::cu_compatible container>
+requires(!std::is_same_v<container, std::string>
+      && !std::is_same_v<container, std::string_view>)
 [[nodiscard]] inline constexpr auto operator/ (
-    const Container                 &container,
-    const cu::value_type<Container> &value
+    const container                 &ctr,
+    const cu::value_type<container> &value
 )
 {
-    return cu::split(container, value);
+    return cu::split(ctr, value);
 }
 
 } // namespace cu_operators
@@ -2236,24 +2234,24 @@ namespace std {
 /**
  *  @brief  Formatter for @c cu::boundless_basic_string .
  *
- *  @tparam  CharT   The character type.
- *  @tparam  Traits  The character traits type.
- *  @tparam  Alloc   The allocator type, defaults to @c std::allocator<CharT> .
+ *  @tparam  char_type   The character type.
+ *  @tparam  traits  The character traits type.
+ *  @tparam  alloc   The allocator type, defaults to @c std::allocator<char_type> .
  */
-template<typename CharT, typename Traits, typename Alloc>
-struct formatter<alce::cu::boundless_basic_string<CharT,
-    Traits, Alloc>, CharT> {
+template<typename char_type, typename traits, typename alloc>
+struct formatter<alce::cu::boundless_basic_string<char_type,
+    traits, alloc>, char_type> {
 
     /**
      *  @brief  Parse the format specifiers (none).
      *
-     *  @tparam  ParseContext  A parse context type.
+     *  @tparam  parse_context  A parse context type.
      *  @param   ctx           A parse context.
      *  @return  Iterator to begin of parse context.
      */
-    template<typename ParseContext>
-    [[nodiscard]] inline constexpr auto parse(ParseContext &ctx)
-    -> ParseContext::iterator
+    template<typename parse_context>
+    [[nodiscard]] inline constexpr auto parse(parse_context &ctx)
+    -> parse_context::iterator
     {
         // No format specifiers
         return ctx.begin();
@@ -2262,16 +2260,16 @@ struct formatter<alce::cu::boundless_basic_string<CharT,
     /**
      *  @brief  Format the string using parsed specifiers (none).
      *
-     *  @tparam  FormatContext  A format context type.
+     *  @tparam  format_context  A format context type.
      *  @param   string         The string to format.
      *  @param   ctx            A format context.
      *  @return  Iterator to end of format context.
      */
-    template<typename FormatContext>
+    template<typename format_context>
     [[nodiscard]] inline constexpr auto format(
-        const alce::cu::boundless_basic_string<CharT, Traits,
-            Alloc>    &string,
-        FormatContext &ctx
+        const alce::cu::boundless_basic_string<char_type, traits,
+            alloc>    &string,
+        format_context &ctx
     ) const
     {
         return std::ranges::copy(string, ctx.out()).out;
@@ -2281,22 +2279,22 @@ struct formatter<alce::cu::boundless_basic_string<CharT,
 /**
  *  @brief  Formatter for @c cu::boundless_basic_string_view .
  *
- *  @tparam  CharT   The character type.
- *  @tparam  Traits  The character traits type.
+ *  @tparam  char_type   The character type.
+ *  @tparam  traits  The character traits type.
  */
-template<typename CharT, typename Traits>
-struct formatter<alce::cu::boundless_basic_string_view<CharT,
-    Traits>, CharT> {
+template<typename char_type, typename traits>
+struct formatter<alce::cu::boundless_basic_string_view<char_type,
+    traits>, char_type> {
 
     /**
      *  @brief  Parse the format specifiers (none).
      *
-     *  @tparam  ParseContext  A parse context type.
-     *  @param   ctx           A parse context.
+     *  @tparam  parse_context  A parse context type.
+     *  @param   ctx            A parse context.
      *  @return  Iterator to begin of parse context.
      */
-    template<typename ParseContext>
-    [[nodiscard]] inline constexpr auto parse(ParseContext &ctx)
+    template<typename parse_context>
+    [[nodiscard]] inline constexpr auto parse(parse_context &ctx)
     {
         // No format specifiers
         return ctx.begin();
@@ -2305,16 +2303,16 @@ struct formatter<alce::cu::boundless_basic_string_view<CharT,
     /**
      *  @brief  Format the string using parsed specifiers (none).
      *
-     *  @tparam  FormatContext  A format context type.
-     *  @param   string         The string to format.
-     *  @param   ctx            A format context.
+     *  @tparam  format_context  A format context type.
+     *  @param   string          The string to format.
+     *  @param   ctx             A format context.
      *  @return  Iterator to end of format context.
      */
-    template<typename FormatContext>
+    template<typename format_context>
     [[nodiscard]] inline constexpr auto format(
-        const alce::cu::boundless_basic_string_view<CharT,
-            Traits>   &string,
-        FormatContext &ctx
+        const alce::cu::boundless_basic_string_view<char_type,
+            traits>   &string,
+        format_context &ctx
     ) const
     {
         return std::ranges::copy(string, ctx.out()).out;

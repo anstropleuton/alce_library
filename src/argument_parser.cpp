@@ -715,9 +715,9 @@ static inline constexpr auto subcommands_sanity_checker(
 /**
  *  @brief  Abstract helper to add name to the option_line.
  *
- *  @tparam  Container          A container of compatible type.
- *  @tparam  GetName            A function type to get the name from element.
- *  @param   container          A container of elements to get name from.
+ *  @tparam  container          A container of compatible type.
+ *  @tparam  get_name_t         A function type to get the name from element.
+ *  @param   ctr                A container of elements to get name from.
  *  @param   separator          A separator.
  *  @param   wrap_pad           The padding for wrapped line.
  *  @param   wrap_width         The max width to wrap at.
@@ -725,20 +725,20 @@ static inline constexpr auto subcommands_sanity_checker(
  *  @param   option_lines       All the option lines (local variable).
  *  @param   get_name           Function to get the name from element.
  */
-template<cu::cu_compatible Container, typename GetName>
+template<cu::cu_compatible container, typename get_name_t>
 static inline constexpr auto add_names(
-    const Container                  &container,
+    const container                  &ctr,
     ap::styled_text                   separator,
     ap::styled_padding                wrap_pad,
     std::size_t                       wrap_width,
     ap::measured_string              &current_line,
     std::vector<ap::measured_string> &option_lines,
-    GetName                           get_name
+    get_name_t                           get_name
 )
 {
-    for (std::size_t i = 0; i < std::size(container); i++)
+    for (std::size_t i = 0; i < std::size(ctr); i++)
     {
-        auto &element = *(std::begin(container) + i);
+        auto &element = *(std::begin(ctr) + i);
 
         ap::measured_string name = {};
 

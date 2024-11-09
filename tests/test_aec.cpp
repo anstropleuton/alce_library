@@ -144,12 +144,12 @@ using namespace aec_operators;
         "Combined (bold, strike, bright red):"
     );
 
-    aec::aec_t combined_1 = aec::bold + aec::strike + aec::bright_red;
-    aec::aec_t combined_2 = aec::bold * aec::strike * aec::bright_red;
-    aec::aec_t combined_3 = aec::bold & aec::strike & aec::bright_red;
-    aec::aec_t combined_4 = aec::bold | aec::strike | aec::bright_red;
-    aec::aec_t combined_5 = aec::bold && aec::strike && aec::bright_red;
-    aec::aec_t combined_6 = aec::bold || aec::strike || aec::bright_red;
+    aec::aec combined_1 = aec::bold + aec::strike + aec::bright_red;
+    aec::aec combined_2 = aec::bold * aec::strike * aec::bright_red;
+    aec::aec combined_3 = aec::bold & aec::strike & aec::bright_red;
+    aec::aec combined_4 = aec::bold | aec::strike | aec::bright_red;
+    aec::aec combined_5 = aec::bold && aec::strike && aec::bright_red;
+    aec::aec combined_6 = aec::bold || aec::strike || aec::bright_red;
 
     std::println(" {}", combined_1("text"));
     std::println(" {}", combined_2("text"));

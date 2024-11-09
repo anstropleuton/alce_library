@@ -117,26 +117,26 @@ struct sd_chunk {
 /**
  *  @brief  Convert an object to a chunk.
  *
- *  @tparam  T  A trivially copyable type.
- *  @param   t  A trivially copyable value.
+ *  @tparam  type  A trivially copyable type.
+ *  @param   t     A trivially copyable value.
  *  @return  A newly allocated chunk.  Memory allocation failure may occur.
  *
  *  @note  Use @c delete_sd_chunk to free the allocated memory.
  */
-template<typename T>
-requires(std::is_trivially_copyable_v<T>)
-[[nodiscard]] inline constexpr auto to_new_sd_chunk(const T &t) -> sd_chunk;
+template<typename type>
+requires(std::is_trivially_copyable_v<type>)
+[[nodiscard]] inline constexpr auto to_new_sd_chunk(const type &t) -> sd_chunk;
 
 /**
  *  @brief  Convert a chunk to an object.
  *
- *  @tparam  T      A trivially copyable chunk.
+ *  @tparam  type   A trivially copyable chunk.
  *  @param   chunk  A chunk with memory layout of type @c T .
  *  @return  An object of T with memory layout of the chunk.
  */
-template<typename T>
-requires(std::is_trivially_copyable_v<T>)
-[[nodiscard]] inline constexpr auto from_sd_chunk(sd_chunk chunk) -> T;
+template<typename type>
+requires(std::is_trivially_copyable_v<type>)
+[[nodiscard]] inline constexpr auto from_sd_chunk(sd_chunk chunk) -> type;
 
 /**
  *  @brief  Delete the memory of a chunk.

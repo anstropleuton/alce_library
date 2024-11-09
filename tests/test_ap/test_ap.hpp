@@ -162,12 +162,12 @@ struct std::formatter<ap::parsed_argument> {
     /**
      *  @brief  Parse format specifier
      *
-     *  @tparam  ParseContext  Parsing context type.
-     *  @param   pc            Parsing context.
+     *  @tparam  parse_context  Parsing context type.
+     *  @param   pc             Parsing context.
      *  @return  Iterator to end of format specifier.
      */
-    template<typename ParseContext>
-    [[nodiscard]] inline constexpr auto parse(ParseContext &pc)
+    template<typename parse_context>
+    [[nodiscard]] inline constexpr auto parse(parse_context &pc)
     {
         auto it = pc.begin();
         if (it == pc.end())
@@ -188,14 +188,14 @@ struct std::formatter<ap::parsed_argument> {
     /**
      *  @brief  Format the object and convert to string.
      *
-     *  @tparam  FormatContext    Formatting context type.
+     *  @tparam  format_context   Formatting context type.
      *  @param   parsed_argument  Object to convert to string.
      *  @param   fc               Formatting context.
      *  @return  Formatted string representing the object.
      */
-    template<typename FormatContext>
+    template<typename format_context>
     [[nodiscard]] inline constexpr auto format(
-        const ap::parsed_argument &parsed_argument, FormatContext &fc) const
+        const ap::parsed_argument &parsed_argument, format_context &fc) const
     {
         return std::format_to(fc.out(), "\"{}\" (\"{}\")",
             parsed_argument.argument.original,
@@ -289,8 +289,8 @@ struct std::formatter<ap::parsed_argument> {
  *  @brief  Generate combination of indices from @c min_index up to
  *          @c max_index, and run the function.
  *
- *  @tparam  Func       Type of function.
- *  @tparam  Args       Type of additional arguments to function.
+ *  @tparam  func_type  Type of function.
+ *  @tparam  args_type  Type of additional arguments to function.
  *  @param   combo      Current combination of indices.
  *  @param   min_index  Min size for indices (inclusive).
  *  @param   max_index  Max size for indices (exclusive).
@@ -298,26 +298,26 @@ struct std::formatter<ap::parsed_argument> {
  *  @param   func       Function to call with combination.
  *  @param   args       Additional arguments for function call.
  */
-template<typename Func, typename... Args>
+template<typename func_type, typename ... args_type>
 static auto generate_combo(
     std::vector<std::size_t> &combo,
     std::size_t               min_index,
     std::size_t               max_index,
     std::size_t               depth,
-    Func                      func,
-    Args &&...                args
+    func_type                 func,
+    args_type &&...           args
 )
 {
     if (depth == 0)
     {
-        func(combo, args...);
+        func(combo, args ...);
         return;
     }
 
     for (std::size_t i = min_index; i < max_index; i++)
     {
         combo.emplace_back(i);
-        generate_combo(combo, min_index, max_index, depth - 1, func, args...);
+        generate_combo(combo, min_index, max_index, depth - 1, func, args ...);
         combo.pop_back();
     }
 }
@@ -326,8 +326,8 @@ static auto generate_combo(
  *  @brief  Generate multiple combination up to @c max_combos of indices from
  *          @c min_index up to @c max_index, and run the function.
  *
- *  @tparam  Func        Type of function.
- *  @tparam  Args        Type of additional arguments to function.
+ *  @tparam  func_type        Type of function.
+ *  @tparam  args_type        Type of additional arguments to function.
  *  @param   min_index   Min size for indices (inclusive).
  *  @param   max_index   Max size for indices (exclusive).
  *  @param   max_combos  Min combination (size) of indices (inclusive).
@@ -335,20 +335,20 @@ static auto generate_combo(
  *  @param   func        Function to call with combination.
  *  @param   args        Additional arguments for function call.
  */
-template<typename Func, typename... Args>
+template<typename func_type, typename ... args_type>
 static auto run_combo(
-    std::size_t min_index,
-    std::size_t max_index,
-    std::size_t min_combos,
-    std::size_t max_combos,
-    Func        func,
-    Args &&...  args
+    std::size_t     min_index,
+    std::size_t     max_index,
+    std::size_t     min_combos,
+    std::size_t     max_combos,
+    func_type       func,
+    args_type &&... args
 )
 {
     std::vector<std::size_t> combo = {};
     for (std::size_t i = min_combos; i < max_combos; i++)
     {
-        generate_combo(combo, min_index, max_index, i, func, args...);
+        generate_combo(combo, min_index, max_index, i, func, args ...);
     }
 }
 

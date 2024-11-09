@@ -1,5 +1,0 @@
-var structstd_1_1formatter_3_01alce_1_1cu_1_1boundless__basic__string__view_3_01CharT_00_01Traits_01_4_00_01CharT_01_4 =
-[
-    [ "parse", "structstd_1_1formatter_3_01alce_1_1cu_1_1boundless__basic__string__view_3_01CharT_00_01Traits_01_4_00_01CharT_01_4.html#ab43336db093ccc2c05889c1984a05773", null ],
-    [ "format", "structstd_1_1formatter_3_01alce_1_1cu_1_1boundless__basic__string__view_3_01CharT_00_01Traits_01_4_00_01CharT_01_4.html#a519f297dd085cc7401b31a9e859d0431", null ]
-];

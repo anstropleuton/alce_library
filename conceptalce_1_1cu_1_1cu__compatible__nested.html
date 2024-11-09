@@ -122,10 +122,10 @@ $(document).ready(function(){initNavTree('conceptalce_1_1cu_1_1cu__compatible__n
 
 <p><code>#include &lt;<a class="el" href="alce__container__utilities_8hpp_source.html">alce_container_utilities.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
-<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Container&gt;</div>
+<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> container&gt;</div>
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptalce_1_1cu_1_1cu__compatible__nested.html">alce::cu::cu_compatible_nested</a> = </div>
-<div class="line">    <a class="code hl_concept" href="conceptalce_1_1cu_1_1cu__compatible.html">cu_compatible&lt;Container&gt;</a></div>
-<div class="line"> &amp;&amp; <a class="code hl_concept" href="conceptalce_1_1cu_1_1cu__compatible.html">cu_compatible&lt;value_type&lt;Container&gt;</a>&gt;</div>
+<div class="line">    <a class="code hl_concept" href="conceptalce_1_1cu_1_1cu__compatible.html">cu_compatible&lt;container&gt;</a></div>
+<div class="line"> &amp;&amp; <a class="code hl_concept" href="conceptalce_1_1cu_1_1cu__compatible.html">cu_compatible&lt;value_type&lt;container&gt;</a>&gt;</div>
 <div class="ttc" id="aconceptalce_1_1cu_1_1cu__compatible__nested_html"><div class="ttname"><a href="conceptalce_1_1cu_1_1cu__compatible__nested.html">alce::cu::cu_compatible_nested</a></div><div class="ttdoc">Nested container compatible for Container Utilities.</div><div class="ttdef"><b>Definition:</b> alce_container_utilities.hpp:114</div></div>
 <div class="ttc" id="aconceptalce_1_1cu_1_1cu__compatible_html"><div class="ttname"><a href="conceptalce_1_1cu_1_1cu__compatible.html">alce::cu::cu_compatible</a></div><div class="ttdoc">Container compatible for Container Utilities.</div><div class="ttdef"><b>Definition:</b> alce_container_utilities.hpp:78</div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -133,7 +133,7 @@ $(document).ready(function(){initNavTree('conceptalce_1_1cu_1_1cu__compatible__n
 <p>The container and it's value type must satisfy <code>cu_compatible</code> .</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Container</td><td>The container type. </td></tr>
+    <tr><td class="paramname">container</td><td>The container type. </td></tr>
   </table>
   </dd>
 </dl>

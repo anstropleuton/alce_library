@@ -94,7 +94,7 @@ inline constinit std::string_view csi = "\x1b\x5b";
               << "Still bold text" << ~bold << std::endl;
     ```
  */
-struct aec_t {
+struct aec {
 
     /**
      *  @brief  Set up escape code sequence before text.
@@ -166,54 +166,54 @@ struct aec_t {
  *  @param  b  The second AEC.
  *  @return  Combined AEC.
  */
-[[nodiscard]] inline constexpr auto combine(const aec_t a, const aec_t b)
+[[nodiscard]] inline constexpr auto combine(const aec a, const aec b)
 {
-    return aec_t { a.setter + b.setter, a.resetter + b.resetter };
+    return aec { a.setter + b.setter, a.resetter + b.resetter };
 }
 
 ///  @todo  Add more AECs.
 
-inline const aec_t reset         = { sgr("0"), sgr("0") };
-inline const aec_t bold          = { sgr("1"), sgr("22") };
-inline const aec_t faint         = { sgr("2"), sgr("22") };
-inline const aec_t italic        = { sgr("3"), sgr("23") };
-inline const aec_t underline     = { sgr("4"), sgr("24") };
-inline const aec_t reverse_video = { sgr("7"), sgr("27") };
-inline const aec_t strike        = { sgr("9"), sgr("29") };
+inline const aec reset         = { sgr("0"), sgr("0") };
+inline const aec bold          = { sgr("1"), sgr("22") };
+inline const aec faint         = { sgr("2"), sgr("22") };
+inline const aec italic        = { sgr("3"), sgr("23") };
+inline const aec underline     = { sgr("4"), sgr("24") };
+inline const aec reverse_video = { sgr("7"), sgr("27") };
+inline const aec strike        = { sgr("9"), sgr("29") };
 
-inline const aec_t black          = { sgr("30"), sgr("39") };
-inline const aec_t red            = { sgr("31"), sgr("39") };
-inline const aec_t green          = { sgr("32"), sgr("39") };
-inline const aec_t yellow         = { sgr("33"), sgr("39") };
-inline const aec_t blue           = { sgr("34"), sgr("39") };
-inline const aec_t magenta        = { sgr("35"), sgr("39") };
-inline const aec_t cyan           = { sgr("36"), sgr("39") };
-inline const aec_t white          = { sgr("37"), sgr("39") };
-inline const aec_t gray           = { sgr("90"), sgr("39") };
-inline const aec_t bright_red     = { sgr("91"), sgr("39") };
-inline const aec_t bright_green   = { sgr("92"), sgr("39") };
-inline const aec_t bright_yellow  = { sgr("93"), sgr("39") };
-inline const aec_t bright_blue    = { sgr("94"), sgr("39") };
-inline const aec_t bright_magenta = { sgr("95"), sgr("39") };
-inline const aec_t bright_cyan    = { sgr("96"), sgr("39") };
-inline const aec_t bright_white   = { sgr("97"), sgr("39") };
+inline const aec black          = { sgr("30"), sgr("39") };
+inline const aec red            = { sgr("31"), sgr("39") };
+inline const aec green          = { sgr("32"), sgr("39") };
+inline const aec yellow         = { sgr("33"), sgr("39") };
+inline const aec blue           = { sgr("34"), sgr("39") };
+inline const aec magenta        = { sgr("35"), sgr("39") };
+inline const aec cyan           = { sgr("36"), sgr("39") };
+inline const aec white          = { sgr("37"), sgr("39") };
+inline const aec gray           = { sgr("90"), sgr("39") };
+inline const aec bright_red     = { sgr("91"), sgr("39") };
+inline const aec bright_green   = { sgr("92"), sgr("39") };
+inline const aec bright_yellow  = { sgr("93"), sgr("39") };
+inline const aec bright_blue    = { sgr("94"), sgr("39") };
+inline const aec bright_magenta = { sgr("95"), sgr("39") };
+inline const aec bright_cyan    = { sgr("96"), sgr("39") };
+inline const aec bright_white   = { sgr("97"), sgr("39") };
 
-inline const aec_t black_bg          = { sgr("40"), sgr("49") };
-inline const aec_t red_bg            = { sgr("41"), sgr("49") };
-inline const aec_t green_bg          = { sgr("42"), sgr("49") };
-inline const aec_t yellow_bg         = { sgr("43"), sgr("49") };
-inline const aec_t blue_bg           = { sgr("44"), sgr("49") };
-inline const aec_t magenta_bg        = { sgr("45"), sgr("49") };
-inline const aec_t cyan_bg           = { sgr("46"), sgr("49") };
-inline const aec_t white_bg          = { sgr("47"), sgr("49") };
-inline const aec_t gray_bg           = { sgr("100"), sgr("49") };
-inline const aec_t bright_red_bg     = { sgr("101"), sgr("49") };
-inline const aec_t bright_green_bg   = { sgr("102"), sgr("49") };
-inline const aec_t bright_yellow_bg  = { sgr("103"), sgr("49") };
-inline const aec_t bright_blue_bg    = { sgr("104"), sgr("49") };
-inline const aec_t bright_magenta_bg = { sgr("105"), sgr("49") };
-inline const aec_t bright_cyan_bg    = { sgr("106"), sgr("49") };
-inline const aec_t bright_white_bg   = { sgr("107"), sgr("49") };
+inline const aec black_bg          = { sgr("40"), sgr("49") };
+inline const aec red_bg            = { sgr("41"), sgr("49") };
+inline const aec green_bg          = { sgr("42"), sgr("49") };
+inline const aec yellow_bg         = { sgr("43"), sgr("49") };
+inline const aec blue_bg           = { sgr("44"), sgr("49") };
+inline const aec magenta_bg        = { sgr("45"), sgr("49") };
+inline const aec cyan_bg           = { sgr("46"), sgr("49") };
+inline const aec white_bg          = { sgr("47"), sgr("49") };
+inline const aec gray_bg           = { sgr("100"), sgr("49") };
+inline const aec bright_red_bg     = { sgr("101"), sgr("49") };
+inline const aec bright_green_bg   = { sgr("102"), sgr("49") };
+inline const aec bright_yellow_bg  = { sgr("103"), sgr("49") };
+inline const aec bright_blue_bg    = { sgr("104"), sgr("49") };
+inline const aec bright_magenta_bg = { sgr("105"), sgr("49") };
+inline const aec bright_cyan_bg    = { sgr("106"), sgr("49") };
+inline const aec bright_white_bg   = { sgr("107"), sgr("49") };
 
 } // namespace aec
 
@@ -231,7 +231,7 @@ namespace aec_operators {
  */
 [[nodiscard]] inline constexpr auto operator<< (
     std::ostream     &ostream,
-    const aec::aec_t &aec
+    const aec::aec &aec
 ) -> std::ostream &
 {
     ostream << std::string(aec);
@@ -246,8 +246,8 @@ namespace aec_operators {
  *  @return  Combined AEC.
  */
 [[nodiscard]] inline constexpr auto operator+ (
-    const aec::aec_t &a,
-    const aec::aec_t &b
+    const aec::aec &a,
+    const aec::aec &b
 )
 {
     return aec::combine(a, b);
@@ -261,8 +261,8 @@ namespace aec_operators {
  *  @return  Combined AEC.
  */
 [[nodiscard]] inline constexpr auto operator* (
-    const aec::aec_t &a,
-    const aec::aec_t &b
+    const aec::aec &a,
+    const aec::aec &b
 )
 {
     return aec::combine(a, b);
@@ -276,8 +276,8 @@ namespace aec_operators {
  *  @return  Combined AEC.
  */
 [[nodiscard]] inline constexpr auto operator& (
-    const aec::aec_t &a,
-    const aec::aec_t &b
+    const aec::aec &a,
+    const aec::aec &b
 )
 {
     return aec::combine(a, b);
@@ -291,8 +291,8 @@ namespace aec_operators {
  *  @return  Combined AEC.
  */
 [[nodiscard]] inline constexpr auto operator| (
-    const aec::aec_t &a,
-    const aec::aec_t &b
+    const aec::aec &a,
+    const aec::aec &b
 )
 {
     return aec::combine(a, b);
@@ -306,8 +306,8 @@ namespace aec_operators {
  *  @return  Combined AEC.
  */
 [[nodiscard]] inline constexpr auto operator&& (
-    const aec::aec_t &a,
-    const aec::aec_t &b
+    const aec::aec &a,
+    const aec::aec &b
 )
 {
     return aec::combine(a, b);
@@ -321,8 +321,8 @@ namespace aec_operators {
  *  @return  Combined AEC.
  */
 [[nodiscard]] inline constexpr auto operator|| (
-    const aec::aec_t &a,
-    const aec::aec_t &b
+    const aec::aec &a,
+    const aec::aec &b
 )
 {
     return aec::combine(a, b);
@@ -335,23 +335,23 @@ namespace aec_operators {
 namespace std {
 
 /**
- *  @brief  Formatter for @c aec::aec_t .
+ *  @brief  Formatter for @c aec::aec .
  *
- *  @param  CharT  The character type.
+ *  @param  char_typeype  The character type.
  */
-template<typename CharT>
-struct formatter<alce::aec::aec_t, CharT> {
+template<typename char_typeype>
+struct formatter<alce::aec::aec, char_typeype> {
 
     /**
      *  @brief  Parse the format specifiers (none).
      *
-     *  @tparam  ParseContext  A parse context type.
+     *  @tparam  parse_context  A parse context type.
      *  @param   ctx           A parse context.
      *  @return  Iterator to begin of parse context.
      */
-    template<typename ParseContext>
-    [[nodiscard]] inline constexpr auto parse(ParseContext &ctx)
-    -> ParseContext::iterator
+    template<typename parse_context>
+    [[nodiscard]] inline constexpr auto parse(parse_context &ctx)
+    -> parse_context::iterator
     {
         // No format specifiers
         return ctx.begin();
@@ -360,15 +360,15 @@ struct formatter<alce::aec::aec_t, CharT> {
     /**
      *  @brief  Format the string using parsed specifiers (none).
      *
-     *  @tparam  FormatContext  A format context type.
+     *  @tparam  format_context  A format context type.
      *  @param   aec            The AEC to format.
      *  @param   ctx            A format context.
      *  @return  Iterator to end of format context.
      */
-    template<typename FormatContext>
+    template<typename format_context>
     [[nodiscard]] inline constexpr auto format(
-        const alce::aec::aec_t &aec,
-        FormatContext          &ctx
+        const alce::aec::aec &aec,
+        format_context          &ctx
     ) const
     {
         return std::ranges::copy((std::string)aec, ctx.out()).out;

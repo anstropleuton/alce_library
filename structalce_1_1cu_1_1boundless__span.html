@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Alce Library: alce::cu::boundless_span&lt; T, Extent &gt; Struct Template Reference</title>
+<title>Alce Library: alce::cu::boundless_span&lt; element_type, extents &gt; Struct Template Reference</title>
 <!--BEGIN PROJECT_ICON-->
 <link rel="icon" href="$projecticon" type="image/x-icon" />
 <!--END PROJECT_ICON-->
@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('structalce_1_1cu_1_1boundless__span.ht
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="structalce_1_1cu_1_1boundless__span-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">alce::cu::boundless_span&lt; T, Extent &gt; Struct Template Reference</div></div>
+  <div class="headertitle"><div class="title">alce::cu::boundless_span&lt; element_type, extents &gt; Struct Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('structalce_1_1cu_1_1boundless__span.ht
 
 <p><code>#include &lt;<a class="el" href="alce__container__utilities_8hpp_source.html">alce_container_utilities.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for alce::cu::boundless_span&lt; T, Extent &gt;:</div>
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for alce::cu::boundless_span&lt; element_type, extents &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
@@ -135,49 +135,49 @@ $(document).ready(function(){initNavTree('structalce_1_1cu_1_1boundless__span.ht
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a04a9328751004eea900be53fae604c33"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__span.html#a04a9328751004eea900be53fae604c33">operator[]</a> (std::size_t index) const -&gt; T</td></tr>
-<tr class="memdesc:a04a9328751004eea900be53fae604c33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an element at index, or a default constructed instance of the value type when index is invalid.  <br /></td></tr>
-<tr class="separator:a04a9328751004eea900be53fae604c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af88d6b40923a3c044b196294e072caf2"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__span.html#af88d6b40923a3c044b196294e072caf2">at</a> (std::size_t index) const -&gt; T</td></tr>
-<tr class="memdesc:af88d6b40923a3c044b196294e072caf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an element at index, or a default constructed instance of the value type when index is invalid.  <br /></td></tr>
-<tr class="separator:af88d6b40923a3c044b196294e072caf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf20229bd2f3eeaa9dd071265be4a394"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__span.html#aaf20229bd2f3eeaa9dd071265be4a394">front</a> () const -&gt; T</td></tr>
-<tr class="memdesc:aaf20229bd2f3eeaa9dd071265be4a394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the first element, or a default constructed instance of the value type when the span is empty.  <br /></td></tr>
-<tr class="separator:aaf20229bd2f3eeaa9dd071265be4a394"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a153fcecd4f3d846d7c1dc4382dde6327"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__span.html#a153fcecd4f3d846d7c1dc4382dde6327">back</a> () const -&gt; T</td></tr>
-<tr class="memdesc:a153fcecd4f3d846d7c1dc4382dde6327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last element, or a default constructed instance of the value type when the span is empty.  <br /></td></tr>
-<tr class="separator:a153fcecd4f3d846d7c1dc4382dde6327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10c1d2971d3b627d0147a0783329962f"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__span.html#a10c1d2971d3b627d0147a0783329962f">operator[]</a> (std::size_t index) const -&gt; element_type</td></tr>
+<tr class="memdesc:a10c1d2971d3b627d0147a0783329962f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an element at index, or a default constructed instance of the value type when index is invalid.  <br /></td></tr>
+<tr class="separator:a10c1d2971d3b627d0147a0783329962f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd76b148d00110bfabb84c8fbf49d428"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__span.html#acd76b148d00110bfabb84c8fbf49d428">at</a> (std::size_t index) const -&gt; element_type</td></tr>
+<tr class="memdesc:acd76b148d00110bfabb84c8fbf49d428"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an element at index, or a default constructed instance of the value type when index is invalid.  <br /></td></tr>
+<tr class="separator:acd76b148d00110bfabb84c8fbf49d428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a385fbf4e823e58776131baf3c5b1766e"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__span.html#a385fbf4e823e58776131baf3c5b1766e">front</a> () const -&gt; element_type</td></tr>
+<tr class="memdesc:a385fbf4e823e58776131baf3c5b1766e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the first element, or a default constructed instance of the value type when the span is empty.  <br /></td></tr>
+<tr class="separator:a385fbf4e823e58776131baf3c5b1766e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4efd8b83d166773b8998a8b5fa099289"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structalce_1_1cu_1_1boundless__span.html#a4efd8b83d166773b8998a8b5fa099289">back</a> () const -&gt; element_type</td></tr>
+<tr class="memdesc:a4efd8b83d166773b8998a8b5fa099289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last element, or a default constructed instance of the value type when the span is empty.  <br /></td></tr>
+<tr class="separator:a4efd8b83d166773b8998a8b5fa099289"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, std::size_t Extent = std::dynamic_extent&gt;<br />
-requires (std::is_default_constructible_v&lt;T&gt;)<br />
-struct alce::cu::boundless_span&lt; T, Extent &gt;</div><p>A boundless span. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename element_type, std::size_t extents = std::dynamic_extent&gt;<br />
+requires (std::is_default_constructible_v&lt;element_type&gt;)<br />
+struct alce::cu::boundless_span&lt; element_type, extents &gt;</div><p>A boundless span. </p>
 <p>Index-access of this span always returns a default constructed element when an invalid index is provided. Requires a default-constructible type.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>The type of element. </td></tr>
-    <tr><td class="paramname">Extent</td><td>The number of elements in the sequence, or <code>std::dynamic_extent</code> if dynamic (default). </td></tr>
+    <tr><td class="paramname">element_type</td><td>The type of element. </td></tr>
+    <tr><td class="paramname">extents</td><td>The number of elements in the sequence, or <code>std::dynamic_extent</code> if dynamic (default). </td></tr>
   </table>
   </dd>
 </dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a04a9328751004eea900be53fae604c33" name="a04a9328751004eea900be53fae604c33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04a9328751004eea900be53fae604c33">&#9670;&#160;</a></span>operator[]()</h2>
+<a id="a10c1d2971d3b627d0147a0783329962f" name="a10c1d2971d3b627d0147a0783329962f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10c1d2971d3b627d0147a0783329962f">&#9670;&#160;</a></span>operator[]()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Extent = std::dynamic_extent&gt; </div>
+template&lt;typename element_type , std::size_t extents = std::dynamic_extent&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structalce_1_1cu_1_1boundless__span.html">alce::cu::boundless_span</a>&lt; T, Extent &gt;::operator[] </td>
+          <td class="memname">constexpr auto <a class="el" href="structalce_1_1cu_1_1boundless__span.html">alce::cu::boundless_span</a>&lt; element_type, extents &gt;::operator[] </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
-          <td> const -&gt; T
+          <td> const -&gt; element_type
     </td>
         </tr>
       </table>
@@ -199,23 +199,23 @@ template&lt;typename T , std::size_t Extent = std::dynamic_extent&gt; </div>
 
 </div>
 </div>
-<a id="af88d6b40923a3c044b196294e072caf2" name="af88d6b40923a3c044b196294e072caf2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af88d6b40923a3c044b196294e072caf2">&#9670;&#160;</a></span>at()</h2>
+<a id="acd76b148d00110bfabb84c8fbf49d428" name="acd76b148d00110bfabb84c8fbf49d428"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd76b148d00110bfabb84c8fbf49d428">&#9670;&#160;</a></span>at()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Extent = std::dynamic_extent&gt; </div>
+template&lt;typename element_type , std::size_t extents = std::dynamic_extent&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structalce_1_1cu_1_1boundless__span.html">alce::cu::boundless_span</a>&lt; T, Extent &gt;::at </td>
+          <td class="memname">constexpr auto <a class="el" href="structalce_1_1cu_1_1boundless__span.html">alce::cu::boundless_span</a>&lt; element_type, extents &gt;::at </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
-          <td> const -&gt; T
+          <td> const -&gt; element_type
     </td>
         </tr>
       </table>
@@ -237,22 +237,22 @@ template&lt;typename T , std::size_t Extent = std::dynamic_extent&gt; </div>
 
 </div>
 </div>
-<a id="aaf20229bd2f3eeaa9dd071265be4a394" name="aaf20229bd2f3eeaa9dd071265be4a394"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf20229bd2f3eeaa9dd071265be4a394">&#9670;&#160;</a></span>front()</h2>
+<a id="a385fbf4e823e58776131baf3c5b1766e" name="a385fbf4e823e58776131baf3c5b1766e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a385fbf4e823e58776131baf3c5b1766e">&#9670;&#160;</a></span>front()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Extent = std::dynamic_extent&gt; </div>
+template&lt;typename element_type , std::size_t extents = std::dynamic_extent&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structalce_1_1cu_1_1boundless__span.html">alce::cu::boundless_span</a>&lt; T, Extent &gt;::front </td>
+          <td class="memname">constexpr auto <a class="el" href="structalce_1_1cu_1_1boundless__span.html">alce::cu::boundless_span</a>&lt; element_type, extents &gt;::front </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt; T
+          <td> const -&gt; element_type
     </td>
         </tr>
       </table>
@@ -268,22 +268,22 @@ template&lt;typename T , std::size_t Extent = std::dynamic_extent&gt; </div>
 
 </div>
 </div>
-<a id="a153fcecd4f3d846d7c1dc4382dde6327" name="a153fcecd4f3d846d7c1dc4382dde6327"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a153fcecd4f3d846d7c1dc4382dde6327">&#9670;&#160;</a></span>back()</h2>
+<a id="a4efd8b83d166773b8998a8b5fa099289" name="a4efd8b83d166773b8998a8b5fa099289"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4efd8b83d166773b8998a8b5fa099289">&#9670;&#160;</a></span>back()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Extent = std::dynamic_extent&gt; </div>
+template&lt;typename element_type , std::size_t extents = std::dynamic_extent&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structalce_1_1cu_1_1boundless__span.html">alce::cu::boundless_span</a>&lt; T, Extent &gt;::back </td>
+          <td class="memname">constexpr auto <a class="el" href="structalce_1_1cu_1_1boundless__span.html">alce::cu::boundless_span</a>&lt; element_type, extents &gt;::back </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt; T
+          <td> const -&gt; element_type
     </td>
         </tr>
       </table>

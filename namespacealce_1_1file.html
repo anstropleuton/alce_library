@@ -134,16 +134,16 @@ Functions</h2></td></tr>
 <tr class="memitem:afa2ee61b86b8924a7a035817aba00940"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealce_1_1file.html#afa2ee61b86b8924a7a035817aba00940">read_all</a> (std::string_view filename)</td></tr>
 <tr class="memdesc:afa2ee61b86b8924a7a035817aba00940"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all the file's content at once and return <code>std::string</code> representing the file's content.  <br /></td></tr>
 <tr class="separator:afa2ee61b86b8924a7a035817aba00940"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a212414d85c0fb497088bb2ab6a499859"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
-requires (std::is_trivially_copyable_v&lt;T&gt;)</td></tr>
-<tr class="memitem:a212414d85c0fb497088bb2ab6a499859"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1file.html#a212414d85c0fb497088bb2ab6a499859">to_new_sd_chunk</a> (const T &amp;t) -&gt; <a class="el" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a></td></tr>
-<tr class="memdesc:a212414d85c0fb497088bb2ab6a499859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an object to a chunk.  <br /></td></tr>
-<tr class="separator:a212414d85c0fb497088bb2ab6a499859"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a968c1a46e61429203b02e158d018af72"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
-requires (std::is_trivially_copyable_v&lt;T&gt;)</td></tr>
-<tr class="memitem:a968c1a46e61429203b02e158d018af72"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1file.html#a968c1a46e61429203b02e158d018af72">from_sd_chunk</a> (<a class="el" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a> chunk) -&gt; T</td></tr>
-<tr class="memdesc:a968c1a46e61429203b02e158d018af72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a chunk to an object.  <br /></td></tr>
-<tr class="separator:a968c1a46e61429203b02e158d018af72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59611762f9875b95df6058d2012a2d72"><td class="memTemplParams" colspan="2">template&lt;typename type &gt; <br />
+requires (std::is_trivially_copyable_v&lt;type&gt;)</td></tr>
+<tr class="memitem:a59611762f9875b95df6058d2012a2d72"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1file.html#a59611762f9875b95df6058d2012a2d72">to_new_sd_chunk</a> (const type &amp;t) -&gt; <a class="el" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a></td></tr>
+<tr class="memdesc:a59611762f9875b95df6058d2012a2d72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an object to a chunk.  <br /></td></tr>
+<tr class="separator:a59611762f9875b95df6058d2012a2d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad40eaf50cfa85b00ba15bb691ac6d026"><td class="memTemplParams" colspan="2">template&lt;typename type &gt; <br />
+requires (std::is_trivially_copyable_v&lt;type&gt;)</td></tr>
+<tr class="memitem:ad40eaf50cfa85b00ba15bb691ac6d026"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1file.html#ad40eaf50cfa85b00ba15bb691ac6d026">from_sd_chunk</a> (<a class="el" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a> chunk) -&gt; type</td></tr>
+<tr class="memdesc:ad40eaf50cfa85b00ba15bb691ac6d026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a chunk to an object.  <br /></td></tr>
+<tr class="separator:ad40eaf50cfa85b00ba15bb691ac6d026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45cd49b17ee9846f382e46243c1f9386"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealce_1_1file.html#a45cd49b17ee9846f382e46243c1f9386">delete_sd_chunk</a> (<a class="el" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a> chunk) -&gt; void</td></tr>
 <tr class="memdesc:a45cd49b17ee9846f382e46243c1f9386"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the memory of a chunk.  <br /></td></tr>
 <tr class="separator:a45cd49b17ee9846f382e46243c1f9386"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,14 +192,14 @@ requires (std::is_trivially_copyable_v&lt;T&gt;)</td></tr>
 
 </div>
 </div>
-<a id="a212414d85c0fb497088bb2ab6a499859" name="a212414d85c0fb497088bb2ab6a499859"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a212414d85c0fb497088bb2ab6a499859">&#9670;&#160;</a></span>to_new_sd_chunk()</h2>
+<a id="a59611762f9875b95df6058d2012a2d72" name="a59611762f9875b95df6058d2012a2d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59611762f9875b95df6058d2012a2d72">&#9670;&#160;</a></span>to_new_sd_chunk()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; <br />
-requires (std::is_trivially_copyable_v&lt;T&gt;)</div>
+template&lt;typename type &gt; <br />
+requires (std::is_trivially_copyable_v&lt;type&gt;)</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -207,7 +207,7 @@ requires (std::is_trivially_copyable_v&lt;T&gt;)</div>
         <tr>
           <td class="memname">constexpr auto alce::file::to_new_sd_chunk </td>
           <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramtype">const type &amp;&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td> -&gt;  <a class="el" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a></td>
         </tr>
@@ -222,7 +222,7 @@ requires (std::is_trivially_copyable_v&lt;T&gt;)</div>
 <p>Convert an object to a chunk. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>A trivially copyable type. </td></tr>
+    <tr><td class="paramname">type</td><td>A trivially copyable type. </td></tr>
   </table>
   </dd>
 </dl>
@@ -237,14 +237,14 @@ requires (std::is_trivially_copyable_v&lt;T&gt;)</div>
 
 </div>
 </div>
-<a id="a968c1a46e61429203b02e158d018af72" name="a968c1a46e61429203b02e158d018af72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a968c1a46e61429203b02e158d018af72">&#9670;&#160;</a></span>from_sd_chunk()</h2>
+<a id="ad40eaf50cfa85b00ba15bb691ac6d026" name="ad40eaf50cfa85b00ba15bb691ac6d026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad40eaf50cfa85b00ba15bb691ac6d026">&#9670;&#160;</a></span>from_sd_chunk()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; <br />
-requires (std::is_trivially_copyable_v&lt;T&gt;)</div>
+template&lt;typename type &gt; <br />
+requires (std::is_trivially_copyable_v&lt;type&gt;)</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -254,7 +254,7 @@ requires (std::is_trivially_copyable_v&lt;T&gt;)</div>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structalce_1_1file_1_1sd__chunk.html">sd_chunk</a>&#160;</td>
           <td class="paramname"><em>chunk</em></td><td>)</td>
-          <td> -&gt;  T</td>
+          <td> -&gt;  type</td>
         </tr>
       </table>
   </td>
@@ -267,7 +267,7 @@ requires (std::is_trivially_copyable_v&lt;T&gt;)</div>
 <p>Convert a chunk to an object. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>A trivially copyable chunk. </td></tr>
+    <tr><td class="paramname">type</td><td>A trivially copyable chunk. </td></tr>
   </table>
   </dd>
 </dl>

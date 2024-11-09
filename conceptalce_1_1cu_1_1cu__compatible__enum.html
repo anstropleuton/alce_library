@@ -122,15 +122,15 @@ $(document).ready(function(){initNavTree('conceptalce_1_1cu_1_1cu__compatible__e
 
 <p><code>#include &lt;<a class="el" href="alce__container__utilities_8hpp_source.html">alce_container_utilities.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
-<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> E&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptalce_1_1cu_1_1cu__compatible__enum.html">alce::cu::cu_compatible_enum</a> =  std::is_enum_v&lt;E&gt; &amp;&amp; <span class="keyword">requires</span> { { E::max }; }</div>
+<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> enum_type&gt;</div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptalce_1_1cu_1_1cu__compatible__enum.html">alce::cu::cu_compatible_enum</a> =  std::is_enum_v&lt;enum_type&gt; &amp;&amp; <span class="keyword">requires</span> { { enum_type::max }; }</div>
 <div class="ttc" id="aconceptalce_1_1cu_1_1cu__compatible__enum_html"><div class="ttname"><a href="conceptalce_1_1cu_1_1cu__compatible__enum.html">alce::cu::cu_compatible_enum</a></div><div class="ttdoc">Container Utilities compatible enumerator for enumerated_array .</div><div class="ttdef"><b>Definition:</b> alce_container_utilities.hpp:1348</div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Container Utilities compatible enumerator for <code>enumerated_array</code> . </p>
 <p>The type must be an enumerator with a <code>max</code> as a member. The <code>max</code> member must be the largest member in the enumerator (Implementation pending).</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">E</td><td>Enumerator type.</td></tr>
+    <tr><td class="paramname">enum_type</td><td>Enumerator type.</td></tr>
   </table>
   </dd>
 </dl>

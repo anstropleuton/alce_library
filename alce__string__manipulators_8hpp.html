@@ -158,30 +158,30 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af6e2d4e073c8c8650c5cd61ff22cb81b"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible Container, typename Converter &gt; <br />
-requires (!std::is_same_v&lt;Converter, std::string&gt;)</td></tr>
-<tr class="memitem:af6e2d4e073c8c8650c5cd61ff22cb81b"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#af6e2d4e073c8c8650c5cd61ff22cb81b">alce::sm::to_string</a> (const Container &amp;container, Converter converter, std::string_view separator=&quot;, &quot;, std::string_view prefix=&quot;&quot;, std::string_view suffix=&quot;&quot;)</td></tr>
-<tr class="memdesc:af6e2d4e073c8c8650c5cd61ff22cb81b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container to comma separated string.  <br /></td></tr>
-<tr class="separator:af6e2d4e073c8c8650c5cd61ff22cb81b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1fb11df5fda93bc63e42d8a6c2ac9b2"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible Container&gt; </td></tr>
-<tr class="memitem:ac1fb11df5fda93bc63e42d8a6c2ac9b2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#ac1fb11df5fda93bc63e42d8a6c2ac9b2">alce::sm::to_string</a> (const Container &amp;container, std::string_view separator=&quot;, &quot;, std::string_view prefix=&quot;&quot;, std::string_view suffix=&quot;&quot;)</td></tr>
-<tr class="memdesc:ac1fb11df5fda93bc63e42d8a6c2ac9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container to comma separated string.  <br /></td></tr>
-<tr class="separator:ac1fb11df5fda93bc63e42d8a6c2ac9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cc338a3e0bed3bfc90a6aa91941348f"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible Container&gt; <br />
-requires std::is_same_v&lt;cu::value_type&lt;Container&gt;, char&gt;</td></tr>
-<tr class="memitem:a9cc338a3e0bed3bfc90a6aa91941348f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a9cc338a3e0bed3bfc90a6aa91941348f">alce::sm::to_string</a> (const Container &amp;container, std::string_view separator=&quot;, &quot;, std::string_view prefix=&quot;\'&quot;, std::string_view suffix=&quot;\'&quot;)</td></tr>
-<tr class="memdesc:a9cc338a3e0bed3bfc90a6aa91941348f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container of char to string with single-quoted elements separated by comma.  <br /></td></tr>
-<tr class="separator:a9cc338a3e0bed3bfc90a6aa91941348f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a658cf50b3b6599d0b2097fd72b69b775"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible Container&gt; <br />
-requires std::is_same_v&lt;cu::value_type&lt;Container&gt;, std::string&gt;</td></tr>
-<tr class="memitem:a658cf50b3b6599d0b2097fd72b69b775"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a658cf50b3b6599d0b2097fd72b69b775">alce::sm::to_string</a> (const Container &amp;container, std::string_view separator=&quot;, &quot;, std::string_view prefix=&quot;\&quot;&quot;, std::string_view suffix=&quot;\&quot;&quot;)</td></tr>
-<tr class="memdesc:a658cf50b3b6599d0b2097fd72b69b775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container of <code>std::string</code> to string with double-quoted elements separated by comma.  <br /></td></tr>
-<tr class="separator:a658cf50b3b6599d0b2097fd72b69b775"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0276de32606cf1f82d4cfc0906591b37"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible Container&gt; <br />
-requires std::is_same_v&lt;cu::value_type&lt;Container&gt;, char&gt;</td></tr>
-<tr class="memitem:a0276de32606cf1f82d4cfc0906591b37"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a0276de32606cf1f82d4cfc0906591b37">alce::sm::chars_to_string</a> (const Container &amp;container)</td></tr>
-<tr class="memdesc:a0276de32606cf1f82d4cfc0906591b37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container of char to a regular string.  <br /></td></tr>
-<tr class="separator:a0276de32606cf1f82d4cfc0906591b37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b7165b9359e79382aefb59b168f2e9b"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible container, typename converter &gt; <br />
+requires (!std::is_same_v&lt;converter, std::string&gt;)</td></tr>
+<tr class="memitem:a3b7165b9359e79382aefb59b168f2e9b"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a3b7165b9359e79382aefb59b168f2e9b">alce::sm::to_string</a> (const container &amp;ctr, converter conv, std::string_view separator=&quot;, &quot;, std::string_view prefix=&quot;&quot;, std::string_view suffix=&quot;&quot;)</td></tr>
+<tr class="memdesc:a3b7165b9359e79382aefb59b168f2e9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container to comma separated string.  <br /></td></tr>
+<tr class="separator:a3b7165b9359e79382aefb59b168f2e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37be893a07fffee0aaa4abc14feb02fd"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible container&gt; </td></tr>
+<tr class="memitem:a37be893a07fffee0aaa4abc14feb02fd"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a37be893a07fffee0aaa4abc14feb02fd">alce::sm::to_string</a> (const container &amp;ctr, std::string_view separator=&quot;, &quot;, std::string_view prefix=&quot;&quot;, std::string_view suffix=&quot;&quot;)</td></tr>
+<tr class="memdesc:a37be893a07fffee0aaa4abc14feb02fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container to comma separated string.  <br /></td></tr>
+<tr class="separator:a37be893a07fffee0aaa4abc14feb02fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6135644916050d26e6ca15ff8bbc51a8"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible container&gt; <br />
+requires std::is_same_v&lt;cu::value_type&lt;container&gt;, char&gt;</td></tr>
+<tr class="memitem:a6135644916050d26e6ca15ff8bbc51a8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a6135644916050d26e6ca15ff8bbc51a8">alce::sm::to_string</a> (const container &amp;ctr, std::string_view separator=&quot;, &quot;, std::string_view prefix=&quot;\'&quot;, std::string_view suffix=&quot;\'&quot;)</td></tr>
+<tr class="memdesc:a6135644916050d26e6ca15ff8bbc51a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container of char to string with single-quoted elements separated by comma.  <br /></td></tr>
+<tr class="separator:a6135644916050d26e6ca15ff8bbc51a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0546287ba13910f9e614d80fcc819004"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible container&gt; <br />
+requires std::is_same_v&lt;cu::value_type&lt;container&gt;, std::string&gt;</td></tr>
+<tr class="memitem:a0546287ba13910f9e614d80fcc819004"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a0546287ba13910f9e614d80fcc819004">alce::sm::to_string</a> (const container &amp;ctr, std::string_view separator=&quot;, &quot;, std::string_view prefix=&quot;\&quot;&quot;, std::string_view suffix=&quot;\&quot;&quot;)</td></tr>
+<tr class="memdesc:a0546287ba13910f9e614d80fcc819004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container of <code>std::string</code> to string with double-quoted elements separated by comma.  <br /></td></tr>
+<tr class="separator:a0546287ba13910f9e614d80fcc819004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26942e3501ac1e0b338fd66a0cd2dd93"><td class="memTemplParams" colspan="2">template&lt;cu::cu_compatible container&gt; <br />
+requires std::is_same_v&lt;cu::value_type&lt;container&gt;, char&gt;</td></tr>
+<tr class="memitem:a26942e3501ac1e0b338fd66a0cd2dd93"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a26942e3501ac1e0b338fd66a0cd2dd93">alce::sm::chars_to_string</a> (const container &amp;ctr)</td></tr>
+<tr class="memdesc:a26942e3501ac1e0b338fd66a0cd2dd93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container of char to a regular string.  <br /></td></tr>
+<tr class="separator:a26942e3501ac1e0b338fd66a0cd2dd93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6d517b109cee61c173b717278f23a50"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#aa6d517b109cee61c173b717278f23a50">alce::sm::word_wrap</a> (std::string_view string, std::size_t width, bool force=false, std::string_view delims=&quot; \t\r\n\f\v\b&quot;)</td></tr>
 <tr class="memdesc:aa6d517b109cee61c173b717278f23a50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Word-wrap a string at width or before width depending on the delim.  <br /></td></tr>
 <tr class="separator:aa6d517b109cee61c173b717278f23a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,10 +218,10 @@ requires std::is_same_v&lt;cu::value_type&lt;Container&gt;, char&gt;</td></tr>
 <tr class="memitem:a08d295261352ef56f4cf328f98347061"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a08d295261352ef56f4cf328f98347061">alce::sm::filter_out_occ</a> (std::string_view string, std::string_view characters)</td></tr>
 <tr class="memdesc:a08d295261352ef56f4cf328f98347061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter out the occurrences of any of characters from the string.  <br /></td></tr>
 <tr class="separator:a08d295261352ef56f4cf328f98347061"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f6162eb10e6b0f95d78e8b959e42a47"><td class="memTemplParams" colspan="2">template&lt;sm_compatible Strings&gt; </td></tr>
-<tr class="memitem:a9f6162eb10e6b0f95d78e8b959e42a47"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a9f6162eb10e6b0f95d78e8b959e42a47">alce::sm::filter_out_occ_seq</a> (std::string_view string, const Strings &amp;patterns)</td></tr>
-<tr class="memdesc:a9f6162eb10e6b0f95d78e8b959e42a47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter out the occurrences of any of sequences from the string.  <br /></td></tr>
-<tr class="separator:a9f6162eb10e6b0f95d78e8b959e42a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb3c80481ebaf196db02b41d52f029a0"><td class="memTemplParams" colspan="2">template&lt;sm_compatible strings&gt; </td></tr>
+<tr class="memitem:adb3c80481ebaf196db02b41d52f029a0"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#adb3c80481ebaf196db02b41d52f029a0">alce::sm::filter_out_occ_seq</a> (std::string_view string, const strings &amp;patterns)</td></tr>
+<tr class="memdesc:adb3c80481ebaf196db02b41d52f029a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter out the occurrences of any of sequences from the string.  <br /></td></tr>
+<tr class="separator:adb3c80481ebaf196db02b41d52f029a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2eff81cf9381309547ce0763585987d3"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a2eff81cf9381309547ce0763585987d3">alce::sm::filter_out</a> (std::string_view string, char character)</td></tr>
 <tr class="memdesc:a2eff81cf9381309547ce0763585987d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter out the occurrences of character from the string.  <br /></td></tr>
 <tr class="separator:a2eff81cf9381309547ce0763585987d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -258,10 +258,10 @@ requires std::is_same_v&lt;cu::value_type&lt;Container&gt;, char&gt;</td></tr>
 <tr class="memitem:a9234c0dc0e705f5d17e08969711da33e"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a9234c0dc0e705f5d17e08969711da33e">alce::sm::split_occ</a> (std::string_view string, std::string_view characters)</td></tr>
 <tr class="memdesc:a9234c0dc0e705f5d17e08969711da33e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split the string with occurrences of value.  <br /></td></tr>
 <tr class="separator:a9234c0dc0e705f5d17e08969711da33e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaebf191d85fe4e68732337da315779d7"><td class="memTemplParams" colspan="2">template&lt;sm_compatible Strings&gt; </td></tr>
-<tr class="memitem:aaebf191d85fe4e68732337da315779d7"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#aaebf191d85fe4e68732337da315779d7">alce::sm::split_occ_seq</a> (std::string_view string, const Strings &amp;patterns)</td></tr>
-<tr class="memdesc:aaebf191d85fe4e68732337da315779d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split the string with occurrences of any of pattern.  <br /></td></tr>
-<tr class="separator:aaebf191d85fe4e68732337da315779d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50688cc04f9ffbee60067b93da3cfe23"><td class="memTemplParams" colspan="2">template&lt;sm_compatible strings&gt; </td></tr>
+<tr class="memitem:a50688cc04f9ffbee60067b93da3cfe23"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a50688cc04f9ffbee60067b93da3cfe23">alce::sm::split_occ_seq</a> (std::string_view string, const strings &amp;patterns)</td></tr>
+<tr class="memdesc:a50688cc04f9ffbee60067b93da3cfe23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split the string with occurrences of any of pattern.  <br /></td></tr>
+<tr class="separator:a50688cc04f9ffbee60067b93da3cfe23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4edea03b3f60955624864b58d12ce0ea"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a4edea03b3f60955624864b58d12ce0ea">alce::sm::split</a> (std::string_view string, char character)</td></tr>
 <tr class="memdesc:a4edea03b3f60955624864b58d12ce0ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split the string with value.  <br /></td></tr>
 <tr class="separator:a4edea03b3f60955624864b58d12ce0ea"><td class="memSeparator" colspan="2">&#160;</td></tr>

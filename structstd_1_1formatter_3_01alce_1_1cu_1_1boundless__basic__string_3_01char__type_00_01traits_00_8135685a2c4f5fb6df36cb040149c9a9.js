@@ -1,0 +1,5 @@
+var structstd_1_1formatter_3_01alce_1_1cu_1_1boundless__basic__string_3_01char__type_00_01traits_00_8135685a2c4f5fb6df36cb040149c9a9 =
+[
+    [ "parse", "structstd_1_1formatter_3_01alce_1_1cu_1_1boundless__basic__string_3_01char__type_00_01traits_00_8135685a2c4f5fb6df36cb040149c9a9.html#a3749220d492af08a4321161dc380f056", null ],
+    [ "format", "structstd_1_1formatter_3_01alce_1_1cu_1_1boundless__basic__string_3_01char__type_00_01traits_00_8135685a2c4f5fb6df36cb040149c9a9.html#a398155c486afd9c16254800d21acc4b7", null ]
+];

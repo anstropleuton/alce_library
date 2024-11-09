@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Alce Library: Guidelines</title>
+<title>Alce Library: Anstro Pleuton&#39;s Coding Style Guidelines</title>
 <!--BEGIN PROJECT_ICON-->
 <link rel="icon" href="$projecticon" type="image/x-icon" />
 <!--END PROJECT_ICON-->
@@ -113,238 +113,247 @@ $(document).ready(function(){initNavTree('md_Guidelines.html',''); initResizable
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Guidelines </div></div>
+  <div class="headertitle"><div class="title">Anstro Pleuton's Coding Style Guidelines </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>I'll be honest with you, I took this straight from ChatGPT and did some tweaks to it. But the guidelines is mine tho.</p>
-<hr  />
+<div class="textblock"><p>There is a lot of things here, mostly because I unnecessarily aim for perfection. No pressure to follow every single one of them, but you can keep them in mind.</p>
+<p>The guidelines starts with a basic general generic regular simple coding style that everyone may have used at some point and slowly transitions to the Anstro Pleuton's way of programming, where each previous guidelines are applied to the proceeding guidelines.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
-Alce Library Coding Guidelines</h1>
-<h2><a class="anchor" id="autotoc_md4"></a>
-Naming Conventions</h2>
-<h3><a class="anchor" id="autotoc_md5"></a>
-General</h3>
-<ul>
-<li>Don't abbreviate names, acronyms are allowed. And namespace abbreviations are allowed (see Namespace Names).</li>
-<li>Don't use single letter names, except when it is a mathematical formulas or names of indices.</li>
+Naming Conventions</h1>
+<p>A few things in common</p><ul>
+<li>Don't abbreviate names that are public APIs. Acronyms are allowed in any case.</li>
+<li>Don't use single letter names unless it is index of the <code>for</code> loop or is related to Mathematics. Let's get to specific naming conventions:</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md6"></a>
-Variable Names</h3>
-<p>Use <code>snake_case</code> and keep the variable names descriptive. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> users_count;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
-Constant Names</h3>
-<p>Use <code>snake_case</code>, and keep the constant names descriptive. </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> max_users = 10;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md8"></a>
-Structure Names</h3>
-<p>Use <code>snake_case</code> and don't append any <code>_t</code> at the end. Prefer keeping it simple than descriptive. </p><div class="fragment"><div class="line"><span class="keyword">struct </span>user {</div>
-<div class="line">    <span class="comment">// ...</span></div>
-<div class="line">};</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md9"></a>
-Enumerator Names</h3>
-<p>Use <code>snake_case</code> and prefer keeping it simple than descriptive. </p><div class="fragment"><div class="line"><span class="keyword">enum</span> user_type {</div>
-<div class="line">    <span class="comment">// ...</span></div>
-<div class="line">};</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md10"></a>
-Function Names</h3>
-<p>Use <code>snake_case</code> and name the function based on what it does. </p><div class="fragment"><div class="line"><span class="keyword">auto</span> create_user(std::string_view username) -&gt; user;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md11"></a>
-Namespace Names</h3>
-<p>When the namespace is internal use or is not in global space, abbreviate namespaces to 2-5 letters. We don't care about descriptiveness when not in global space. </p><div class="fragment"><div class="line"><span class="keyword">namespace </span>nsp {</div>
-<div class="line">    <span class="comment">// ...</span></div>
-<div class="line">};</div>
-</div><!-- fragment --><p> In global space, prefer more descriptive name since one can just do <code>namespace a = a_long_namespace_name;</code>.</p>
-<h3><a class="anchor" id="autotoc_md12"></a>
-Template Parameters</h3>
-<p>Use <code>PascalCase</code> for template parameters. </p><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
-<div class="line"><span class="keyword">struct </span>structure;</div>
-</div><!-- fragment --><p> This may change to <code>snake_case</code> for consistency, but is <code>PascalCase</code> for the time being.</p>
-<h3><a class="anchor" id="autotoc_md13"></a>
-File Names</h3>
-<p>Use <code>snake_case</code> for file names. </p><div class="fragment"><div class="line">my_module.hpp</div>
-<div class="line">my_module.cpp</div>
-</div><!-- fragment --><p> Use specificity-first style, e.g., <code>animated_icon_texture.gif</code> over <code>texture_icon_animated.gif</code>.</p>
-<h2><a class="anchor" id="autotoc_md14"></a>
-Formatting</h2>
-<h3><a class="anchor" id="autotoc_md15"></a>
-Indentation</h3>
-<p>Use 4 spaces for indentation, no tabs.</p>
-<h3><a class="anchor" id="autotoc_md16"></a>
-Braces</h3>
-<p>Allman style for control flow or function definitions. </p><div class="fragment"><div class="line"><span class="keywordflow">if</span> (condition)</div>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Naming Variables</h2>
+<p>Use <code>snake_case</code>, and try to keep them short yet descriptive. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> users_count;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+Naming Constants</h2>
+<p>Same rules as Naming Variables's. </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> max_users;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+Naming Classes</h2>
+<p>Same rules as Naming Variables's, but prefer keeping them small. </p><div class="fragment"><div class="line"><span class="keyword">class </span>user</div>
 <div class="line">{</div>
-<div class="line">    <span class="comment">// code</span></div>
-<div class="line">}</div>
-</div><!-- fragment --><p> K&amp;R style for structures, enumerators, or namespaces. </p><div class="fragment"><div class="line"><span class="keyword">struct </span>my_struct {</div>
-<div class="line">    <span class="comment">// members</span></div>
+<div class="line">    <span class="comment">// ...</span></div>
 <div class="line">};</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md17"></a>
-Line Length</h3>
-<p>Limit lines to 80 characters. I use 1920x1080 screen and I use split view, side by side, to work with multiple files, and word wrap or having to scroll horizontally is less convenient.</p>
-<h3><a class="anchor" id="autotoc_md18"></a>
-Spacing</h3>
-<p>Use spaces around operators and after commas, but not inside parentheses. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> result = a + b;</div>
-<div class="line"><span class="keywordflow">if</span> (a == b) { <span class="comment">/* ... */</span> }</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+Naming Enumerators</h2>
+<p>Same rules as Naming Classes's. </p><div class="fragment"><div class="line"><span class="keyword">enum</span> user_type</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">};</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+Naming Functions</h2>
+<p>Same rules as Naming Variables's. </p><div class="fragment"><div class="line">user create_user(...);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+Naming Namespaces</h2>
+<p>Same rules as Naming Classes's, except prefer keeping it even more short. An acronym should be good, but abbreviations are also allowed. </p><div class="fragment"><div class="line"><span class="keyword">namespace </span>nsp</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
+Naming Template Parameters</h2>
+<p>Same rules as Naming Classes's.</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Naming Files</h2>
+<p>Same rules as Naming Variables's. Also, use specificity-first style for naming files with multiple words, like <code>animated_icon_texture.gif</code> instead of <code>texture_icon_animated.gif</code>. </p><div class="fragment"><div class="line">$ tree</div>
+<div class="line">.</div>
+<div class="line">├── res</div>
+<div class="line">│   ├── nirovan_logo.png</div>
+<div class="line">│   ├── nirovan_logo_dark.png</div>
+<div class="line">│   └── nirovan_logo_light.png</div>
+<div class="line">└── include</div>
+<div class="line">    └── alce_library.hpp</div>
+<div class="line">    └── plons_library.hpp</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
+Formatting</h1>
+<p>You may be better off using Uncrustify with the provided config <a href="uncrustify.cfg">uncrustify.cfg</a> to format your code. If you don't have access to Uncrustify for whatever reason and would like to manually format the code, here it is:</p>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Indentation</h2>
+<p>Use 4 spaces for indentation, not tabs. And, do not indent namespace contents. </p><div class="fragment"><div class="line"><span class="keyword">namespace </span>nsp</div>
+<div class="line">{</div>
+<div class="line"><span class="keywordtype">int</span> value;</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> do_something(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md19"></a>
-Variable Declaration</h3>
-<p>Use <code>auto</code> for function expressions but not for constants or when the result is a fundamental type (<code>int</code>, <code>float</code>, etc., including aliases like <code>std::size_t</code>). </p><div class="fragment"><div class="line"><span class="keyword">auto</span> value = get_value();</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md20"></a>
-Function Declarations</h3>
-<p>Split long function declarations for readability. </p><div class="fragment"><div class="line">[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> get_value(</div>
-<div class="line">    param_type_1 param_1,</div>
-<div class="line">    param_type_2 param_2</div>
-<div class="line">) -&gt; return_type;</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
-Comments</h2>
-<h3><a class="anchor" id="autotoc_md22"></a>
-Single-Line Comments</h3>
-<p>Use <code>//</code> for single-line comments, placed above or on the code line. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> my_variable; <span class="comment">// This is a comment</span></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md23"></a>
-Multi-Line Comments</h3>
-<p>Use <code>/* */</code> with asterisks and two spaces at the start of each line. </p><div class="fragment"><div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> *  Multi-line comment.</span></div>
+<div class="line"><span class="keywordtype">void</span> set_value()</div>
+<div class="line">{</div>
+<div class="line">    value = 21;</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+Brace Style</h2>
+<p>Use Allman style braces for code (control flow, function, lambda, etc.). </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> function()</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// Code</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// or</span></div>
+<div class="line">    <span class="keywordflow">if</span> (condition)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// Code</span></div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> And K&amp;R style braces for declarations (classes, structures, enum, namespace, etc.). </p><div class="fragment"><div class="line"><span class="keyword">class </span>user_details {</div>
+<div class="line">    <span class="comment">// Declarations</span></div>
+<div class="line">};</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+Spacing</h2>
+<p>The average Joe style, except put space in between braces too. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> user_id = rand() % 255;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+Line Limit</h2>
+<p>Limit lines to not exceed 80 characters. Why so old? Am I still running a computer with a terminal that is 80 characters long? No. I use split screen and only have 1920x1080 resolution monitor. Still, why? I use split view to edit files side-by-side, or at least view from one file and write in other.</p>
+<h2><a class="anchor" id="autotoc_md17"></a>
+Function Wrap</h2>
+<p>Split the function parameters if the function signature is exceeding 80 characters. </p><div class="fragment"><div class="line">std::string get_users_in_details(</div>
+<div class="line">    <span class="keywordtype">bool</span> username,</div>
+<div class="line">    <span class="keywordtype">bool</span> password,</div>
+<div class="line">    <span class="keywordtype">bool</span> registration_date,</div>
+<div class="line">    <span class="keywordtype">bool</span> last_login_date,</div>
+<div class="line">    <span class="keywordtype">bool</span> raw_details</div>
+<div class="line">)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md18"></a>
+Comments</h1>
+<p>Self-explanatory, I hope.</p>
+<h2><a class="anchor" id="autotoc_md19"></a>
+Single-line Comments</h2>
+<p>Place single-line comment (<code>//</code>) above or after the code. </p><div class="fragment"><div class="line"><span class="comment">// It is named this way for a very particular reason</span></div>
+<div class="line"><span class="keywordtype">int</span> yet_another_user_variable;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> user_2; <span class="comment">// Not so much for this one</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md20"></a>
+Multi-line Comments</h2>
+<p>Use multi-line comments (<code>/**/</code>) with one space before asterisk and two space after it. </p><div class="fragment"><div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> *  Don&#39;t use it for single line message and inside code though</span></div>
 <div class="line"><span class="comment"> */</span></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md24"></a>
-Documentation Comments</h3>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
+Documentation Comments</h2>
 <p>Use Doxygen-style comments for documentation. </p><div class="fragment"><div class="line"> </div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md25"></a>
-Punctuations</h3>
-<p>Use periods to end the sentence in a document comment, and not in regular comment </p><div class="fragment"><div class="line"><span class="comment">/*</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
+Punctuations</h2>
+<p>Use periods to end the sentence in a document comment, and not in regular comment. </p><div class="fragment"><div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> *  This comment ends with a period.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// This comment does not end with a period</span></div>
+<div class="line"><span class="comment">// This comment does not end with a period though</span></div>
 </div><!-- fragment --><p> Use two space in comment after <code>.</code>, <code>!</code> and <code>?</code> punctuations. </p><div class="fragment"><div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> *  This is a sentence.  This is another sentence after period!  Is this a</span></div>
 <div class="line"><span class="comment"> *  life-long question?  And the end.</span></div>
 <div class="line"><span class="comment"> */</span></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md26"></a>
-File Comment</h3>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
+File Comment</h2>
 <p>Have a documentation comment on the first line of the file describing the file. <code>header.hpp</code>: </p><div class="fragment"><div class="line"> </div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md24"></a>
+Coding Standards</h1>
+<p>The style part ends there, now comes the standard/functionality part.</p>
+<h2><a class="anchor" id="autotoc_md25"></a>
+Initialization</h2>
+<ul>
+<li>Use this for initializing types that have literals (i.e., <code>int</code>, <code>std::string</code>, etc.): <div class="fragment"><div class="line">data_type variable_name = &lt;value&gt;;</div>
+</div><!-- fragment --></li>
+<li>Use this if the type has a constructor with parameters: <div class="fragment"><div class="line">data_type variable_name(&lt;parameters&gt;);</div>
+</div><!-- fragment --></li>
+<li>Use this if the constructor accepts initializer list: <div class="fragment"><div class="line">data_type variable_name = { &lt;list&gt; };</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md26"></a>
+Range-based Loops</h2>
+<p>Use <code>auto &amp;</code> for range-based <code>for</code> loops. </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;value : values) { <span class="comment">/* code */</span> }</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
-Code Structure</h2>
-<h3><a class="anchor" id="autotoc_md28"></a>
-Header Files</h3>
-<p>Use <code>#pragma once</code> for include guards. </p><div class="fragment"><div class="line"><span class="preprocessor">#pragma once</span></div>
-</div><!-- fragment --><p> As oppose to <code>#ifndef</code> guards.</p>
-<h3><a class="anchor" id="autotoc_md29"></a>
-Source Files</h3>
-<p>Include the corresponding header file first. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;my_module.hpp&quot;</span></div>
+Variable Declaration</h2>
+<p>Use <code>auto</code> for declaring variables which is initialized from an expression. But do not use it for fundamental types (<code>int</code>, <code>float</code>, etc., including aliases like <code>std::size_t</code> or <code>std::uint64_t</code>). </p><div class="fragment"><div class="line"><span class="keyword">auto</span> users = get_inactive_users();</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md28"></a>
+Function Definition</h2>
+<p>Use <code>auto</code> as return type to automatically deduce type, or use trailing function declaration if automatic return type deduction is inapplicable (i.e., is not an in-line function). </p><div class="fragment"><div class="line"><span class="keyword">auto</span> get_active_users()</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">return</span> get_filtered_users(filter::active);</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md29"></a>
+&lt;tt&gt;[[nodiscard]]&lt;/tt&gt;, &lt;tt&gt;inline&lt;/tt&gt; and &lt;tt&gt;constexpr&lt;/tt&gt; Functions</h2>
+<p>Use <code>[[nodiscard]]</code> attribute for almost all functions, except for the ones whose return value can freely be ignored. Use <code>inline</code> and <code>constexpr</code> together for a function whose definition is inside a header file. </p><div class="fragment"><div class="line">[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> add(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b) -&gt; <span class="keywordtype">int</span></div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">return</span> a + b;</div>
+<div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md30"></a>
-Functions and Lambdas</h2>
-<h3><a class="anchor" id="autotoc_md31"></a>
-Function Return Type</h3>
-<p>Use <code>auto</code> and trailing return types. </p><div class="fragment"><div class="line">[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> add(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b) -&gt; int;</div>
-</div><!-- fragment --><p> If you are defining the function in the header file, let the compiler figure out the return type for you. </p><div class="fragment"><div class="line">[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> add(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b)</div>
-<div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> a + b;</div>
-<div class="line">}</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md32"></a>
-&lt;tt&gt;[[nodiscard]]&lt;/tt&gt;, &lt;tt&gt;inline&lt;/tt&gt; and &lt;tt&gt;constexpr&lt;/tt&gt; Functions</h3>
-<p>Use <code>[[nodiscard]]</code> to indicate the caller should not discard the value (almost always), use <code>inline</code> for small or performance-critical functions, and use <code>constexpr</code> (if applicable) to let compiler run the code at compile time. </p><div class="fragment"><div class="line">[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> add(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b) -&gt; <span class="keywordtype">int</span></div>
-<div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> a + b;</div>
-<div class="line">}</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md33"></a>
-Lambdas</h3>
+Lambdas</h2>
 <p>Always use reference capture for lambda. </p><div class="fragment"><div class="line"><span class="keyword">auto</span> lambda = [&amp;]() { <span class="comment">/* code */</span> };</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md34"></a>
-Static Functions</h3>
-<p>Use <code>static</code> for internal functions. </p><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> helper() -&gt; void;</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md35"></a>
-Structures</h2>
-<h3><a class="anchor" id="autotoc_md36"></a>
-Structure Organization</h3>
-<p>Order members as:</p><ul>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md31"></a>
+Static Functions</h2>
+<p>Mark a function <code>static</code> if it is defined in a source file with no declaration in header file. This will make the function private to that source file. </p><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> helper() -&gt; void;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md32"></a>
+Use &lt;tt&gt;struct&lt;/tt&gt; instead of &lt;tt&gt;class&lt;/tt&gt;</h2>
+<p>I don't like data hiding. I truly believe that user should have complete access to the memory that they have initialized. I want to provide much flexibility, not restrict them. Note: I will still be calling them "Class" rather than "Structure". </p><div class="fragment"><div class="line"><span class="keyword">struct </span>{</div>
+<div class="line">    <span class="comment">// YEAH everything public!</span></div>
+<div class="line">};</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md33"></a>
+Class Organization</h2>
+<p>When writing a class, Organize members in this order:</p><ul>
 <li>Data members</li>
 <li>Constructors</li>
-<li>Member functions</li>
-<li>Operators</li>
-<li>Conversion operators <div class="fragment"><div class="line"><span class="keyword">struct </span>my_struct {</div>
+<li>Destructor</li>
+<li>Function members</li>
+<li>Friend operators (Operators declared as <code>friend</code>)</li>
+<li>Modifying operators (Operators not declared as <code>friend</code> and does modify members)</li>
+<li>Conversion operators <div class="fragment"><div class="line"><span class="keyword">struct </span>password {</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Data members</span></div>
-<div class="line">    <span class="keywordtype">int</span> a;</div>
-<div class="line">    <span class="keywordtype">float</span> b;</div>
+<div class="line">    std::string content;</div>
+<div class="line">    <span class="keywordtype">bool</span> raw;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Constructors</span></div>
-<div class="line">    my_struct() = <span class="keywordflow">default</span>;</div>
-<div class="line">    my_struct(<span class="keywordtype">int</span> a, <span class="keywordtype">float</span> b) : a(a), b(b) {};</div>
+<div class="line">    password() = <span class="keywordflow">default</span>;</div>
+<div class="line">    password(std::string content, <span class="keywordtype">bool</span> raw) : content(content), raw(raw) {};</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Member functions</span></div>
-<div class="line">    [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> do_something(<span class="keywordtype">int</span> a, <span class="keywordtype">float</span> b)</div>
+<div class="line">    [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> cook() <span class="comment">// Inline function</span></div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordflow">return</span> a + b;</div>
+<div class="line">        raw = <span class="keyword">false</span>;</div>
+<div class="line">        <span class="keywordflow">return</span> cook(content);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> do_another_thing(<span class="keywordtype">int</span> a, <span class="keywordtype">float</span> b)</div>
+<div class="line">    <span class="keyword">auto</span> cook_deeply() -&gt; std::string; <span class="comment">// Can&#39;t be inline</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Friend operators</span></div>
+<div class="line">    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1aec__operators.html#a6a8d69cf6240b44936066a638d6e13ba">operator+</a>(</div>
+<div class="line">        <span class="keyword">const</span> password &amp;a,</div>
+<div class="line">        <span class="keyword">const</span> password &amp;b</div>
+<div class="line">    )</div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordflow">return</span> a - b;</div>
+<div class="line">        <span class="keywordflow">return</span> password(a.content + b.content, a.raw || b.raw);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">auto</span> do_way_more_stuff(<span class="keywordtype">int</span> a, <span class="keywordtype">float</span> b) -&gt; float;</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Operators</span></div>
-<div class="line">    <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator+=(<span class="keyword">const</span> my_struct &amp;other) -&gt; my_struct &amp;</div>
+<div class="line">    <span class="comment">// Modifying operators</span></div>
+<div class="line">    <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator+=(<span class="keyword">const</span> password &amp;other) -&gt; password &amp;</div>
 <div class="line">    {</div>
-<div class="line">        a += other.a;</div>
-<div class="line">        b += other.b;</div>
+<div class="line">        *<span class="keyword">this</span> = *<span class="keyword">this</span> + other;</div>
 <div class="line">        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacealce_1_1cu__operators.html#a014378f7febf4eb7c72723124da869bd">operator-</a>(</div>
-<div class="line">        <span class="keyword">const</span> my_struct &amp;a,</div>
-<div class="line">        <span class="keyword">const</span> my_struct &amp;b</div>
-<div class="line">    )</div>
-<div class="line">    {</div>
-<div class="line">        <span class="keywordflow">return</span> my_struct(a.a + a.b, b.a + b.b);</div>
-<div class="line">    }</div>
-<div class="line"> </div>
 <div class="line">    <span class="comment">// Conversion operators</span></div>
-<div class="line">    [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">operator</span> int()</div>
+<div class="line">    [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">operator</span> std::string()</div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordflow">return</span> a;</div>
+<div class="line">        <span class="keywordflow">return</span> content;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">operator</span> float()</div>
+<div class="line">    [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">operator</span> bool()</div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordflow">return</span> b;</div>
+<div class="line">        <span class="keywordflow">return</span> raw;</div>
 <div class="line">    }</div>
 <div class="line">};</div>
-<div class="ttc" id="anamespacealce_1_1cu__operators_html_a014378f7febf4eb7c72723124da869bd"><div class="ttname"><a href="namespacealce_1_1cu__operators.html#a014378f7febf4eb7c72723124da869bd">alce::cu_operators::operator-</a></div><div class="ttdeci">constexpr auto operator-(const Container &amp;container, const Container &amp;pattern)</div><div class="ttdoc">Filter out the occurrences of sequence from the container.</div><div class="ttdef"><b>Definition:</b> alce_container_utilities.hpp:1934</div></div>
+<div class="ttc" id="anamespacealce_1_1aec__operators_html_a6a8d69cf6240b44936066a638d6e13ba"><div class="ttname"><a href="namespacealce_1_1aec__operators.html#a6a8d69cf6240b44936066a638d6e13ba">alce::aec_operators::operator+</a></div><div class="ttdeci">constexpr auto operator+(const aec::aec &amp;a, const aec::aec &amp;b)</div><div class="ttdoc">Operator to combine AECs.</div><div class="ttdef"><b>Definition:</b> alce_ansi_escape_codes.hpp:248</div></div>
 </div><!-- fragment --></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md37"></a>
-Constructors</h3>
+<h2><a class="anchor" id="autotoc_md34"></a>
+Constructors</h2>
 <p>Prefer making a type aggregate unless you really need constructors.</p>
-<h3><a class="anchor" id="autotoc_md38"></a>
-Member Functions</h3>
-<p>Define non-inline member functions outside the struct in source files. </p><div class="fragment"><div class="line"><span class="keyword">auto</span> my_struct::do_way_more_stuff(<span class="keywordtype">int</span> a, <span class="keywordtype">float</span> b) -&gt; <span class="keywordtype">float</span></div>
-<div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> a + b - a - b + a + b - a - b;</div>
-<div class="line">}</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md39"></a>
-Operator Overloading</h3>
-<p>Use regular member functions for modifying operators, friend functions non-modifying operators. </p><div class="fragment"><div class="line"><span class="keyword">struct </span>my_struct {</div>
-<div class="line">    <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator+=(<span class="keyword">const</span> my_struct&amp; other) -&gt; my_struct &amp;</div>
-<div class="line">    { <span class="comment">/* ... */</span> }</div>
-<div class="line"> </div>
-<div class="line">    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator+(</div>
-<div class="line">        <span class="keyword">const</span> my_struct &amp;lhs,</div>
-<div class="line">        <span class="keyword">const</span> my_struct&amp; rhs</div>
-<div class="line">    ) -&gt; my_struct</div>
-<div class="line">    { <span class="comment">/* ... */</span> }</div>
-<div class="line">};</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md40"></a>
-Miscellaneous</h2>
-<h3><a class="anchor" id="autotoc_md41"></a>
-Enumerators</h3>
+<h2><a class="anchor" id="autotoc_md35"></a>
+Enumerators</h2>
 <p>Include a <code>max</code> member in enumerators intended for use as indexes, and an <code>unknown</code> member intended to serve as uninitialized/default.</p>
-<h3><a class="anchor" id="autotoc_md42"></a>
-Enum Classes</h3>
+<h2><a class="anchor" id="autotoc_md36"></a>
+Enum Classes</h2>
 <p>Always use <code>enum class</code> instead of <code>enum</code> for better type safety, with the only exception being when the <code>enum</code> is inside of a struct.</p>
-<h3><a class="anchor" id="autotoc_md43"></a>
-Enum to String</h3>
+<h2><a class="anchor" id="autotoc_md37"></a>
+Enum to String</h2>
 <p>Always create an overload of <code>to_string</code> for every <code>enum class</code> to enable convenient text formatting of the enum values, enhancing readability and usability in code. </p><div class="fragment"><div class="line"><span class="keyword">enum class</span> enumerator {</div>
 <div class="line">    unknown,</div>
 <div class="line">    member_1,</div>
@@ -366,44 +375,9 @@ Enum to String</h3>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>s;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md44"></a>
-Error Handling</h3>
-<p>Use exceptions for error handling, but return error codes in performance-critical functions. </p><div class="fragment"><div class="line"><span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;A very descriptive message with some debug info&quot;</span>);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md45"></a>
-Concepts</h3>
-<p>Prefer using defined concepts over <code>typename</code> for template parameters.</p>
-<h3><a class="anchor" id="autotoc_md46"></a>
-Standard Library</h3>
-<p>Prefer C++ standard library features. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line">std::string my_string = <span class="stringliteral">&quot;Hello&quot;</span>;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md47"></a>
-Pointers and References</h3>
-<p>Use smart pointers over raw pointers, and references when ownership isn't changing. </p><div class="fragment"><div class="line">std::unique_ptr&lt;my_struct&gt; ptr = std::make_unique&lt;my_struct&gt;();</div>
-<div class="line"><span class="keywordtype">void</span> my_function(<span class="keyword">const</span> my_struct&amp; obj);</div>
-</div><!-- fragment --><p> Use raw pointers if you intend the API to accept address of local variables (still not worth it).</p>
-<h3><a class="anchor" id="autotoc_md48"></a>
-Macros</h3>
-<p>Avoid macros; use <code>inline constexpr</code> or templated functions instead. </p><div class="fragment"><div class="line"><span class="preprocessor">#define MAX(a, b) ((a) &gt; (b) ? (a) : (b)) </span><span class="comment">// Avoid</span></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md49"></a>
-Initialization</h3>
-<p>Use <code>=</code> or <code>{}</code> for initializing values and <code>()</code> for constructing objects. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> value = 10;</div>
-<div class="line">std::vector vec = {1, 2, 3};</div>
-<div class="line">Type object(param1, param2);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md50"></a>
-Range-Based Loops</h3>
-<p>Prefer range-based loops and use <code>auto &amp;</code> for all. </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;value : values) { <span class="comment">/* code */</span> }</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md51"></a>
-Avoid Magic Numbers</h3>
-<p>Use named constants instead of magic numbers. </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> max_size = 100;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md52"></a>
-Use &lt;tt&gt;nullptr&lt;/tt&gt;</h3>
-<p>Use <code>nullptr</code> instead of <code>NULL</code>. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> *ptr = <span class="keyword">nullptr</span>;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md53"></a>
-Prefix &lt;tt&gt;::&lt;/tt&gt;</h3>
-<p>Use <code>::</code> for calling C standard functions. </p><div class="fragment"><div class="line"><span class="keywordtype">char</span> lowered = ::tolower(c);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md54"></a>
-Abbreviations</h3>
-<p>Don't use abbreviated thing in API, but you can abbreviate long names like <code>std::ranges</code> to shorter names (e.g., <code>stdr</code>) within source files. </p>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md38"></a>
+Concepts</h2>
+<p>Prefer using defined concepts over <code>typename</code> for template parameters. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

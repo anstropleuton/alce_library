@@ -66,12 +66,12 @@ namespace sm {
  *  A container that is CU Compatible with elements type being @c std::string or
  *  @c std::string_view .
  *
- *  @tparam  Container  The container type.
+ *  @tparam  container  The container type.
  */
-template<typename Container>
-concept sm_compatible = cu::cu_compatible<Container>
-    && (std::is_same_v<cu::value_type<Container>, std::string>
-     || std::is_same_v<cu::value_type<Container>, std::string_view>);
+template<typename container>
+concept sm_compatible = cu::cu_compatible<container>
+    && (std::is_same_v<cu::value_type<container>, std::string>
+     || std::is_same_v<cu::value_type<container>, std::string_view>);
 
 /**
  *  @brief  Many String Manipulators return this type.
@@ -81,10 +81,10 @@ using result_string_nested = std::vector<std::string>;
 /**
  *  @brief  Convert a container to comma separated string.
  *
- *  @tparam  Container  A compatible container type.
- *  @tparam  Converter  The type of element stringify function.
- *  @param   container  A container.
- *  @param   converter  Element conversion function.
+ *  @tparam  container  A compatible container type.
+ *  @tparam  converter  The type of element stringify function.
+ *  @param   ctr        A container.
+ *  @param   conv       Element conversion function.
  *  @param   separator  The separator between elements (optional).
  *  @param   prefix     The prefix to the element (optional).
  *  @param   suffix     The suffix to the element (optional).
@@ -92,23 +92,23 @@ using result_string_nested = std::vector<std::string>;
  *
  *  @note  The string is comma AND space separated by default.
  */
-template<cu::cu_compatible Container, typename Converter>
-requires(!std::is_same_v<Converter, std::string>)
+template<cu::cu_compatible container, typename converter>
+requires(!std::is_same_v<converter, std::string>)
 [[nodiscard]] inline constexpr auto to_string(
-    const Container &container,
-    Converter        converter,
+    const container &ctr,
+    converter        conv,
     std::string_view separator = ", ",
     std::string_view prefix    = "",
     std::string_view suffix    = ""
 )
 {
-    auto transformer = [&](const cu::value_type<Container> &element)
+    auto transformer = [&](const cu::value_type<container> &element)
     {
         ///  @todo  Remove this cast when C++26 comes out.
-        return std::string(prefix) + converter(element) + std::string(suffix);
+        return std::string(prefix) + conv(element) + std::string(suffix);
     };
 
-    return std::views::transform(container, transformer)
+    return std::views::transform(ctr, transformer)
          | std::views::join_with(std::string(separator))
          | std::ranges::to<std::string>();
 }
@@ -116,8 +116,8 @@ requires(!std::is_same_v<Converter, std::string>)
 /**
  *  @brief  Convert a container to comma separated string.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   separator  The separator between elements (optional).
  *  @param   prefix     The prefix to the element (optional).
  *  @param   suffix     The suffix to the element (optional).
@@ -125,24 +125,24 @@ requires(!std::is_same_v<Converter, std::string>)
  *
  *  @note  The string is comma AND space separated by default.
  */
-template<cu::cu_compatible Container>
+template<cu::cu_compatible container>
 [[nodiscard]] inline constexpr auto to_string(
-    const Container &container,
+    const container &ctr,
     std::string_view separator = ", ",
     std::string_view prefix    = "",
     std::string_view suffix    = ""
 )
 {
-    return to_string<Container, std::string (*)(cu::value_type<Container>)>(
-        container, std::to_string, separator, prefix, suffix);
+    return to_string<container, std::string (*)(cu::value_type<container>)>(
+        ctr, std::to_string, separator, prefix, suffix);
 }
 
 /**
  *  @brief  Convert a container of char to string with single-quoted elements
  *          separated by comma.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   separator  The separator between elements (optional).
  *  @param   prefix     The prefix to the element (optional).
  *  @param   suffix     The suffix to the element (optional).
@@ -150,29 +150,29 @@ template<cu::cu_compatible Container>
  *
  *  @note  The string is comma AND space separated by default.
  */
-template<cu::cu_compatible Container>
-requires std::is_same_v<cu::value_type<Container>, char>
+template<cu::cu_compatible container>
+requires std::is_same_v<cu::value_type<container>, char>
 [[nodiscard]] inline constexpr auto to_string(
-    const Container &container,
+    const container &ctr,
     std::string_view separator = ", ",
     std::string_view prefix    = "\'",
     std::string_view suffix    = "\'"
 )
 {
-    auto converter = [&](const cu::value_type<Container> &element)
+    auto converter = [&](const cu::value_type<container> &element)
     {
         return std::string(1, element);
     };
 
-    return to_string(container, converter, separator, prefix, suffix);
+    return to_string(ctr, converter, separator, prefix, suffix);
 }
 
 /**
  *  @brief  Convert a container of @c std::string to string with double-quoted
  *          elements separated by comma.
  *
- *  @tparam  Container  A compatible container type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type.
+ *  @param   ctr        A container.
  *  @param   separator  The separator between elements (optional).
  *  @param   prefix     The prefix to the element (optional).
  *  @param   suffix     The suffix to the element (optional).
@@ -180,30 +180,30 @@ requires std::is_same_v<cu::value_type<Container>, char>
  *
  *  @note  The string is comma AND space separated by default.
  */
-template<cu::cu_compatible Container>
-requires std::is_same_v<cu::value_type<Container>, std::string>
+template<cu::cu_compatible container>
+requires std::is_same_v<cu::value_type<container>, std::string>
 [[nodiscard]] inline constexpr auto to_string(
-    const Container &container,
+    const container &ctr,
     std::string_view separator = ", ",
     std::string_view prefix    = "\"",
     std::string_view suffix    = "\""
 )
 {
-    return to_string(container, std::identity {}, separator, prefix, suffix);
+    return to_string(ctr, std::identity {}, separator, prefix, suffix);
 }
 
 /**
  *  @brief  Convert a container of char to a regular string.
  *
- *  @tparam  Container  A compatible container type with char element type.
- *  @param   container  A container.
+ *  @tparam  container  A compatible container type with char element type.
+ *  @param   ctr        A container.
  *  @return  String of all chars.
  */
-template<cu::cu_compatible Container>
-requires std::is_same_v<cu::value_type<Container>, char>
-[[nodiscard]] inline constexpr auto chars_to_string(const Container &container)
+template<cu::cu_compatible container>
+requires std::is_same_v<cu::value_type<container>, char>
+[[nodiscard]] inline constexpr auto chars_to_string(const container &ctr)
 {
-    return std::string(std::begin(container), std::end(container));
+    return std::string(std::begin(ctr), std::end(ctr));
 }
 
 ///  @todo  Add to_string for std::string and char for consistency.
@@ -452,17 +452,17 @@ requires std::is_same_v<cu::value_type<Container>, char>
 /**
  *  @brief  Filter out the occurrences of any of sequences from the string.
  *
- *  @tparam  Strings   A CU compatible container with string elements.
+ *  @tparam  strings   A CU compatible container with string elements.
  *  @param   string    A string.
  *  @param   patterns  The sequences to remove.
  *  @return  Filtered string as @c std::string .
  *
  *  @see  cu::filter_out_occ_seq.
  */
-template<sm_compatible Strings>
+template<sm_compatible strings>
 [[nodiscard]] inline constexpr auto filter_out_occ_seq(
     std::string_view string,
-    const Strings   &patterns
+    const strings   &patterns
 )
 {
     std::vector<char> string_vec(string.begin(), string.end());
@@ -700,17 +700,17 @@ template<sm_compatible Strings>
 /**
  *  @brief  Split the string with occurrences of any of pattern.
  *
- *  @tparam  Strings   A CU compatible string with string elements.
+ *  @tparam  strings   A CU compatible string with string elements.
  *  @param   string    A string.
  *  @param   patterns  The patterns to split with.
  *  @return  Split string as @c result_string_nested .
  *
  *  @see  cu::split_occ_seq.
  */
-template<sm_compatible Strings>
+template<sm_compatible strings>
 [[nodiscard]] inline constexpr auto split_occ_seq(
     std::string_view string,
-    const Strings   &patterns
+    const strings   &patterns
 )
 {
     std::vector<char> string_vec(string.begin(), string.end());

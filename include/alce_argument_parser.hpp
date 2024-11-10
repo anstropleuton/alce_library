@@ -589,7 +589,7 @@ struct measured_string {
      *  @param  code    The ANSI Escape Code to apply.
      *  @param  string  The content to apply ANSI Escape Code.
      */
-    inline constexpr measured_string(aec::aec code, std::string_view string)
+    inline constexpr measured_string(aec::aec_t code, std::string_view string)
         : string(code(string)), size(string.size()) {}
 
     /**
@@ -637,7 +637,7 @@ struct styled_text {
     /**
      *  @brief  Style applied for value.
      */
-    aec::aec style;
+    aec::aec_t style;
 
     /**
      *  @brief  Get the string that is enclosed by the style.
@@ -792,7 +792,7 @@ struct styled_enclosure {
     /**
      *  @brief  Style for enclosed value.
      */
-    aec::aec value_style;
+    aec::aec_t value_style;
 
     /**
      *  @brief  Apply enclosure to content.
@@ -902,22 +902,22 @@ struct posix_help_format {
     /**
      *  @brief  Style for the "-" prefix before the short name.
      */
-    aec::aec short_name_prefix_style = aec::reset;
+    aec::aec_t short_name_prefix_style = aec::reset;
 
     /**
      *  @brief  Style for the short name.
      */
-    aec::aec short_name_style = aec::reset;
+    aec::aec_t short_name_style = aec::reset;
 
     /**
      *  @brief  Style for the "--" prefix before the long name.
      */
-    aec::aec long_name_prefix_style = aec::reset;
+    aec::aec_t long_name_prefix_style = aec::reset;
 
     /**
      *  @brief  Style for the long name.
      */
-    aec::aec long_name_style = aec::reset;
+    aec::aec_t long_name_style = aec::reset;
 
     /**
      *  @brief  Separation between each short names.
@@ -937,7 +937,7 @@ struct posix_help_format {
     /**
      *  @brief  Style for the subcommand name.
      */
-    aec::aec subcommand_style = aec::reset;
+    aec::aec_t subcommand_style = aec::reset;
 
     /**
      *  @brief  Separation between each subcommand names.
@@ -957,7 +957,7 @@ struct posix_help_format {
     /**
      *  @brief  Prefix before the rest of the parameter name.
      */
-    aec::aec parameter_style = aec::reset;
+    aec::aec_t parameter_style = aec::reset;
 
     /**
      *  @brief  Separation between each parameter name.
@@ -1071,12 +1071,12 @@ struct microsoft_help_format {
     /**
      *  @brief  Style for the "/" prefix before the switch name.
      */
-    aec::aec switch_prefix_style = aec::reset;
+    aec::aec_t switch_prefix_style = aec::reset;
 
     /**
      *  @brief  Style for the switch name.
      */
-    aec::aec switch_style = aec::reset;
+    aec::aec_t switch_style = aec::reset;
 
     /**
      *  @brief  Separation between each switch names.
@@ -1086,7 +1086,7 @@ struct microsoft_help_format {
     /**
      *  @brief  Style for the subcommand name.
      */
-    aec::aec subcommand_style = aec::reset;
+    aec::aec_t subcommand_style = aec::reset;
 
     /**
      *  @brief  Separation between each subcommand names.
@@ -1106,7 +1106,7 @@ struct microsoft_help_format {
     /**
      *  @brief  Prefix before the rest of the parameter name.
      */
-    aec::aec parameter_style = aec::reset;
+    aec::aec_t parameter_style = aec::reset;
 
     /**
      *  @brief  Separation between each parameter name.

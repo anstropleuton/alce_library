@@ -83,4 +83,11 @@ int main()
 
     std::println("Converted characters to an actual string: {}",
         string_from_chars);
+
+    // Convert character to a string
+    char character = '!';
+
+    std::string char_to_string = sm::to_string(character);
+
+    std::println("Converted character using sm::to_string: {}", char_to_string);
 }

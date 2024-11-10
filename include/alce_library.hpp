@@ -41,14 +41,15 @@
 
 #include <string_view>
 
+// uncrustify:off
 #include "alce_library_config.hpp"
-// Tell Uncrustify to not mix the #include by adding this comment :3
 
+#include "alce_container_utilities.hpp" // IWYU pragma: keep
+#include "alce_string_manipulators.hpp" // IWYU pragma: keep
 #include "alce_ansi_escape_codes.hpp" // IWYU pragma: keep
 #include "alce_argument_parser.hpp" // IWYU pragma: keep
-#include "alce_container_utilities.hpp" // IWYU pragma: keep
 #include "alce_file_utilities.hpp" // IWYU pragma: keep
-#include "alce_string_manipulators.hpp" // IWYU pragma: keep
+// uncrustify:on
 
 /**
  *  @brief  All Alce Library's contents in this namespace.  Just do

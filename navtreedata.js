@@ -114,9 +114,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "alce__ansi__escape__codes_8hpp.html",
-"index.html#autotoc_md45",
-"namespacemembers.html",
-"structalce_1_1cu_1_1boundless__array.html#a9c81486deba2d302c50ff0487642f15c"
+"index.html#autotoc_md44",
+"namespacealce_1_1sm__operators.html#ad34e91885d8e18d12f2c676e4c9b0c10",
+"structalce_1_1cu_1_1boundless__array.html#a89c457e4330dbcd4ec0d57c78ae5725c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

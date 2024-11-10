@@ -162,6 +162,9 @@ requires std::is_same_v&lt;<a class="el" href="namespacealce_1_1cu.html#ae0a4d6a
 <tr class="memitem:a26942e3501ac1e0b338fd66a0cd2dd93"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a26942e3501ac1e0b338fd66a0cd2dd93">chars_to_string</a> (const container &amp;ctr)</td></tr>
 <tr class="memdesc:a26942e3501ac1e0b338fd66a0cd2dd93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a container of char to a regular string.  <br /></td></tr>
 <tr class="separator:a26942e3501ac1e0b338fd66a0cd2dd93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59e53833032a882d65be29c2fa3984d6"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#a59e53833032a882d65be29c2fa3984d6">to_string</a> (char character)</td></tr>
+<tr class="memdesc:a59e53833032a882d65be29c2fa3984d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a character to a string.  <br /></td></tr>
+<tr class="separator:a59e53833032a882d65be29c2fa3984d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6d517b109cee61c173b717278f23a50"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealce_1_1sm.html#aa6d517b109cee61c173b717278f23a50">word_wrap</a> (std::string_view string, std::size_t width, bool force=false, std::string_view delims=&quot; \t\r\n\f\v\b&quot;)</td></tr>
 <tr class="memdesc:aa6d517b109cee61c173b717278f23a50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Word-wrap a string at width or before width depending on the delim.  <br /></td></tr>
 <tr class="separator:aa6d517b109cee61c173b717278f23a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -267,7 +270,7 @@ requires std::is_same_v&lt;<a class="el" href="namespacealce_1_1cu.html#ae0a4d6a
 </div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a3b7165b9359e79382aefb59b168f2e9b" name="a3b7165b9359e79382aefb59b168f2e9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b7165b9359e79382aefb59b168f2e9b">&#9670;&#160;</a></span>to_string() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b7165b9359e79382aefb59b168f2e9b">&#9670;&#160;</a></span>to_string() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -346,7 +349,7 @@ requires (!std::is_same_v&lt;converter, std::string&gt;)</div>
 </div>
 </div>
 <a id="a37be893a07fffee0aaa4abc14feb02fd" name="a37be893a07fffee0aaa4abc14feb02fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37be893a07fffee0aaa4abc14feb02fd">&#9670;&#160;</a></span>to_string() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a37be893a07fffee0aaa4abc14feb02fd">&#9670;&#160;</a></span>to_string() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -415,7 +418,7 @@ template&lt;cu::cu_compatible container&gt; </div>
 </div>
 </div>
 <a id="a6135644916050d26e6ca15ff8bbc51a8" name="a6135644916050d26e6ca15ff8bbc51a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6135644916050d26e6ca15ff8bbc51a8">&#9670;&#160;</a></span>to_string() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6135644916050d26e6ca15ff8bbc51a8">&#9670;&#160;</a></span>to_string() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -485,7 +488,7 @@ requires std::is_same_v&lt;<a class="el" href="namespacealce_1_1cu.html#ae0a4d6a
 </div>
 </div>
 <a id="a0546287ba13910f9e614d80fcc819004" name="a0546287ba13910f9e614d80fcc819004"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0546287ba13910f9e614d80fcc819004">&#9670;&#160;</a></span>to_string() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0546287ba13910f9e614d80fcc819004">&#9670;&#160;</a></span>to_string() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -598,6 +601,41 @@ requires std::is_same_v&lt;<a class="el" href="namespacealce_1_1cu.html#ae0a4d6a
 
 </div>
 </div>
+<a id="a59e53833032a882d65be29c2fa3984d6" name="a59e53833032a882d65be29c2fa3984d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59e53833032a882d65be29c2fa3984d6">&#9670;&#160;</a></span>to_string() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto alce::sm::to_string </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>character</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert a character to a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">character</td><td>A character. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String of one character. </dd></dl>
+
+</div>
+</div>
 <a id="aa6d517b109cee61c173b717278f23a50" name="aa6d517b109cee61c173b717278f23a50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa6d517b109cee61c173b717278f23a50">&#9670;&#160;</a></span>word_wrap()</h2>
 
@@ -645,7 +683,6 @@ requires std::is_same_v&lt;<a class="el" href="namespacealce_1_1cu.html#ae0a4d6a
 </div><div class="memdoc">
 
 <p>Word-wrap a string at width or before width depending on the delim. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Add to_string for std::string and char for consistency. </dd></dl>
 <p>The string is tried to be split at the width if the character at the width is one of the delimiter. If not, the split occurs at the character before the width that is one of the delimiter. This process is repeated until the string is less than the size of width. If a word is longer than the specified width, the word is kept as is. If you use force, the word will be split.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

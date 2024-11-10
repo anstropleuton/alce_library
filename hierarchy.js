@@ -1,6 +1,6 @@
 var hierarchy =
 [
-    [ "alce::aec::aec", "structalce_1_1aec_1_1aec.html", null ],
+    [ "alce::aec::aec_t", "structalce_1_1aec_1_1aec__t.html", null ],
     [ "std::array", null, [
       [ "alce::cu::boundless_array< element_type, count >", "structalce_1_1cu_1_1boundless__array.html", null ],
       [ "alce::cu::enumerated_array< element_type, enum_type >", "structalce_1_1cu_1_1enumerated__array.html", null ]
@@ -11,7 +11,7 @@ var hierarchy =
     [ "std::basic_string_view", null, [
       [ "alce::cu::boundless_basic_string_view< char_type, traits >", "structalce_1_1cu_1_1boundless__basic__string__view.html", null ]
     ] ],
-    [ "std::formatter< alce::aec::aec, char_typeype >", "structstd_1_1formatter_3_01alce_1_1aec_1_1aec_00_01char__typeype_01_4.html", null ],
+    [ "std::formatter< alce::aec::aec_t, char_type >", "structstd_1_1formatter_3_01alce_1_1aec_1_1aec__t_00_01char__type_01_4.html", null ],
     [ "std::formatter< alce::cu::boundless_basic_string< char_type, traits, alloc >, char_type >", "structstd_1_1formatter_3_01alce_1_1cu_1_1boundless__basic__string_3_01char__type_00_01traits_00_8135685a2c4f5fb6df36cb040149c9a9.html", null ],
     [ "std::formatter< alce::cu::boundless_basic_string_view< char_type, traits >, char_type >", "structstd_1_1formatter_3_01alce_1_1cu_1_1boundless__basic__string__view_3_01char__type_00_01traits_01_4_00_01char__type_01_4.html", null ],
     [ "std::integral_constant", null, [

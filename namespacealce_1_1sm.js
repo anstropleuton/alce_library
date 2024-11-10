@@ -7,6 +7,7 @@ var namespacealce_1_1sm =
     [ "to_string", "namespacealce_1_1sm.html#a6135644916050d26e6ca15ff8bbc51a8", null ],
     [ "to_string", "namespacealce_1_1sm.html#a0546287ba13910f9e614d80fcc819004", null ],
     [ "chars_to_string", "namespacealce_1_1sm.html#a26942e3501ac1e0b338fd66a0cd2dd93", null ],
+    [ "to_string", "namespacealce_1_1sm.html#a59e53833032a882d65be29c2fa3984d6", null ],
     [ "word_wrap", "namespacealce_1_1sm.html#aa6d517b109cee61c173b717278f23a50", null ],
     [ "trim_left", "namespacealce_1_1sm.html#ad0e218ee7f26d38e3ef342a595ab8d07", null ],
     [ "trim_right", "namespacealce_1_1sm.html#a832a0ce2d718296196962f4fe69ae0fe", null ],

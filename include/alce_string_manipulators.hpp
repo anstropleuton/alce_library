@@ -206,7 +206,17 @@ requires std::is_same_v<cu::value_type<container>, char>
     return std::string(std::begin(ctr), std::end(ctr));
 }
 
-///  @todo  Add to_string for std::string and char for consistency.
+/**
+ *  @brief  Convert a character to a string.
+ *
+ *  @param  character  A character.
+ *  @return  String of one character.
+ */
+[[nodiscard]] inline constexpr auto to_string(char character)
+{
+    // Maybe pretty useless after all
+    return std::string(1, character);
+}
 
 /**
  *  @brief  Word-wrap a string at width or before width depending on the delim.

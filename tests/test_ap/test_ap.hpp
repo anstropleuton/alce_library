@@ -299,7 +299,7 @@ struct std::formatter<ap::parsed_argument> {
  *  @param   args       Additional arguments for function call.
  */
 template<typename func_type, typename ... args_type>
-static auto generate_combo(
+static inline constexpr auto generate_combo(
     std::vector<std::size_t> &combo,
     std::size_t               min_index,
     std::size_t               max_index,
@@ -336,7 +336,7 @@ static auto generate_combo(
  *  @param   args        Additional arguments for function call.
  */
 template<typename func_type, typename ... args_type>
-static auto run_combo(
+static inline constexpr auto run_combo(
     std::size_t     min_index,
     std::size_t     max_index,
     std::size_t     min_combos,
@@ -359,7 +359,7 @@ static auto run_combo(
  *  @param  expected  Expected parsed results to compare with.
  *  @return  Number of errors.
  */
-[[nodiscard, maybe_unused]] static auto ap_tester(
+[[nodiscard, maybe_unused]] static inline constexpr auto ap_tester(
     const std::vector<std::string>                    &args,
     const std::vector<ap::parsed_argument>            &expected,
     const std::vector<const ap::option_template *>     options,

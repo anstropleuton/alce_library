@@ -39,6 +39,8 @@
  *    "Standard" (for "Alce") and "Small" (for "LIBRARY").
  */
 
+#pragma once
+
 /**
  *  @brief  Default value for extensive tester.
  *  @see  extensive_test.

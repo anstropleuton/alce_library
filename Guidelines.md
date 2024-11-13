@@ -364,3 +364,7 @@ enum class enumerator {
 
 ### Concepts
 Prefer using defined concepts over `typename` for template parameters.
+```cpp
+template<std::contiguous_iterator iter>
+// stuff
+```

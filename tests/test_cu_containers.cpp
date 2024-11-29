@@ -298,8 +298,8 @@
 {
     T_BEGIN;
 
-    cu::boundless_vector    vec    = { 1, 2, 3, 4, 5 };
-    cu::boundless_span<int> values = vec;
+    cu::boundless_vector vec    = { 1, 2, 3, 4, 5 };
+    cu::boundless_span   values = vec;
 
     try
     {

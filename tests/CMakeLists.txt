@@ -22,11 +22,11 @@ set(ALCE_LIBRARY_TESTS
     "${CMAKE_CURRENT_SOURCE_DIR}/tester.cpp"
 )
 
-add_executable(al_tester ${ALCE_LIBRARY_TESTS})
-target_include_directories(al_tester PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/test_ap")
-target_link_libraries(al_tester PRIVATE alce_library)
+add_executable(alce_library_tester ${ALCE_LIBRARY_TESTS})
+target_include_directories(alce_library_tester PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/test_ap")
+target_link_libraries(alce_library_tester PRIVATE alce_library)
 
 add_custom_command(
-    TARGET al_tester POST_BUILD
+    TARGET alce_library_tester POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/test_file_read_all_file.txt" "${CMAKE_CURRENT_BINARY_DIR}/test_file_read_all_file.txt"
 )

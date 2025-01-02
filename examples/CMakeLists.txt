@@ -13,6 +13,6 @@ endfunction()
 
 foreach(example ${ALCE_LIBRARY_EXAMPLES})
     set(example_source "${CMAKE_CURRENT_SOURCE_DIR}/${example}.cpp")
-    string(REPLACE "/" "_" example_executable ${example})
+    string(REPLACE "/" "_" example_executable alce_library_${example})
     add_example(${example_source} ${example_executable})
 endforeach()
